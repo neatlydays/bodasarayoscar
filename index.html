@@ -333,84 +333,93 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
       action="https://docs.google.com/forms/d/e/1FAIpQLSfxZw5qcPexXDJhIBCANJr5sFP1sW906LIVl4F6Z3TKpDr1cg/formResponse"
       method="POST" target="gforms-iframe" onsubmit="handleRsvpSubmit(event)">
 
-      <p class="form-section-title">Datos personales</p>
-      <div class="form-group reveal-up delay-1">
-        <label>Nombre y apellido</label>
-        <input type="text" name="entry.2062650618" placeholder="Tu nombre completo" required>
-      </div>
-      <div class="form-group reveal-up delay-2">
-        <label>¿Asistirás a la boda?</label>
-        <div class="radio-group">
-          <div class="radio-option">
-            <input type="radio" name="entry.957980292" id="a-si" value="Sí, asistiré" required onchange="onAsistenciaChange(this)">
-            <label for="a-si">Sí, asistiré 🎉</label>
-          </div>
-          <div class="radio-option">
-            <input type="radio" name="entry.957980292" id="a-no" value="No puedo asistir" onchange="onAsistenciaChange(this)">
-            <label for="a-no">No podré asistir 😢</label>
-          </div>
-        </div>
-      </div>
+      <p class="f<form class="rsvp-form" id="rsvp-form"
+  action="https://docs.google.com/forms/d/e/1FAIpQLSfxZw5qcPexXDJhIBCANJr5sFP1sW906LIVl4F6Z3TKpDr1cg/formResponse"
+  method="POST" target="gforms-iframe" onsubmit="handleRsvpSubmit(event)">
 
-      <p class="form-section-title reveal-up">Logística</p>
-      <div class="form-group reveal-up delay-1">
-        <label>¿Necesitas servicio de transporte?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-si" value="Sí"><label for="t-si">Sí, necesito</label></div>
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="No"><label for="t-no">No, me apaño</label></div>
-        </div>
-      </div>
-      <div class="form-group reveal-up delay-2">
-        <label>¿Necesitas alojamiento / hotel?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.153138595" id="h-si" value="Sí"><label for="h-si">Sí, necesito</label></div>
-          <div class="radio-option"><input type="radio" name="entry.153138595" id="h-no" value="No"><label for="h-no">Ya tengo</label></div>
-        </div>
-      </div>
-      <div class="form-group reveal-up delay-3">
-        <label>¿Vendrás acompañado de niños?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-si" value="Sí" onchange="toggleNinos(this)"><label for="n-si">Sí, por fuerza mayor</label></div>
-          <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-no" value="No" onchange="toggleNinos(this)"><label for="n-no">No</label></div>
-        </div>
-      </div>
-      <div class="form-group" id="ninos-row">
-        <label>¿Cuántos niños vendrán?</label>
-        <select name="entry.1468727656">
-          <option value="">Selecciona</option>
-          <option value="1">1 niño/a</option>
-          <option value="2">2 niños/as</option>
-          <option value="3">3 niños/as</option>
-          <option value="4 o más">4 o más</option>
-        </select>
-      </div>
+  <p class="form-section-title">Datos personales</p>
+  <div class="form-group reveal-up delay-1">
+    <label>Nombre y apellido</label>
+    <input type="text" name="entry.2062650618" placeholder="Tu nombre completo" required>
+  </div>
 
-      <p class="form-section-title reveal-up">Menú</p>
-      <div class="form-group reveal-up delay-1">
-        <label>Plato principal</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.1907484985" id="m-carne" value="Carne"><label for="m-carne">🥩 Carne</label></div>
-          <div class="radio-option"><input type="radio" name="entry.1907484985" id="m-pescado" value="Pescado"><label for="m-pescado">🐟 Pescado</label></div>
-        </div>
+  <div class="form-group reveal-up delay-2">
+    <label>¿Asistirás a la boda?</label>
+    <div class="radio-group">
+      <div class="radio-option">
+        <input type="radio" name="entry.957980292" id="a-si" value="si, asistiré" required onchange="onAsistenciaChange(this)">
+        <label for="a-si">Sí, asistiré 🎉</label>
       </div>
-      <div class="form-group reveal-up delay-2">
-        <label>¿Tienes alergias o intolerancias alimentarias?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.319600980" id="al-si" value="Sí" onchange="toggleAlergias(this)"><label for="al-si">Sí</label></div>
-          <div class="radio-option"><input type="radio" name="entry.319600980" id="al-no" value="No" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
-        </div>
+      <div class="radio-option">
+        <input type="radio" name="entry.957980292" id="a-no" value="no podré asistir" onchange="onAsistenciaChange(this)">
+        <label for="a-no">No podré asistir 😢</label>
       </div>
-      <div class="form-group" id="alergias-row">
-        <label>¿Cuáles?</label>
-        <textarea name="entry.1886171490" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
-      </div>
+    </div>
+  </div>
 
-      <button type="submit" class="btn-submit"><span>Confirmar asistencia</span></button>
-    </form>
+  <p class="form-section-title reveal-up">Logística</p>
+  <div class="form-group reveal-up delay-1">
+    <label>¿Necesitas servicio de transporte?</label>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="entry.912439665" id="t-si" value="Si, necesito"><label for="t-si">Sí, necesito</label></div>
+      <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="No, me apaño"><label for="t-no">No, me apaño</label></div>
+    </div>
+  </div>
 
+  <div class="form-group reveal-up delay-2">
+    <label>¿Necesitas alojamiento / hotel?</label>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="entry.153138595" id="h-si" value="Si, necesito"><label for="h-si">Sí, necesito</label></div>
+      <div class="radio-option"><input type="radio" name="entry.153138595" id="h-no" value="No, ya tengo"><label for="h-no">No, ya tengo</label></div>
+    </div>
+  </div>
+
+  <div class="form-group reveal-up delay-3">
+    <label>¿Vendrás acompañado de niños?</label>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-si" value="Si" onchange="toggleNinos(this)"><label for="n-si">Sí</label></div>
+      <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-no" value="No" onchange="toggleNinos(this)"><label for="n-no">No</label></div>
+    </div>
+  </div>
+
+  <div class="form-group" id="ninos-row">
+    <label>¿Cuántos niños vendrán?</label>
+    <select name="entry.1468727656">
+      <option value="">Selecciona</option>
+      <option value="1">1 niño/a</option>
+      <option value="2">2 niños/as</option>
+      <option value="3">3 niños/as</option>
+      <option value="4 o más">4 o más</option>
+    </select>
+  </div>
+
+  <p class="form-section-title reveal-up">Menú</p>
+  <div class="form-group reveal-up delay-1">
+    <label>Plato principal</label>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="entry.1907484985" id="m-carne" value="carne"><label for="m-carne">🥩 Carne</label></div>
+      <div class="radio-option"><input type="radio" name="entry.1907484985" id="m-pescado" value="pescado"><label for="m-pescado">🐟 Pescado</label></div>
+    </div>
+  </div>
+
+  <div class="form-group reveal-up delay-2">
+    <label>¿Tienes alergias o intolerancias?</label>
+    <div class="radio-group">
+      <div class="radio-option"><input type="radio" name="entry.319600980" id="al-si" value="si" onchange="toggleAlergias(this)"><label for="al-si">Sí</label></div>
+      <div class="radio-option"><input type="radio" name="entry.319600980" id="al-no" value="no" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
+    </div>
+  </div>
+
+  <div class="form-group" id="alergias-row">
+    <label>¿Cuáles?</label>
+    <textarea name="entry.1886171490" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
+  </div>
+
+  <button type="submit" class="btn-submit"><span>Confirmar asistencia</span></button>
+</form>
     <div class="rsvp-success" id="rsvp-success">
       <div class="check">🌸</div>
-      <h3>¡Gracias!</h3>
+      <h3>¡Muchas gracias!</h3>
       <p>Hemos recibido tu confirmación. Nos vemos el 17 de julio de 2027 🥂</p>
     </div>
   </div>
@@ -420,7 +429,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
 <footer>
   <div class="footer-names">Los Güeris</div>
   <p>17 · 07 · 2027</p>
-  <p style="margin-top:.5rem;font-size:.7rem;opacity:.3;">Con amor, desde Málaga</p>
+  <p style="margin-top:.5rem;font-size:.9rem;opacity:.3;">Con amor, desde Málaga</p>
 </footer>
 
 <script>
