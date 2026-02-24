@@ -1063,26 +1063,6 @@ footer p { font-size: 0.78rem; letter-spacing: 0.15em; color: rgba(253,248,242,0
   </div>
 </section>
 
-<!-- ═══ MAPA ═══ -->
-<section id="mapa">
-  <div class="section-inner reveal-up">
-    <p class="subtitle">Cómo llegar</p>
-    <h2 class="section-title">Ubicaciones</h2>
-    <div class="map-tabs">
-      <button class="map-tab active" onclick="switchMap('iglesia',this)">Iglesia · Antequera</button>
-      <button class="map-tab" onclick="switchMap('hacienda',this)">Hacienda · Mollina</button>
-    </div>
-  </div>
-  <div class="map-frame active" id="map-iglesia">
-    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-4.5650%2C37.0150%2C-4.5450%2C37.0250&layer=mapnik&marker=37.0198%2C-4.5551"
-      allowfullscreen loading="lazy" title="Iglesia de los Remedios, Antequera"></iframe>
-  </div>
-  <div class="map-frame" id="map-hacienda">
-    <iframe src="https://www.openstreetmap.org/export/embed.html?bbox=-4.6750%2C37.1300%2C-4.6550%2C37.1400&layer=mapnik&marker=37.1350%2C-4.6650"
-      allowfullscreen loading="lazy" title="Hacienda La Capilla, Mollina"></iframe>
-  </div>
-</section>
-
 <!-- ═══ DRESS CODE ═══ -->
 <section id="dresscode">
   <div class="section-inner">
@@ -1115,30 +1095,6 @@ footer p { font-size: 0.78rem; letter-spacing: 0.15em; color: rgba(253,248,242,0
     <h2 class="section-title reveal-up delay-1">¿Contamos contigo?</h2>
     <p class="body-text reveal-up delay-2">Por favor, confirma tu asistencia antes del <strong>17 de enero de 2027</strong>. Necesitamos toda la información para organizarlo todo con cariño.</p>
 
-    <!-- ── INSTRUCCIONES GOOGLE FORMS (borrar cuando esté configurado) ── -->
-    <div id="gforms-instructions" class="reveal-up delay-3" style="
-      background: rgba(138,158,132,0.08);
-      border: 1px solid rgba(138,158,132,0.25);
-      border-radius: 4px;
-      padding: 1.5rem 1.8rem;
-      margin-top: 2.5rem;
-      text-align: left;
-      font-size: 0.85rem;
-      color: var(--text-mid);
-      line-height: 1.7;
-    ">
-      <strong style="color: var(--dark-sage); font-size: 0.95rem;">⚙️ Configuración Google Forms (3 pasos)</strong><br><br>
-      <strong>1.</strong> Crea un formulario en <a href="https://forms.google.com" target="_blank" style="color:var(--rose)">forms.google.com</a> con estas preguntas: Nombre, Asistencia, Transporte, Hotel, Niños, Cantidad niños, Menú, Alergias, Detalle alergias.<br><br>
-      <strong>2.</strong> Haz clic en los 3 puntos → <em>Obtener enlace rellenado previamente</em>. Rellena el formulario y copia la URL generada. Los códigos <code>entry.XXXXXXXX</code> son los IDs de cada campo.<br><br>
-      <strong>3.</strong> Reemplaza en el código HTML los valores <code>TU_FORM_ID</code> y los <code>entry.00000000X</code> por los tuyos. Después borra este bloque de instrucciones.<br><br>
-      <button onclick="document.getElementById('gforms-instructions').style.display='none'" style="
-        background: var(--dark-sage); color: white; border: none; padding: 0.5rem 1.2rem;
-        font-family:'Jost',sans-serif; font-size:0.75rem; letter-spacing:0.1em;
-        cursor:pointer; border-radius:2px;
-      ">Ocultar instrucciones</button>
-    </div>
-
-    <!--
     ══════════════════════════════════════════════════
     FORMULARIO → GOOGLE FORMS
     Técnica: POST al iframe oculto (sin CORS, sin redirección)
@@ -1152,7 +1108,7 @@ footer p { font-size: 0.78rem; letter-spacing: 0.15em; color: rgba(253,248,242,0
     <form
       class="rsvp-form"
       id="rsvp-form"
-      action="https://docs.google.com/forms/d/e/TU_FORM_ID/formResponse"
+      action="https://docs.google.com/forms/d/e/https://docs.google.com/forms/d/e/1FAIpQLSfxZw5qcPexXDJhIBCANJr5sFP1sW906LIVl4F6Z3TKpDr1cg/viewform?usp=pp_url&entry.2062650618=Sara+Marquez&entry.957980292=si,+asistir%C3%A9&entry.912439665=Si,+necesito&entry.153138595=Si,+necesito&entry.1468727656=No&entry.1907484985=carne&entry.319600980=si&entry.1886171490=Lactosa/formResponse"
       method="POST"
       target="gforms-iframe"
       onsubmit="handleRsvpSubmit(event)"
