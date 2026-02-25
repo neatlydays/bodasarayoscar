@@ -283,6 +283,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
     <h2 class="section-title reveal-up delay-1">¿Contamos contigo?</h2>
     <p class="body-text reveal-up delay-2">Por favor, confirma tu asistencia antes del <strong>17 de enero de 2027</strong>. Necesitamos toda la información para organizarlo todo con cariño.</p>
 
+    <iframe name="hidden-gf" style="display:none" aria-hidden="true"></iframe>
     <form class="rsvp-form" id="rsvp-form"
       data-action="https://docs.google.com/forms/d/e/1FAIpQLSfxZw5qcPexXDJhIBCANJr5sFP1sW906LIVl4F6Z3TKpDr1cg/formResponse"
       onsubmit="handleRsvpSubmit(event)">
@@ -511,17 +512,6 @@ document.addEventListener('change',function(e){
   if(e.target.id==='ac-si'&&!heartsFired){ heartsFired=true; launchHearts(); }
 });
 
-/* ── Envío a Google Forms via fetch no-cors ── */
-async function sendToGoogleForms(form){
-  const url = form.dataset.action;
-  const body = new URLSearchParams(new FormData(form));
-  try {
-    await fetch(url, { method:'POST', mode:'no-cors', body });
-  } catch(e) {
-    /* no-cors nunca lanza error real; silencio */
-  }
-}
-
 /* ── Asistencia change ── */
 let confettiFired=false;
 function onAsistenciaChange(el){
@@ -539,6 +529,15 @@ function onAsistenciaChange(el){
     form.classList.add('is-declined');
     btn.textContent='Enviar respuesta';
   }
+}
+
+/* ── Envío a Google Forms via fetch no-cors ── */
+async function sendToGoogleForms(form){
+  const url = form.dataset.action;
+  const body = new URLSearchParams(new FormData(form));
+  try {
+    await fetch(url, { method:'POST', mode:'no-cors', body });
+  } catch(e) {}
 }
 
 /* ── RSVP submit ── */
