@@ -7,27 +7,21 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
-
-  <style>
+<style>
 :root {
   --cream:#fdf8f2;--blush:#e8c4b4;--rose:#c4896a;
   --dusty-rose:#d4a593;--dark-sage:#5c7056;--mauve:#9b7b76;
   --text-dark:#3a2e2b;--text-mid:#6b534e;--text-light:#9b8480;
   --dark:#2a2018;
 }
-    /* ocultación suave cuando NO asiste */
+/* ocultación cuando NO asiste */
 .rsvp-form.is-declined .form-group,
 .rsvp-form.is-declined .form-section-title,
-.rsvp-form.is-declined .btn-submit{
-  display:none !important;
-}
+.rsvp-form.is-declined .btn-submit{ display:none !important; }
+
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{
-  background:var(--cream);color:var(--text-dark);
-  font-family:'Jost',sans-serif;font-weight:300;
-  overflow-x:hidden;width:100%;max-width:100vw;
-}
+body{background:var(--cream);color:var(--text-dark);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;width:100%;max-width:100vw;}
 
 /* ── SECCIONES ── */
 section{padding:100px 24px;position:relative;width:100%}
@@ -49,20 +43,8 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .delay-1{transition-delay:.1s}.delay-2{transition-delay:.22s}.delay-3{transition-delay:.36s}
 
 /* ── HERO ── */
-#hero{
-  min-height:100vh;display:flex;flex-direction:column;
-  align-items:center;justify-content:center;
-  padding:80px 24px;background:var(--cream);
-  position:relative;overflow:hidden;
-}
-#hero::before{
-  content:'';position:absolute;inset:0;
-  background:
-    radial-gradient(ellipse 70% 55% at 12% 18%,rgba(232,196,180,.4) 0%,transparent 60%),
-    radial-gradient(ellipse 55% 45% at 90% 78%,rgba(196,137,106,.22) 0%,transparent 55%),
-    radial-gradient(ellipse 50% 40% at 55% 8%,rgba(138,158,132,.2) 0%,transparent 50%);
-  pointer-events:none;
-}
+#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;background:var(--cream);position:relative;overflow:hidden;}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 12% 18%,rgba(232,196,180,.4) 0%,transparent 60%),radial-gradient(ellipse 55% 45% at 90% 78%,rgba(196,137,106,.22) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 55% 8%,rgba(138,158,132,.2) 0%,transparent 50%);pointer-events:none;}
 .hero-content{position:relative;text-align:center;z-index:1;width:100%}
 .hero-pre{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:1.8rem;animation:fadeUp 1.2s .2s ease both;opacity:0}
 .hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(3.8rem,13vw,9rem);font-weight:300;line-height:.92;color:var(--text-dark);letter-spacing:-.02em;animation:fadeUp 1.4s .35s ease both;opacity:0}
@@ -104,11 +86,7 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .event-type{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);margin-bottom:.9rem}
 .event-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;color:var(--text-dark);margin-bottom:.3rem}
 .event-address{font-size:.86rem;color:var(--text-mid);line-height:1.6}
-.event-link{
-  display:inline-flex;align-items:center;gap:6px;margin-top:1.1rem;
-  font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
-  color:var(--rose);text-decoration:none;transition:gap .2s;
-}
+.event-link{display:inline-flex;align-items:center;gap:6px;margin-top:1.1rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);text-decoration:none;transition:gap .2s;}
 .event-link:hover{gap:10px}
 .event-link svg{width:12px;height:12px;flex-shrink:0}
 
@@ -141,46 +119,21 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .rsvp-form{max-width:600px;margin:3rem auto 0;text-align:left}
 .form-group{margin-bottom:1.8rem}
 .form-group label{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-light);margin-bottom:.5rem}
-.form-group input,.form-group select,.form-group textarea{
-  width:100%;background:rgba(253,248,242,.8);
-  border:1px solid rgba(196,137,106,.2);border-bottom:2px solid rgba(196,137,106,.25);
-  border-radius:0;padding:.8rem 1rem;
-  font-family:'Jost',sans-serif;font-size:.95rem;font-weight:300;color:var(--text-dark);
-  outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none;
-}
-.form-group select{
-  cursor:pointer;
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c4896a' stroke-width='1.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:2.5rem;
-}
+.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(253,248,242,.8);border:1px solid rgba(196,137,106,.2);border-bottom:2px solid rgba(196,137,106,.25);border-radius:0;padding:.8rem 1rem;font-family:'Jost',sans-serif;font-size:.95rem;font-weight:300;color:var(--text-dark);outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none;}
+.form-group select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%23c4896a' stroke-width='1.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:2.5rem;}
 .form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-bottom-color:var(--rose);background:#fff}
 .form-group textarea{resize:vertical;min-height:80px}
 .radio-group{display:flex;gap:.6rem;flex-wrap:wrap}
 .radio-option{flex:1;min-width:90px}
 .radio-option input{display:none}
-.radio-option label{
-  display:block;text-align:center;padding:.65rem .8rem;
-  border:1px solid rgba(196,137,106,.2);cursor:pointer;
-  font-size:.86rem;font-weight:400;color:var(--text-mid);
-  transition:all .2s;background:rgba(253,248,242,.5);border-radius:2px;
-}
+.radio-option label{display:block;text-align:center;padding:.65rem .8rem;border:1px solid rgba(196,137,106,.2);cursor:pointer;font-size:.86rem;font-weight:400;color:var(--text-mid);transition:all .2s;background:rgba(253,248,242,.5);border-radius:2px;}
 .radio-option input:checked+label{background:var(--rose);border-color:var(--rose);color:white}
 .radio-option label:hover{border-color:var(--rose);color:var(--rose)}
-.form-section-title{
-  font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;
-  color:var(--text-dark);margin:2.5rem 0 1.4rem;padding-bottom:.6rem;
-  border-bottom:1px solid rgba(196,137,106,.15);
-  display:flex;align-items:center;gap:10px;
-}
+.form-section-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--text-dark);margin:2.5rem 0 1.4rem;padding-bottom:.6rem;border-bottom:1px solid rgba(196,137,106,.15);display:flex;align-items:center;gap:10px;}
 .form-section-title::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(196,137,106,.2),transparent)}
 #ninos-row{display:none}
 #alergias-row{display:none}
-.btn-submit{
-  display:block;width:100%;padding:1.1rem;
-  background:var(--text-dark);color:var(--cream);border:none;
-  font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;
-  cursor:pointer;margin-top:3rem;position:relative;overflow:hidden;border-radius:2px;
-}
+.btn-submit{display:block;width:100%;padding:1.1rem;background:var(--text-dark);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;margin-top:3rem;position:relative;overflow:hidden;border-radius:2px;}
 .btn-submit::before{content:'';position:absolute;inset:0;background:var(--rose);transform:translateX(-101%);transition:transform .4s cubic-bezier(.16,1,.3,1)}
 .btn-submit:hover::before{transform:translateX(0)}
 .btn-submit span{position:relative;z-index:1}
@@ -190,12 +143,8 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .rsvp-success h3{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--dark-sage);margin-bottom:.6rem}
 .rsvp-success p{color:var(--text-mid)}
 
-/* ── CONFETTI ── */
-#confetti-canvas{
-  position:fixed;top:0;left:0;width:100%;height:100%;
-  pointer-events:none;z-index:9999;
-  display:none;
-}
+/* ── CANVAS ── */
+#confetti-canvas,#hearts-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;}
 
 /* ── FOOTER ── */
 footer{background:var(--dark);text-align:center;padding:4rem 24px}
@@ -219,6 +168,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
 <body>
 
 <canvas id="confetti-canvas"></canvas>
+<canvas id="hearts-canvas"></canvas>
 
 <!-- ═══ HERO ═══ -->
 <section id="hero">
@@ -229,10 +179,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
     <p class="hero-location">Antequera · Málaga</p>
     <div class="hero-line"></div>
   </div>
-  <div class="scroll-hint">
-    <span>Desliza</span>
-    <div class="scroll-arrow"></div>
-  </div>
+  <div class="scroll-hint"><span>Desliza</span><div class="scroll-arrow"></div></div>
 </section>
 
 <!-- ═══ CUENTA ATRÁS ═══ -->
@@ -334,13 +281,8 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
     <h2 class="section-title reveal-up delay-1">¿Contamos contigo?</h2>
     <p class="body-text reveal-up delay-2">Por favor, confirma tu asistencia antes del <strong>17 de enero de 2027</strong>. Necesitamos toda la información para organizarlo todo con cariño.</p>
 
-    <!-- Iframe OCULTO para capturar la respuesta sin cambiar de página -->
-    <iframe name="gforms-iframe" style="display:none;"></iframe>
-
     <form class="rsvp-form" id="rsvp-form"
-      action="https://docs.google.com/forms/d/e/1FAIpQLSfxZw5qcPexXDJhIBCANJr5sFP1sW906LIVl4F6Z3TKpDr1cg/formResponse"
-      method="POST" 
-      target="gforms-iframe" 
+      data-action="https://docs.google.com/forms/d/e/1FAIpQLSfxZw5qcPexXDJhIBCANJr5sFP1sW906LIVl4F6Z3TKpDr1cg/formResponse"
       onsubmit="handleRsvpSubmit(event)">
 
       <p class="form-section-title">Datos personales</p>
@@ -352,7 +294,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
         <label>¿Asistirás a la boda?</label>
         <div class="radio-group">
           <div class="radio-option">
-            <input type="radio" name="entry.957980292" id="a-si" value="Sí, asistiré 🎉" required onchange="onAsistenciaChange(this)">            
+            <input type="radio" name="entry.957980292" id="a-si" value="Sí, asistiré 🎉" required onchange="onAsistenciaChange(this)">
             <label for="a-si">Sí, asistiré 🎉</label>
           </div>
           <div class="radio-option">
@@ -437,10 +379,10 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
       <p>Hemos recibido tu confirmación. Nos vemos el 17 de julio de 2027 🥂</p>
     </div>
     <div class="rsvp-success" id="rsvp-declined">
-  <div class="check">🤍</div>
-  <h3>Lo entendemos</h3>
-  <p>Lamentamos mucho no poder contar contigo. Un abrazo de nuestra parte.</p>
-</div>
+      <div class="check">🤍</div>
+      <h3>Lo entendemos</h3>
+      <p>Lamentamos mucho no poder contar contigo. Un abrazo de nuestra parte.</p>
+    </div>
   </div>
 </section>
 
@@ -461,207 +403,153 @@ function updateCountdown(){
   document.getElementById('cd-mins').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
   document.getElementById('cd-secs').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
 }
-updateCountdown();setInterval(updateCountdown,1000);
+updateCountdown();
+setInterval(updateCountdown,1000);
 
 /* ── Reveal on scroll ── */
 const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');io.unobserve(e.target);}});
+  entries.forEach(e=>{
+    if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
+  });
 },{threshold:.12});
 document.querySelectorAll('[class*="reveal-"],.timeline-item').forEach(el=>io.observe(el));
 
 /* ── Form helpers ── */
-function toggleNinos(el){document.getElementById('ninos-row').style.display=el.value==='Sí'?'block':'none';}
-function toggleAlergias(el){document.getElementById('alergias-row').style.display=el.value==='Sí'?'block':'none';}
+function toggleNinos(el){ document.getElementById('ninos-row').style.display=el.value==='Sí'?'block':'none'; }
+function toggleAlergias(el){ document.getElementById('alergias-row').style.display=el.value==='Sí'?'block':'none'; }
 
 /* ── Confetti ── */
-const canvas=document.getElementById('confetti-canvas');
-const ctx=canvas.getContext('2d');
-let pieces=[],animId=null;
-
-const COLORS=['#c4896a','#e8c4b4','#d4a593','#8a9e84','#c9a96e','#fdf8f2','#9b7b76','#5c7056'];
-
-function resizeCanvas(){canvas.width=window.innerWidth;canvas.height=window.innerHeight;}
+const confCanvas=document.getElementById('confetti-canvas');
+const confCtx=confCanvas.getContext('2d');
+let pieces=[],confAnimId=null;
+const CONF_COLORS=['#c4896a','#e8c4b4','#d4a593','#8a9e84','#c9a96e','#fdf8f2','#9b7b76','#5c7056'];
 
 function launchConfetti(){
-  resizeCanvas();
-  canvas.style.display='block';
-  pieces=[];
-  const count=180;
-  for(let i=0;i<count;i++){
-    pieces.push({
-      x:Math.random()*canvas.width,
-      y:-20-Math.random()*canvas.height*0.3,
-      w:8+Math.random()*8,
-      h:4+Math.random()*5,
-      color:COLORS[Math.floor(Math.random()*COLORS.length)],
-      rot:Math.random()*Math.PI*2,
-      rotV:(Math.random()-.5)*.2,
-      vx:(Math.random()-.5)*4,
-      vy:2+Math.random()*4,
-      opacity:1,
-      shape:Math.random()>.5?'rect':'circle',
-    });
+  confCanvas.width=window.innerWidth; confCanvas.height=window.innerHeight;
+  confCanvas.style.display='block'; pieces=[];
+  for(let i=0;i<180;i++){
+    pieces.push({x:Math.random()*confCanvas.width,y:-20-Math.random()*confCanvas.height*.3,w:8+Math.random()*8,h:4+Math.random()*5,color:CONF_COLORS[Math.floor(Math.random()*CONF_COLORS.length)],rot:Math.random()*Math.PI*2,rotV:(Math.random()-.5)*.2,vx:(Math.random()-.5)*4,vy:2+Math.random()*4,opacity:1,shape:Math.random()>.5?'rect':'circle'});
   }
-  if(animId)cancelAnimationFrame(animId);
+  if(confAnimId)cancelAnimationFrame(confAnimId);
   animateConfetti();
-  setTimeout(()=>{
-    cancelAnimationFrame(animId);
-    canvas.style.display='none';
-    pieces=[];
-  },4500);
+  setTimeout(()=>{ cancelAnimationFrame(confAnimId); confCanvas.style.display='none'; pieces=[]; },4500);
 }
-
 function animateConfetti(){
-  ctx.clearRect(0,0,canvas.width,canvas.height);
+  confCtx.clearRect(0,0,confCanvas.width,confCanvas.height);
   let alive=false;
   pieces.forEach(p=>{
-    p.x+=p.vx;
-    p.y+=p.vy;
-    p.vy+=.07;
-    p.rot+=p.rotV;
-    if(p.y>canvas.height*0.85)p.opacity=Math.max(0,p.opacity-.04);
-    if(p.opacity>0)alive=true;
-    ctx.save();
-    ctx.globalAlpha=p.opacity;
-    ctx.translate(p.x,p.y);
-    ctx.rotate(p.rot);
-    ctx.fillStyle=p.color;
-    if(p.shape==='circle'){
-      ctx.beginPath();ctx.arc(0,0,p.w/2,0,Math.PI*2);ctx.fill();
-    } else {
-      ctx.fillRect(-p.w/2,-p.h/2,p.w,p.h);
-    }
-    ctx.restore();
+    p.x+=p.vx; p.y+=p.vy; p.vy+=.07; p.rot+=p.rotV;
+    if(p.y>confCanvas.height*.85) p.opacity=Math.max(0,p.opacity-.04);
+    if(p.opacity>0) alive=true;
+    confCtx.save(); confCtx.globalAlpha=p.opacity; confCtx.translate(p.x,p.y); confCtx.rotate(p.rot); confCtx.fillStyle=p.color;
+    if(p.shape==='circle'){ confCtx.beginPath(); confCtx.arc(0,0,p.w/2,0,Math.PI*2); confCtx.fill(); }
+    else { confCtx.fillRect(-p.w/2,-p.h/2,p.w,p.h); }
+    confCtx.restore();
   });
-  if(alive)animId=requestAnimationFrame(animateConfetti);
-  else{canvas.style.display='none';pieces=[];}
+  if(alive) confAnimId=requestAnimationFrame(animateConfetti);
+  else { confCanvas.style.display='none'; pieces=[]; }
 }
 
-/* ── Asistencia change → confetti ── */
+/* ── Hearts ── */
+const hCanvas=document.getElementById('hearts-canvas');
+const hCtx=hCanvas.getContext('2d');
+let hearts=[],hAnimId=null,heartsFired=false;
+/* Rojos y rosas */
+const H_COLORS=['#e8192c','#ff4d6d','#ff69b4','#c9184a','#ffb3c1','#ff85a1'];
+
+/* Corazón redondeado: dos arcos arriba + curvas suaves abajo */
+function drawHeart(c,x,y,size){
+  const r=size*0.52;
+  c.beginPath();
+  c.arc(x-r*0.5, y, r, Math.PI, 0);          /* bump izquierdo */
+  c.arc(x+r*0.5, y, r, Math.PI, 0);          /* bump derecho */
+  c.bezierCurveTo(x+r*1.5, y+r*0.9, x, y+r*2.2, x, y+r*2.2);
+  c.bezierCurveTo(x, y+r*2.2, x-r*1.5, y+r*0.9, x-r*1.5, y);
+  c.closePath();
+  c.fill();
+}
+function launchHearts(){
+  hCanvas.width=window.innerWidth; hCanvas.height=window.innerHeight;
+  hCanvas.style.display='block'; hearts=[];
+  for(let i=0;i<55;i++){
+    hearts.push({
+      x:Math.random()*hCanvas.width,
+      y:hCanvas.height+20,
+      size:7+Math.random()*14,
+      color:H_COLORS[Math.floor(Math.random()*H_COLORS.length)],
+      vx:(Math.random()-.5)*2.5,
+      vy:-(3.5+Math.random()*5),
+      opacity:1,
+      wobble:Math.random()*Math.PI*2,
+      wobbleSpeed:.05+Math.random()*.03
+    });
+  }
+  if(hAnimId) cancelAnimationFrame(hAnimId);
+  animateHearts();
+  setTimeout(()=>{ cancelAnimationFrame(hAnimId); hCanvas.style.display='none'; hearts=[]; },2000); /* duración reducida */
+}
+function animateHearts(){
+  hCtx.clearRect(0,0,hCanvas.width,hCanvas.height);
+  let alive=false;
+  hearts.forEach(h=>{
+    h.wobble+=h.wobbleSpeed; h.x+=h.vx+Math.sin(h.wobble)*.7; h.y+=h.vy; h.vy+=.06;
+    if(h.y<hCanvas.height*.35) h.opacity=Math.max(0,h.opacity-.03); /* fade más rápido */
+    if(h.opacity>0) alive=true;
+    hCtx.save(); hCtx.globalAlpha=h.opacity; hCtx.fillStyle=h.color;
+    drawHeart(hCtx,h.x,h.y,h.size); hCtx.restore();
+  });
+  if(alive) hAnimId=requestAnimationFrame(animateHearts);
+  else { hCanvas.style.display='none'; hearts=[]; }
+}
+document.addEventListener('change',function(e){
+  if(e.target.id==='ac-si'&&!heartsFired){ heartsFired=true; launchHearts(); }
+});
+
+/* ── Envío a Google Forms via fetch no-cors (único método fiable) ── */
+async function sendToGoogleForms(form){
+  const url = form.dataset.action;
+  const body = new URLSearchParams(new FormData(form));
+  try {
+    await fetch(url, { method:'POST', mode:'no-cors', body });
+  } catch(e) {
+    /* no-cors nunca lanza error real; silencio */
+  }
+}
+
+/* ── Asistencia change ── */
 let confettiFired=false;
 function onAsistenciaChange(el){
+  const form=document.getElementById('rsvp-form');
 
-  const form = document.getElementById('rsvp-form');
-
-  // 🎉 SI asiste → comportamiento normal
-  if(el.value === 'Sí, asistiré 🎉'){
+  if(el.value==='Sí, asistiré 🎉'){
     form.classList.remove('is-declined');
-
-    if(!confettiFired){
-      confettiFired = true;
-      launchConfetti();
-    }
+    if(!confettiFired){ confettiFired=true; launchConfetti(); }
     return;
   }
 
-  // ❌ NO asiste → ocultar + enviar automático
-  if(el.value === 'No puedo asistir'){
-  form.classList.add('is-declined');
-
-  setTimeout(() => {
-    form.submit();
-    setTimeout(() => {
-      form.style.display = 'none';
-      const s = document.getElementById('rsvp-declined'); // ← apunta al nuevo div
+  if(el.value==='No puedo asistir'){
+    form.classList.add('is-declined');
+    setTimeout(async ()=>{
+      await sendToGoogleForms(form);
+      form.style.display='none';
+      const s=document.getElementById('rsvp-declined');
       s.classList.add('show');
-      s.scrollIntoView({ behavior: 'smooth', block: 'center' });
-    }, 400);
-  }, 300);
+      s.scrollIntoView({behavior:'smooth',block:'center'});
+    },300);
+  }
 }
-}
+
 /* ── RSVP submit ── */
-function handleRsvpSubmit(e){
-  setTimeout(()=>{
-    document.getElementById('rsvp-form').style.display='none';
-    const s=document.getElementById('rsvp-success');
-    s.classList.add('show');
-    s.scrollIntoView({behavior:'smooth',block:'center'});
-  },400);
+async function handleRsvpSubmit(e){
+  e.preventDefault();
+  const form=document.getElementById('rsvp-form');
+  await sendToGoogleForms(form);
+  form.style.display='none';
+  const s=document.getElementById('rsvp-success');
+  s.classList.add('show');
+  s.scrollIntoView({behavior:'smooth',block:'center'});
 }
 </script>
-  <canvas id="hearts-canvas" style="position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;"></canvas>
 
-<script>
-(function(){
-  const canvas = document.getElementById('hearts-canvas');
-  const ctx = canvas.getContext('2d');
-  let hearts = [], animId = null, fired = false;
-
-  const COLORS = ['#c4896a','#e8c4b4','#d4a593','#9b7b76','#c9a96e'];
-
-  function drawHeart(ctx, x, y, size){
-    ctx.beginPath();
-    ctx.moveTo(x, y + size * 0.3);
-    ctx.bezierCurveTo(x, y, x - size, y, x - size, y + size * 0.3);
-    ctx.bezierCurveTo(x - size, y + size * 0.7, x, y + size * 1.1, x, y + size * 1.4);
-    ctx.bezierCurveTo(x, y + size * 1.1, x + size, y + size * 0.7, x + size, y + size * 0.3);
-    ctx.bezierCurveTo(x + size, y, x, y, x, y + size * 0.3);
-    ctx.closePath();
-    ctx.fill();
-  }
-
-  function launch(){
-    canvas.width  = window.innerWidth;
-    canvas.height = window.innerHeight;
-    canvas.style.display = 'block';
-    hearts = [];
-
-    for(let i = 0; i < 60; i++){
-      hearts.push({
-        x:    Math.random() * canvas.width,
-        y:    canvas.height + 20,
-        size: 8 + Math.random() * 18,
-        color: COLORS[Math.floor(Math.random() * COLORS.length)],
-        vx:   (Math.random() - 0.5) * 2.5,
-        vy:   -(3 + Math.random() * 5),
-        opacity: 1,
-        wobble: Math.random() * Math.PI * 2,
-        wobbleSpeed: 0.04 + Math.random() * 0.03,
-      });
-    }
-
-    if(animId) cancelAnimationFrame(animId);
-    animate();
-
-    setTimeout(() => {
-      cancelAnimationFrame(animId);
-      canvas.style.display = 'none';
-      hearts = [];
-    }, 3500);
-  }
-
-  function animate(){
-    ctx.clearRect(0, 0, canvas.width, canvas.height);
-    let alive = false;
-
-    hearts.forEach(h => {
-      h.wobble  += h.wobbleSpeed;
-      h.x       += h.vx + Math.sin(h.wobble) * 0.8;
-      h.y       += h.vy;
-      h.vy      += 0.04; // gravedad suave
-      if(h.y < canvas.height * 0.2) h.opacity = Math.max(0, h.opacity - 0.018);
-      if(h.opacity > 0) alive = true;
-
-      ctx.save();
-      ctx.globalAlpha = h.opacity;
-      ctx.fillStyle   = h.color;
-      drawHeart(ctx, h.x, h.y, h.size);
-      ctx.restore();
-    });
-
-    if(alive) animId = requestAnimationFrame(animate);
-    else { canvas.style.display = 'none'; hearts = []; }
-  }
-
-  // Escucha el radio "Sí" del acompañante
-  document.addEventListener('change', function(e){
-    if(e.target.id === 'ac-si' && !fired){
-      fired = true;
-      launch();
-    }
-  });
-})();
-</script>
-  
 </body>
 </html>
