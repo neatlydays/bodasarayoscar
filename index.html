@@ -14,10 +14,12 @@
   --text-dark:#3a2e2b;--text-mid:#6b534e;--text-light:#9b8480;
   --dark:#2a2018;
 }
-/* ocultación cuando NO asiste */
-.rsvp-form.is-declined .form-group,
-.rsvp-form.is-declined .form-section-title,
-.rsvp-form.is-declined .btn-submit{ display:none !important; }
+/* ocultación cuando NO asiste: oculta todo menos el nombre y el botón */
+.rsvp-form.is-declined .form-section-title{ display:none !important; }
+.rsvp-form.is-declined .form-group{ display:none !important; }
+.rsvp-form.is-declined .form-group:first-of-type{ display:block !important; } /* nombre */
+.rsvp-form.is-declined .form-group.attendance-group{ display:block !important; } /* asistencia */
+.rsvp-form.is-declined .btn-submit{ display:block !important; }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
@@ -290,7 +292,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
         <label>Nombre y apellido</label>
         <input type="text" name="entry.2062650618" placeholder="Tu nombre completo" required>
       </div>
-      <div class="form-group reveal-up delay-2">
+      <div class="form-group attendance-group reveal-up delay-2">
         <label>¿Asistirás a la boda?</label>
         <div class="radio-group">
           <div class="radio-option">
@@ -524,22 +526,18 @@ async function sendToGoogleForms(form){
 let confettiFired=false;
 function onAsistenciaChange(el){
   const form=document.getElementById('rsvp-form');
+  const btn=form.querySelector('.btn-submit span');
 
   if(el.value==='Sí, asistiré 🎉'){
     form.classList.remove('is-declined');
+    btn.textContent='Confirmar asistencia';
     if(!confettiFired){ confettiFired=true; launchConfetti(); }
     return;
   }
 
   if(el.value==='No puedo asistir'){
     form.classList.add('is-declined');
-    setTimeout(async ()=>{
-      await sendToGoogleForms(form);
-      form.style.display='none';
-      const s=document.getElementById('rsvp-declined');
-      s.classList.add('show');
-      s.scrollIntoView({behavior:'smooth',block:'center'});
-    },300);
+    btn.textContent='Enviar respuesta';
   }
 }
 
@@ -547,9 +545,10 @@ function onAsistenciaChange(el){
 async function handleRsvpSubmit(e){
   e.preventDefault();
   const form=document.getElementById('rsvp-form');
+  const declined=document.querySelector('input[name="entry.957980292"]:checked')?.value==='No puedo asistir';
   await sendToGoogleForms(form);
   form.style.display='none';
-  const s=document.getElementById('rsvp-success');
+  const s=document.getElementById(declined?'rsvp-declined':'rsvp-success');
   s.classList.add('show');
   s.scrollIntoView({behavior:'smooth',block:'center'});
 }
