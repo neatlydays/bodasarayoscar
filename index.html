@@ -14,18 +14,15 @@
   --text-dark:#3a2e2b;--text-mid:#6b534e;--text-light:#9b8480;
   --dark:#2a2018;
 }
-/* ocultación cuando NO asiste: oculta todo menos el nombre y el botón */
 .rsvp-form.is-declined .form-section-title{ display:none !important; }
 .rsvp-form.is-declined .form-group{ display:none !important; }
-.rsvp-form.is-declined .form-group:first-of-type{ display:block !important; } /* nombre */
-.rsvp-form.is-declined .form-group.attendance-group{ display:block !important; } /* asistencia */
+.rsvp-form.is-declined .form-group:first-of-type{ display:block !important; }
+.rsvp-form.is-declined .form-group.attendance-group{ display:block !important; }
 .rsvp-form.is-declined .btn-submit{ display:block !important; }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--text-dark);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;width:100%;max-width:100vw;}
-
-/* ── SECCIONES ── */
 section{padding:100px 24px;position:relative;width:100%}
 .section-inner{max-width:720px;margin:0 auto;text-align:center}
 h2.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:400;color:var(--text-dark);margin-bottom:.5rem;letter-spacing:.02em}
@@ -35,16 +32,12 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .floral-divider svg{width:24px;height:24px;flex-shrink:0}
 .floral-divider::before,.floral-divider::after{content:'';display:block;height:1px;width:60px;background:linear-gradient(to right,transparent,var(--rose))}
 .floral-divider::after{background:linear-gradient(to left,transparent,var(--rose))}
-
-/* ── REVEAL ── */
 .reveal-up{opacity:0;transform:translateY(50px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal-right{opacity:0;transform:translateX(60px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
 .reveal-scale{opacity:0;transform:scale(.88);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
 [class*="reveal-"].visible{opacity:1;transform:none}
 .delay-1{transition-delay:.1s}.delay-2{transition-delay:.22s}.delay-3{transition-delay:.36s}
-
-/* ── HERO ── */
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;background:var(--cream);position:relative;overflow:hidden;}
 #hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 12% 18%,rgba(232,196,180,.4) 0%,transparent 60%),radial-gradient(ellipse 55% 45% at 90% 78%,rgba(196,137,106,.22) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 55% 8%,rgba(138,158,132,.2) 0%,transparent 50%);pointer-events:none;}
 .hero-content{position:relative;text-align:center;z-index:1;width:100%}
@@ -59,8 +52,6 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .scroll-hint span{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-light)}
 .scroll-arrow{width:18px;height:18px;border-right:1px solid var(--rose);border-bottom:1px solid var(--rose);transform:rotate(45deg);animation:bounceArrow 1.8s 2.5s ease infinite;opacity:.6}
 @keyframes bounceArrow{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(5px)}}
-
-/* ── COUNTDOWN ── */
 #countdown{background:var(--dark);color:var(--cream);padding:100px 24px}
 #countdown h2.section-title{color:var(--cream)}
 #countdown .subtitle{color:rgba(253,248,242,.35)}
@@ -72,12 +63,8 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .count-box:hover::after{transform:scaleX(1)}
 .count-number{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,7vw,5rem);font-weight:300;color:var(--dusty-rose);line-height:1;display:block}
 .count-label{display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(253,248,242,.35);margin-top:.5rem}
-
-/* ── MENSAJE ── */
 #mensaje{background:var(--cream)}
 .mensaje-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:300;font-style:italic;line-height:1.55;color:var(--text-mid);max-width:560px;margin:0 auto}
-
-/* ── CEREMONIA ── */
 #ceremonia{background:linear-gradient(170deg,#f7ede3 0%,var(--cream) 100%)}
 .events-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3.5rem;text-align:left}
 @media(max-width:580px){.events-grid{grid-template-columns:1fr}}
@@ -91,8 +78,6 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .event-link{display:inline-flex;align-items:center;gap:6px;margin-top:1.1rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);text-decoration:none;transition:gap .2s;}
 .event-link:hover{gap:10px}
 .event-link svg{width:12px;height:12px;flex-shrink:0}
-
-/* ── PROGRAMA ── */
 #programa{background:var(--cream)}
 .timeline{position:relative;max-width:500px;margin:3.5rem auto 0;text-align:left}
 .timeline::before{content:'';position:absolute;left:50px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,transparent 0%,var(--blush) 8%,var(--blush) 92%,transparent 100%)}
@@ -103,8 +88,6 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .timeline-item:hover .t-dot{background:var(--rose);transform:scale(1.4)}
 .t-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;color:var(--text-dark)}
 .t-desc{font-size:.83rem;color:var(--text-mid);line-height:1.6;margin-top:3px}
-
-/* ── DRESS CODE ── */
 #dresscode{background:var(--dark)}
 #dresscode h2.section-title{color:var(--cream)}
 #dresscode .subtitle{color:rgba(253,248,242,.3)}
@@ -115,8 +98,6 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .dc-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
 .dc-rule-text{font-size:.87rem;color:rgba(253,248,242,.55);line-height:1.65}
 .dc-rule-text strong{display:block;color:var(--cream);font-weight:400;margin-bottom:3px}
-
-/* ── RSVP ── */
 #rsvp{background:linear-gradient(170deg,#f7ede3 0%,var(--cream) 100%)}
 .rsvp-form{max-width:600px;margin:3rem auto 0;text-align:left}
 .form-group{margin-bottom:1.8rem}
@@ -144,20 +125,12 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .rsvp-success .check{font-size:3.5rem;margin-bottom:1.5rem}
 .rsvp-success h3{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--dark-sage);margin-bottom:.6rem}
 .rsvp-success p{color:var(--text-mid)}
-
-/* ── CANVAS ── */
 #confetti-canvas,#hearts-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;}
-
-/* ── FOOTER ── */
 footer{background:var(--dark);text-align:center;padding:4rem 24px}
 .footer-names{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--dusty-rose);margin-bottom:.6rem;letter-spacing:.05em}
 footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
-
-/* ── ANIMACIONES ── */
 @keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-
-/* ── MOBILE ── */
 @media(max-width:480px){
   section{padding:70px 20px}
   .timeline::before{left:42px}
@@ -166,622 +139,382 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
   .event-card{padding:1.6rem 1.2rem}
 }
 
-/* ═══ ENVELOPE COVER ═══ */
-#envelope-cover {
+/* ══════════════════════════════
+   PORTADA — PUERTAS DE IGLESIA
+══════════════════════════════ */
+#church-cover {
   position: fixed;
   inset: 0;
   z-index: 99999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background: radial-gradient(ellipse 120% 120% at 50% 50%, #2a1a10 0%, #1a0e08 60%, #0d0603 100%);
-  overflow: hidden;
+  cursor: pointer;
+  background: #080604;
+  perspective: 1000px;
+  -webkit-tap-highlight-color: transparent;
 }
 
-/* Partículas de fondo */
-#envelope-cover::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: 
-    radial-gradient(circle 1px at 20% 30%, rgba(196,137,106,.35) 0%, transparent 100%),
-    radial-gradient(circle 1px at 75% 20%, rgba(232,196,180,.25) 0%, transparent 100%),
-    radial-gradient(circle 1px at 40% 80%, rgba(196,137,106,.2) 0%, transparent 100%),
-    radial-gradient(circle 1px at 85% 65%, rgba(232,196,180,.3) 0%, transparent 100%),
-    radial-gradient(circle 1px at 10% 60%, rgba(196,137,106,.2) 0%, transparent 100%);
-  pointer-events: none;
-}
-
-/* Brillo central sutil */
-#envelope-cover::after {
-  content: '';
-  position: absolute;
-  width: 600px;
-  height: 600px;
-  background: radial-gradient(ellipse, rgba(196,137,106,.08) 0%, transparent 70%);
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-}
-
-/* Escena del sobre */
-.envelope-scene {
-  position: relative;
-  width: min(480px, 90vw);
-  filter: drop-shadow(0 40px 80px rgba(0,0,0,.7));
-}
-
-/* Fecha flotante arriba */
-.env-date {
-  text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(.75rem, 2vw, .9rem);
-  letter-spacing: .35em;
-  text-transform: uppercase;
-  color: rgba(196,137,106,.6);
-  margin-bottom: 1.8rem;
-  animation: fadeIn 2s 1s ease both;
-  opacity: 0;
-}
-
-/* Cuerpo del sobre */
-.envelope-body {
-  position: relative;
-  width: 100%;
-  padding-bottom: 68%;
-  background: linear-gradient(160deg, #f5ede0 0%, #edddc8 40%, #e8d4b8 100%);
-  border-radius: 2px;
-  overflow: visible;
-}
-
-/* Textura papel */
-.envelope-body::before {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)' opacity='.04'/%3E%3C/svg%3E");
-  border-radius: 2px;
-  opacity: .6;
-}
-
-/* Líneas decorativas del sobre */
-.envelope-lines {
-  position: absolute;
-  inset: 0;
-  pointer-events: none;
-}
-
-/* Triángulos laterales del interior */
-.env-tri-left, .env-tri-right {
-  position: absolute;
-  bottom: 0;
-  width: 0;
-  height: 0;
-  pointer-events: none;
-}
-.env-tri-left {
-  left: 0;
-  border-style: solid;
-  border-width: 0 0 100% 0;
-  border-color: transparent;
-  /* dibujado con svg */
-}
-
-/* SVG interior del sobre */
-.env-interior {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-}
-
-/* Solapa superior - La protagonista de la animación */
-.envelope-flap {
+/* Las dos mitades */
+.door {
   position: absolute;
   top: 0;
-  left: 0;
-  width: 100%;
-  transform-origin: top center;
-  transform-style: preserve-3d;
-  pointer-events: none;
-  z-index: 10;
+  width: 50%;
+  height: 100%;
+  overflow: hidden;
+  will-change: transform;
 }
-.envelope-flap svg {
-  width: 100%;
-  display: block;
-}
+.door-left  { left: 0;  transform-origin: left center; }
+.door-right { right: 0; transform-origin: right center; }
+.door svg   { width: 100%; height: 100%; display: block; }
 
-/* Estado abierto de la solapa */
-.envelope-scene.opening .envelope-flap {
-  animation: openFlap 1s .1s cubic-bezier(.4,0,.2,1) forwards;
-}
-@keyframes openFlap {
-  0%   { transform: perspective(800px) rotateX(0deg); }
-  100% { transform: perspective(800px) rotateX(-180deg); }
-}
-
-/* Carta saliendo del sobre */
-.env-letter {
+/* Sombra central entre puertas */
+.door-shadow {
   position: absolute;
-  bottom: 8%;
-  left: 8%;
-  width: 84%;
-  height: 80%;
-  background: linear-gradient(170deg, #fdf8f2, #f5ede0);
-  border-radius: 1px;
-  transform: translateY(60%);
-  opacity: 0;
-  z-index: 5;
-  box-shadow: 0 -4px 20px rgba(0,0,0,.15);
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  top: 0; left: 50%;
+  transform: translateX(-50%);
+  width: 4px; height: 100%;
+  background: linear-gradient(to right, rgba(0,0,0,.7), rgba(0,0,0,0) 50%, rgba(0,0,0,.7));
+  z-index: 6;
+  pointer-events: none;
 }
-.env-letter-inner {
+
+/* Texto encima */
+.door-text {
+  position: absolute;
+  bottom: 13%;
+  width: 100%;
   text-align: center;
-  font-family: 'Cormorant Garamond', serif;
-  color: #3a2e2b;
+  z-index: 10;
+  pointer-events: none;
 }
-.env-letter-inner .l-names {
-  font-size: clamp(1.4rem, 5vw, 2.2rem);
+.door-text h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.1rem, 3.5vw, 1.9rem);
   font-weight: 300;
-  letter-spacing: .05em;
-  line-height: 1.1;
-}
-.env-letter-inner .l-ampersand {
   font-style: italic;
-  color: #c4896a;
+  color: rgba(255, 242, 210, .85);
+  letter-spacing: .06em;
+  text-shadow: 0 2px 24px rgba(0,0,0,.9), 0 0 60px rgba(160,110,40,.25);
+  margin-bottom: .5rem;
 }
-.env-letter-inner .l-date {
-  font-size: clamp(.65rem, 2vw, .8rem);
-  letter-spacing: .25em;
+.door-text span {
+  display: block;
+  font-family: 'Jost', sans-serif;
+  font-size: clamp(.55rem, 1.3vw, .7rem);
+  letter-spacing: .3em;
   text-transform: uppercase;
-  color: #9b8480;
-  margin-top: .5rem;
+  color: rgba(190, 155, 90, .6);
+  text-shadow: 0 1px 10px rgba(0,0,0,.9);
+  animation: tapBlink 2.8s 1.2s ease infinite;
 }
-.envelope-scene.opening .env-letter {
-  animation: letterRise 1.1s .7s cubic-bezier(.16,1,.3,1) forwards;
-}
-@keyframes letterRise {
-  0%   { transform: translateY(60%); opacity: 0; }
-  30%  { opacity: 1; }
-  100% { transform: translateY(-18%); opacity: 1; }
-}
+@keyframes tapBlink { 0%,100%{opacity:.6} 50%{opacity:1} }
 
-/* SELLO DE CERA */
-.wax-seal {
-  position: absolute;
-  bottom: -38px;
-  left: 50%;
-  transform: translateX(-50%);
-  width: 90px;
-  height: 90px;
-  cursor: pointer;
-  z-index: 20;
-  transition: transform .3s cubic-bezier(.16,1,.3,1), filter .3s;
-  -webkit-tap-highlight-color: transparent;
-}
-.wax-seal:hover {
-  transform: translateX(-50%) scale(1.08);
-  filter: drop-shadow(0 8px 24px rgba(180,40,40,.5));
-}
-.wax-seal:active {
-  transform: translateX(-50%) scale(.96);
-}
+/* Apertura */
+#church-cover.opening .door-left  { animation: swingLeft  1.4s .05s cubic-bezier(.4,0,.2,1) forwards; }
+#church-cover.opening .door-right { animation: swingRight 1.4s .05s cubic-bezier(.4,0,.2,1) forwards; }
+#church-cover.opening .door-text,
+#church-cover.opening .door-shadow { opacity:0; transition: opacity .15s; }
 
-/* Pulso del sello */
-.wax-seal::after {
+@keyframes swingLeft  { to { transform: perspective(1000px) rotateY(-110deg); } }
+@keyframes swingRight { to { transform: perspective(1000px) rotateY( 110deg); } }
+
+/* Luz que entra por el centro */
+#church-cover.opening::before {
   content: '';
   position: absolute;
-  inset: -8px;
-  border-radius: 50%;
-  background: rgba(180,40,40,.2);
-  animation: sealPulse 2.5s 2s ease infinite;
-}
-@keyframes sealPulse {
-  0%, 100% { transform: scale(1); opacity: .7; }
-  50% { transform: scale(1.15); opacity: 0; }
-}
-
-/* Hint de "haz clic" */
-.seal-hint {
-  position: absolute;
-  bottom: -72px;
-  left: 50%;
-  transform: translateX(-50%);
-  white-space: nowrap;
-  font-family: 'Jost', sans-serif;
-  font-size: .62rem;
-  letter-spacing: .22em;
-  text-transform: uppercase;
-  color: rgba(196,137,106,.5);
-  animation: hintBlink 3s 2.5s ease infinite;
-  pointer-events: none;
-}
-@keyframes hintBlink {
-  0%, 100% { opacity: .5; }
-  50% { opacity: 1; }
-}
-
-/* Animación de entrada del sobre */
-.envelope-scene {
-  animation: envEntrance 1.4s .3s cubic-bezier(.16,1,.3,1) both;
+  inset: 0;
+  z-index: 7;
+  background: radial-gradient(ellipse 50% 90% at 50% 50%, rgba(255,245,215,.6) 0%, transparent 65%);
   opacity: 0;
-}
-@keyframes envEntrance {
-  0%   { opacity: 0; transform: translateY(40px) scale(.95); }
-  100% { opacity: 1; transform: translateY(0) scale(1); }
-}
-
-/* Salida de la pantalla de portada */
-#envelope-cover.closing {
-  animation: coverExit 1s .9s cubic-bezier(.4,0,1,1) forwards;
-}
-@keyframes coverExit {
-  0%   { opacity: 1; transform: scale(1); }
-  100% { opacity: 0; transform: scale(1.05); pointer-events: none; }
-}
-
-
-
-/* ══════════════════════════════════════
-   PORTADA SOBRE — PANTALLA COMPLETA
-══════════════════════════════════════ */
-#envelope-cover {
-  position: fixed;
-  inset: 0;
-  z-index: 99999;
-  overflow: hidden;
-  background: #1c1008;
-  perspective: 1200px;
-}
-
-/* El sobre ocupa toda la pantalla */
-.env-wrap {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-/* ── Cuerpo del sobre (mitad inferior) ── */
-.env-body {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(175deg, #f0e2cc 0%, #e8d5b5 50%, #dfc99f 100%);
-}
-
-/* Textura papel */
-.env-body::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='.035'/%3E%3C/svg%3E");
   pointer-events: none;
+  animation: lightBurst 1s .3s ease forwards;
 }
+@keyframes lightBurst { 0%{opacity:0} 45%{opacity:1} 100%{opacity:0} }
 
-/* SVG de pliegues interiores */
-.env-folds {
-  position: absolute;
-  inset: 0;
-  width: 100%;
-  height: 100%;
-  pointer-events: none;
-}
-
-/* ── Solapa superior ── */
-.env-flap {
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  /* Altura = la mitad + un poco para que el triángulo llegue al centro */
-  height: 60%;
-  transform-origin: top center;
-  transform-style: preserve-3d;
-  z-index: 10;
-  cursor: pointer;
-}
-
-.env-flap svg {
-  position: absolute;
-  top: 0; left: 0;
-  width: 100%; height: 100%;
-}
-
-/* Cara trasera de la solapa (cuando se abre) */
-.env-flap-back {
-  position: absolute;
-  inset: 0;
-  backface-visibility: hidden;
-  transform: rotateX(180deg);
-}
-
-/* ── SELLO DE CERA ── */
-.wax-seal {
-  position: absolute;
-  /* Centrado horizontal, en el punto de punta de la solapa = ~60% del alto */
-  left: 50%;
-  top: 60%;
-  transform: translate(-50%, -50%);
-  width: clamp(90px, 14vw, 130px);
-  height: clamp(90px, 14vw, 130px);
-  cursor: pointer;
-  z-index: 20;
-  transition: transform .35s cubic-bezier(.16,1,.3,1), filter .35s;
-  -webkit-tap-highlight-color: transparent;
-  pointer-events: auto;
-}
-.wax-seal:hover {
-  transform: translate(-50%, -50%) scale(1.07);
-  filter: drop-shadow(0 6px 28px rgba(160,20,20,.6));
-}
-.wax-seal:active {
-  transform: translate(-50%, -50%) scale(.95);
-}
-
-/* Pulso de llamada a la acción */
-.seal-pulse {
-  position: absolute;
-  inset: -10%;
-  border-radius: 50%;
-  background: radial-gradient(circle, rgba(180,30,30,.18) 0%, transparent 70%);
-  animation: sealPulse 2.8s 1.5s ease-in-out infinite;
-  pointer-events: none;
-}
-@keyframes sealPulse {
-  0%, 100% { transform: scale(1); opacity: 1; }
-  60% { transform: scale(1.35); opacity: 0; }
-}
-
-.seal-hint {
-  position: absolute;
-  top: 60%;
-  left: 50%;
-  transform: translate(-50%, calc(-50% + clamp(55px, 8vw, 75px)));
-  white-space: nowrap;
-  font-family: 'Jost', sans-serif;
-  font-size: clamp(.55rem, 1.2vw, .7rem);
-  letter-spacing: .28em;
-  text-transform: uppercase;
-  color: rgba(155, 120, 80, .65);
-  z-index: 21;
-  pointer-events: none;
-  animation: hintFade 3s 2s ease infinite;
-}
-@keyframes hintFade {
-  0%, 100% { opacity: .65; }
-  50% { opacity: 1; }
-}
-
-/* ── ANIMACIÓN APERTURA ── */
-
-/* 1. El sello se rompe */
-.opening .wax-seal {
-  animation: sealBreak .45s ease forwards !important;
-  pointer-events: none;
-}
-@keyframes sealBreak {
-  0%   { transform: translate(-50%,-50%) scale(1); opacity: 1; }
-  40%  { transform: translate(-50%,-50%) scale(1.15) rotate(-4deg); }
-  100% { transform: translate(-50%,-50%) scale(.6) rotate(8deg); opacity: 0; }
-}
-
-/* 2. La solapa se abre hacia arriba */
-.opening .env-flap {
-  animation: flapOpen 1.1s .35s cubic-bezier(.4,0,.15,1) forwards;
-}
-@keyframes flapOpen {
-  0%   { transform: perspective(1200px) rotateX(0deg); }
-  100% { transform: perspective(1200px) rotateX(-175deg); }
-}
-
-/* 3. El hint desaparece */
-.opening .seal-hint { display: none; }
-
-/* 4. Toda la portada se desvanece */
-#envelope-cover.fade-out {
-  animation: coverFade .9s ease forwards;
-  pointer-events: none;
-}
-@keyframes coverFade {
-  0%   { opacity: 1; }
-  100% { opacity: 0; }
-}
-
-/* Entrada del sobre */
-#envelope-cover {
-  animation: coverIn .8s .1s ease both;
-}
-@keyframes coverIn {
-  from { opacity: 0; }
-  to   { opacity: 1; }
-}
-
+/* Fade final */
+#church-cover.done { animation: coverOut .7s ease forwards; pointer-events: none; }
+@keyframes coverOut { to { opacity:0; } }
 </style>
 </head>
 <body>
 
-<!-- ═══ PORTADA SOBRE ═══ -->
-<div id="envelope-cover">
-  <div class="env-wrap" id="env-scene">
+<!-- ═══ PORTADA PUERTAS ═══ -->
+<div id="church-cover" onclick="openDoors()">
 
-    <!-- Cuerpo del sobre (fondo estático) -->
-    <div class="env-body">
-      <svg class="env-folds" viewBox="0 0 100 100" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <!-- Triángulo inferior -->
-        <polygon points="0,100 100,100 50,52" fill="#c9b490" opacity=".45"/>
-        <!-- Triángulo izquierdo -->
-        <polygon points="0,0 0,100 50,52" fill="#c2aa82" opacity=".35"/>
-        <!-- Triángulo derecho -->
-        <polygon points="100,0 100,100 50,52" fill="#bba47a" opacity=".3"/>
-        <!-- Líneas de pliegue -->
-        <line x1="0" y1="0"   x2="50" y2="52" stroke="#a89060" stroke-width=".3" opacity=".5" vector-effect="non-scaling-stroke"/>
-        <line x1="100" y1="0"  x2="50" y2="52" stroke="#a89060" stroke-width=".3" opacity=".5" vector-effect="non-scaling-stroke"/>
-        <line x1="0" y1="100" x2="50" y2="52" stroke="#a89060" stroke-width=".4" opacity=".5" vector-effect="non-scaling-stroke"/>
-        <line x1="100" y1="100" x2="50" y2="52" stroke="#a89060" stroke-width=".4" opacity=".5" vector-effect="non-scaling-stroke"/>
-        <!-- Borde del sobre -->
-        <rect x=".3" y=".3" width="99.4" height="99.4" stroke="#b89a6a" stroke-width=".4" fill="none" opacity=".5" vector-effect="non-scaling-stroke"/>
-        <!-- Línea decorativa interior fina -->
-        <rect x="1.5" y="1.5" width="97" height="97" stroke="#b89a6a" stroke-width=".2" fill="none" opacity=".25" vector-effect="non-scaling-stroke"/>
-      </svg>
-    </div>
+  <!-- PUERTA IZQUIERDA -->
+  <div class="door door-left">
+    <svg viewBox="0 0 500 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMaxYMid slice">
+      <defs>
+        <linearGradient id="wL" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="#0e0905"/>
+          <stop offset="12%"  stop-color="#1e1208"/>
+          <stop offset="28%"  stop-color="#2d1e0d"/>
+          <stop offset="45%"  stop-color="#391e0c"/>
+          <stop offset="60%"  stop-color="#2a1808"/>
+          <stop offset="78%"  stop-color="#331c0a"/>
+          <stop offset="92%"  stop-color="#241408"/>
+          <stop offset="100%" stop-color="#180e06"/>
+        </linearGradient>
+        <linearGradient id="gL" x1="0%" y1="0%" x2="100%" y2="80%">
+          <stop offset="0%"   stop-color="#d4a840"/>
+          <stop offset="25%"  stop-color="#f0c858"/>
+          <stop offset="55%"  stop-color="#b88828"/>
+          <stop offset="100%" stop-color="#deb040"/>
+        </linearGradient>
+        <!-- Sombra lateral derecha (junta) -->
+        <linearGradient id="shadowL" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="rgba(0,0,0,0)"/>
+          <stop offset="75%"  stop-color="rgba(0,0,0,.15)"/>
+          <stop offset="100%" stop-color="rgba(0,0,0,.75)"/>
+        </linearGradient>
+        <!-- Iluminación lateral izquierda -->
+        <linearGradient id="lightL" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="rgba(255,220,150,.08)"/>
+          <stop offset="30%"  stop-color="rgba(255,220,150,0)"/>
+          <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+        </linearGradient>
+        <filter id="fL">
+          <feTurbulence type="fractalNoise" baseFrequency=".012 .35" numOctaves="5" seed="3"/>
+          <feColorMatrix type="saturate" values="0"/>
+          <feBlend in="SourceGraphic" mode="overlay" result="b"/>
+          <feComposite in="b" in2="SourceGraphic" operator="in"/>
+        </filter>
+      </defs>
 
-    <!-- Solapa superior -->
-    <div class="env-flap" id="env-flap">
-      <svg viewBox="0 0 100 65" preserveAspectRatio="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <linearGradient id="fg" x1="50" y1="0" x2="50" y2="65" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#f2e2c8"/>
-            <stop offset="100%" stop-color="#dac89e"/>
-          </linearGradient>
-          <!-- Gradiente cara interior (visible al abrirse) -->
-          <linearGradient id="fgi" x1="50" y1="0" x2="50" y2="65" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#e8dcc8"/>
-            <stop offset="100%" stop-color="#d4c4a0"/>
-          </linearGradient>
-        </defs>
-        <!-- Cara exterior de la solapa -->
-        <polygon points="0,0 100,0 50,98" fill="url(#fg)"/>
-        <!-- Borde superior -->
-        <line x1="0" y1="0" x2="100" y2="0" stroke="#c4a870" stroke-width=".5" opacity=".6" vector-effect="non-scaling-stroke"/>
-        <!-- Pliegues -->
-        <line x1="0" y1="0" x2="50" y2="98" stroke="#b89860" stroke-width=".3" opacity=".35" vector-effect="non-scaling-stroke"/>
-        <line x1="100" y1="0" x2="50" y2="98" stroke="#b89860" stroke-width=".3" opacity=".35" vector-effect="non-scaling-stroke"/>
-        <!-- Sombra sutil en la base de la solapa -->
-        <polygon points="0,0 100,0 50,98" fill="url(#flapShadow)" opacity=".12"/>
-        <defs>
-          <linearGradient id="flapShadow" x1="50" y1="0" x2="50" y2="98" gradientUnits="userSpaceOnUse">
-            <stop offset="70%" stop-color="transparent"/>
-            <stop offset="100%" stop-color="#3a2000"/>
-          </linearGradient>
-        </defs>
-      </svg>
-    </div>
+      <!-- Fondo oscuro -->
+      <rect width="500" height="1000" fill="#100805"/>
 
-    <!-- SELLO DE CERA -->
-    <div class="wax-seal" id="wax-seal" onclick="openEnvelope()" role="button" aria-label="Abrir invitación">
-      <div class="seal-pulse"></div>
-      <svg viewBox="0 0 120 120" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <!-- Gradiente principal de la cera: profundidad roja -->
-          <radialGradient id="wg" cx="38%" cy="32%" r="62%">
-            <stop offset="0%"   stop-color="#dd3a2a"/>
-            <stop offset="30%"  stop-color="#c42020"/>
-            <stop offset="65%"  stop-color="#a01515"/>
-            <stop offset="100%" stop-color="#6e0808"/>
-          </radialGradient>
-          <!-- Brillo especular -->
-          <radialGradient id="ws" cx="32%" cy="26%" r="38%">
-            <stop offset="0%"   stop-color="rgba(255,210,190,.3)"/>
-            <stop offset="100%" stop-color="rgba(255,150,120,0)"/>
-          </radialGradient>
-          <!-- Sombra exterior -->
-          <filter id="wf" x="-18%" y="-18%" width="136%" height="136%">
-            <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#3a0000" flood-opacity=".55"/>
-            <feDropShadow dx="0" dy="1" stdDeviation="2" flood-color="#000" flood-opacity=".3"/>
-          </filter>
-          <!-- Grabado del texto -->
-          <filter id="engrave">
-            <feDropShadow dx="0" dy="-1" stdDeviation="0.5" flood-color="#fff" flood-opacity=".2"/>
-            <feDropShadow dx="0" dy="1"  stdDeviation="1"   flood-color="#000" flood-opacity=".6"/>
-          </filter>
-        </defs>
+      <!-- Madera base -->
+      <rect width="500" height="1000" fill="url(#wL)"/>
 
-        <!-- Forma irregular del sello (cera derramada) -->
-        <path d="
-          M60 8
-          C66 7, 72 10, 77 8
-          C82 6, 86 10, 91 11
-          C96 12, 100 17, 103 22
-          C106 27, 107 33, 108 39
-          C109 45, 111 51, 110 57
-          C109 63, 107 68, 105 73
-          C103 78, 99 83, 95 87
-          C91 91, 86 94, 81 96
-          C76 98, 71 100, 65 101
-          C60 102, 55 104, 50 103
-          C45 102, 40 100, 35 98
-          C30 96, 25 93, 21 89
-          C17 85, 13 80, 11 75
-          C9 70, 9 64, 8 58
-          C7 52, 6 46, 7 40
-          C8 34, 10 28, 13 23
-          C16 18, 20 13, 26 11
-          C32 9, 37 6, 43 8
-          C49 10, 54 9, 60 8Z
-        " fill="url(#wg)" filter="url(#wf)"/>
+      <!-- Veta madera -->
+      <rect width="500" height="1000" fill="url(#wL)" opacity=".5" filter="url(#fL)"/>
 
-        <!-- Capa de brillo -->
-        <path d="
-          M60 8
-          C66 7, 72 10, 77 8
-          C82 6, 86 10, 91 11
-          C96 12, 100 17, 103 22
-          C106 27, 107 33, 108 39
-          C109 45, 111 51, 110 57
-          C109 63, 107 68, 105 73
-          C103 78, 99 83, 95 87
-          C91 91, 86 94, 81 96
-          C76 98, 71 100, 65 101
-          C60 102, 55 104, 50 103
-          C45 102, 40 100, 35 98
-          C30 96, 25 93, 21 89
-          C17 85, 13 80, 11 75
-          C9 70, 9 64, 8 58
-          C7 52, 6 46, 7 40
-          C8 34, 10 28, 13 23
-          C16 18, 20 13, 26 11
-          C32 9, 37 6, 43 8
-          C49 10, 54 9, 60 8Z
-        " fill="url(#ws)"/>
+      <!-- Líneas veta manuales -->
+      <line x1="80"  y1="0" x2="95"  y2="1000" stroke="rgba(60,35,12,.25)" stroke-width="1.5"/>
+      <line x1="160" y1="0" x2="172" y2="1000" stroke="rgba(60,35,12,.18)" stroke-width="1"/>
+      <line x1="270" y1="0" x2="280" y2="1000" stroke="rgba(60,35,12,.2)"  stroke-width="1.5"/>
+      <line x1="380" y1="0" x2="390" y2="1000" stroke="rgba(60,35,12,.15)" stroke-width="1"/>
+      <line x1="0" y1="280" x2="500" y2="310"  stroke="rgba(60,35,12,.1)"  stroke-width="1"/>
+      <line x1="0" y1="520" x2="500" y2="545"  stroke="rgba(60,35,12,.12)" stroke-width="1"/>
+      <line x1="0" y1="760" x2="500" y2="780"  stroke="rgba(60,35,12,.1)"  stroke-width="1"/>
 
-        <!-- Círculo grabado exterior -->
-        <circle cx="59" cy="55" r="34" stroke="rgba(255,255,255,.14)" stroke-width="1.2" fill="none"/>
-        <!-- Círculo grabado interior -->
-        <circle cx="59" cy="55" r="28" stroke="rgba(255,255,255,.09)" stroke-width=".7" fill="none"/>
+      <!-- Marco exterior tallado -->
+      <rect x="0" y="0" width="496" height="1000" fill="none" stroke="#4a3010" stroke-width="6" opacity=".8"/>
+      <rect x="8" y="8" width="480" height="984"  fill="none" stroke="#5a3c18" stroke-width="2" opacity=".5"/>
+      <rect x="14" y="14" width="468" height="972" fill="none" stroke="#3a2810" stroke-width="1" opacity=".4"/>
 
-        <!-- Pequeños puntos decorativos alrededor -->
-        <circle cx="59" cy="22" r="1.2" fill="rgba(255,255,255,.18)"/>
-        <circle cx="59" cy="88" r="1.2" fill="rgba(255,255,255,.18)"/>
-        <circle cx="25"  cy="55" r="1.2" fill="rgba(255,255,255,.18)"/>
-        <circle cx="93"  cy="55" r="1.2" fill="rgba(255,255,255,.18)"/>
+      <!-- Panel superior arco gótico -->
+      <path d="M32 30 L32 310 Q32 360 248 390 Q464 360 464 310 L464 30 Z"
+            fill="rgba(0,0,0,.2)" stroke="#5a3a14" stroke-width="2"/>
+      <path d="M52 50 L52 300 Q52 340 248 368 Q444 340 444 300 L444 50 Z"
+            fill="rgba(0,0,0,.1)" stroke="#4a3010" stroke-width="1.2"/>
 
-        <!-- Texto O & S grabado -->
-        <text x="59" y="46"
-          text-anchor="middle"
-          font-family="Cormorant Garamond, serif"
-          font-size="17"
-          font-weight="500"
-          fill="rgba(255,240,230,.88)"
-          filter="url(#engrave)"
-          letter-spacing="2">O</text>
-        <text x="59" y="60"
-          text-anchor="middle"
-          font-family="Cormorant Garamond, serif"
-          font-size="12"
-          font-style="italic"
-          fill="rgba(255,210,190,.7)"
-          filter="url(#engrave)">&amp;</text>
-        <text x="59" y="74"
-          text-anchor="middle"
-          font-family="Cormorant Garamond, serif"
-          font-size="17"
-          font-weight="500"
-          fill="rgba(255,240,230,.88)"
-          filter="url(#engrave)"
-          letter-spacing="2">S</text>
-      </svg>
-    </div><!-- /wax-seal -->
+      <!-- Arco ojival interior decorativo -->
+      <path d="M90 60 Q248 20 406 60 L406 280 Q406 320 248 345 Q90 320 90 280 Z"
+            fill="rgba(0,0,0,.12)" stroke="#5a3a14" stroke-width="1" opacity=".7"/>
 
-    <div class="seal-hint">Rompe el sello para abrir</div>
+      <!-- Rosetón central panel superior -->
+      <circle cx="248" cy="195" r="45" fill="none" stroke="#6a4820" stroke-width="2" opacity=".75"/>
+      <circle cx="248" cy="195" r="36" fill="none" stroke="#5a3c18" stroke-width="1.2" opacity=".6"/>
+      <circle cx="248" cy="195" r="22" fill="none" stroke="#4a3010" stroke-width="1" opacity=".5"/>
+      <circle cx="248" cy="195" r="10" fill="#281808" stroke="#6a4820" stroke-width="1.5" opacity=".8"/>
+      <!-- Radios rosetón -->
+      <g stroke="#5a3a14" stroke-width="1.2" opacity=".65">
+        <line x1="248" y1="150" x2="248" y2="162"/>
+        <line x1="248" y1="228" x2="248" y2="240"/>
+        <line x1="203" y1="195" x2="215" y2="195"/>
+        <line x1="281" y1="195" x2="293" y2="195"/>
+        <line x1="216" y1="163" x2="224" y2="171"/>
+        <line x1="272" y1="219" x2="280" y2="227"/>
+        <line x1="280" y1="163" x2="272" y2="171"/>
+        <line x1="224" y1="219" x2="216" y2="227"/>
+      </g>
+      <!-- Puntos decorativos rosetón -->
+      <circle cx="248" cy="152" r="2.5" fill="#6a4820" opacity=".7"/>
+      <circle cx="248" cy="238" r="2.5" fill="#6a4820" opacity=".7"/>
+      <circle cx="204" cy="195" r="2.5" fill="#6a4820" opacity=".7"/>
+      <circle cx="292" cy="195" r="2.5" fill="#6a4820" opacity=".7"/>
 
-  </div><!-- /env-scene -->
-</div><!-- /envelope-cover -->
+      <!-- Divisor horizontal central -->
+      <rect x="26" y="400" width="444" height="8" fill="rgba(0,0,0,.25)" rx="2"/>
+      <rect x="26" y="404" width="444" height="1" fill="rgba(255,220,150,.08)"/>
 
+      <!-- Panel central superior izquierdo -->
+      <rect x="32"  y="418" width="205" height="195" fill="rgba(0,0,0,.18)" stroke="#5a3a14" stroke-width="1.8" rx="2"/>
+      <rect x="42"  y="428" width="185" height="175" fill="rgba(0,0,0,.1)"  stroke="#4a3010" stroke-width="1"   rx="1"/>
+      <!-- Cruz panel -->
+      <line x1="134" y1="432" x2="134" y2="608" stroke="#4a3010" stroke-width="1" opacity=".5"/>
+      <line x1="38"  y1="516" x2="230" y2="516" stroke="#4a3010" stroke-width="1" opacity=".5"/>
 
+      <!-- Panel central superior derecho -->
+      <rect x="257" y="418" width="205" height="195" fill="rgba(0,0,0,.18)" stroke="#5a3a14" stroke-width="1.8" rx="2"/>
+      <rect x="267" y="428" width="185" height="175" fill="rgba(0,0,0,.1)"  stroke="#4a3010" stroke-width="1"   rx="1"/>
+      <line x1="360" y1="432" x2="360" y2="608" stroke="#4a3010" stroke-width="1" opacity=".5"/>
+      <line x1="263" y1="516" x2="456" y2="516" stroke="#4a3010" stroke-width="1" opacity=".5"/>
 
+      <!-- Panel central inferior izquierdo -->
+      <rect x="32"  y="628" width="205" height="175" fill="rgba(0,0,0,.15)" stroke="#5a3a14" stroke-width="1.8" rx="2"/>
+      <rect x="42"  y="638" width="185" height="155" fill="rgba(0,0,0,.08)" stroke="#4a3010" stroke-width="1"   rx="1"/>
+
+      <!-- Panel central inferior derecho -->
+      <rect x="257" y="628" width="205" height="175" fill="rgba(0,0,0,.15)" stroke="#5a3a14" stroke-width="1.8" rx="2"/>
+      <rect x="267" y="638" width="185" height="155" fill="rgba(0,0,0,.08)" stroke="#4a3010" stroke-width="1"   rx="1"/>
+
+      <!-- Zócalo -->
+      <rect x="26" y="818" width="450" height="120" fill="rgba(0,0,0,.2)"  stroke="#5a3a14" stroke-width="2" rx="1"/>
+      <rect x="34" y="826" width="434" height="104" fill="rgba(0,0,0,.1)"  stroke="#4a3010" stroke-width="1" rx="1"/>
+      <rect x="50" y="840" width="200" height="76"  fill="rgba(0,0,0,.08)" stroke="#3a2808" stroke-width="1" rx="1"/>
+      <rect x="260" y="840" width="200" height="76" fill="rgba(0,0,0,.08)" stroke="#3a2808" stroke-width="1" rx="1"/>
+
+      <!-- Tirador dorado (cerca del borde derecho = centro de las puertas) -->
+      <rect x="416" y="480" width="52" height="90" fill="url(#gL)" rx="4" opacity=".92"/>
+      <rect x="420" y="484" width="44" height="82" fill="none" stroke="rgba(255,255,200,.14)" stroke-width="1.5" rx="3"/>
+      <circle cx="432" cy="494" r="4.5" fill="#9a6e18" stroke="rgba(255,255,200,.2)" stroke-width="1"/>
+      <circle cx="456" cy="494" r="4.5" fill="#9a6e18" stroke="rgba(255,255,200,.2)" stroke-width="1"/>
+      <circle cx="432" cy="560" r="4.5" fill="#9a6e18" stroke="rgba(255,255,200,.2)" stroke-width="1"/>
+      <circle cx="456" cy="560" r="4.5" fill="#9a6e18" stroke="rgba(255,255,200,.2)" stroke-width="1"/>
+      <!-- Aro aldaba -->
+      <path d="M428 512 Q442 496 456 512 L456 542 Q442 555 428 542 Z"
+            fill="none" stroke="#d4a030" stroke-width="6" stroke-linecap="round"/>
+      <path d="M428 512 Q442 496 456 512 L456 542 Q442 555 428 542 Z"
+            fill="none" stroke="rgba(255,255,200,.18)" stroke-width="2" stroke-linecap="round"/>
+
+      <!-- Bisagras izquierdas -->
+      <rect x="0" y="140" width="26" height="72" fill="url(#gL)" rx="3" opacity=".85"/>
+      <line x1="13" y1="140" x2="13" y2="212" stroke="rgba(255,255,200,.15)" stroke-width="1"/>
+      <rect x="0" y="480" width="26" height="72" fill="url(#gL)" rx="3" opacity=".85"/>
+      <line x1="13" y1="480" x2="13" y2="552" stroke="rgba(255,255,200,.15)" stroke-width="1"/>
+      <rect x="0" y="800" width="26" height="72" fill="url(#gL)" rx="3" opacity=".85"/>
+      <line x1="13" y1="800" x2="13" y2="872" stroke="rgba(255,255,200,.15)" stroke-width="1"/>
+
+      <!-- Iluminación lateral izquierda -->
+      <rect width="500" height="1000" fill="url(#lightL)"/>
+      <!-- Sombra borde derecho -->
+      <rect width="500" height="1000" fill="url(#shadowL)"/>
+    </svg>
+  </div>
+
+  <!-- PUERTA DERECHA (espejo horizontal) -->
+  <div class="door door-right">
+    <svg viewBox="0 0 500 1000" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMinYMid slice" style="transform:scaleX(-1)">
+      <defs>
+        <linearGradient id="wR" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="#0e0905"/>
+          <stop offset="12%"  stop-color="#1e1208"/>
+          <stop offset="28%"  stop-color="#2d1e0d"/>
+          <stop offset="45%"  stop-color="#391e0c"/>
+          <stop offset="60%"  stop-color="#2a1808"/>
+          <stop offset="78%"  stop-color="#331c0a"/>
+          <stop offset="92%"  stop-color="#241408"/>
+          <stop offset="100%" stop-color="#180e06"/>
+        </linearGradient>
+        <linearGradient id="gR" x1="0%" y1="0%" x2="100%" y2="80%">
+          <stop offset="0%"   stop-color="#d4a840"/>
+          <stop offset="25%"  stop-color="#f0c858"/>
+          <stop offset="55%"  stop-color="#b88828"/>
+          <stop offset="100%" stop-color="#deb040"/>
+        </linearGradient>
+        <linearGradient id="shadowR" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="rgba(0,0,0,0)"/>
+          <stop offset="75%"  stop-color="rgba(0,0,0,.15)"/>
+          <stop offset="100%" stop-color="rgba(0,0,0,.75)"/>
+        </linearGradient>
+        <linearGradient id="lightR" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%"   stop-color="rgba(255,220,150,.08)"/>
+          <stop offset="30%"  stop-color="rgba(255,220,150,0)"/>
+          <stop offset="100%" stop-color="rgba(0,0,0,0)"/>
+        </linearGradient>
+        <filter id="fR">
+          <feTurbulence type="fractalNoise" baseFrequency=".012 .35" numOctaves="5" seed="7"/>
+          <feColorMatrix type="saturate" values="0"/>
+          <feBlend in="SourceGraphic" mode="overlay" result="b"/>
+          <feComposite in="b" in2="SourceGraphic" operator="in"/>
+        </filter>
+      </defs>
+      <rect width="500" height="1000" fill="#100805"/>
+      <rect width="500" height="1000" fill="url(#wR)"/>
+      <rect width="500" height="1000" fill="url(#wR)" opacity=".5" filter="url(#fR)"/>
+      <line x1="80"  y1="0" x2="95"  y2="1000" stroke="rgba(60,35,12,.25)" stroke-width="1.5"/>
+      <line x1="160" y1="0" x2="172" y2="1000" stroke="rgba(60,35,12,.18)" stroke-width="1"/>
+      <line x1="270" y1="0" x2="280" y2="1000" stroke="rgba(60,35,12,.2)"  stroke-width="1.5"/>
+      <line x1="380" y1="0" x2="390" y2="1000" stroke="rgba(60,35,12,.15)" stroke-width="1"/>
+      <line x1="0" y1="280" x2="500" y2="310"  stroke="rgba(60,35,12,.1)"  stroke-width="1"/>
+      <line x1="0" y1="520" x2="500" y2="545"  stroke="rgba(60,35,12,.12)" stroke-width="1"/>
+      <line x1="0" y1="760" x2="500" y2="780"  stroke="rgba(60,35,12,.1)"  stroke-width="1"/>
+      <rect x="0" y="0" width="496" height="1000" fill="none" stroke="#4a3010" stroke-width="6" opacity=".8"/>
+      <rect x="8" y="8" width="480" height="984"  fill="none" stroke="#5a3c18" stroke-width="2" opacity=".5"/>
+      <rect x="14" y="14" width="468" height="972" fill="none" stroke="#3a2810" stroke-width="1" opacity=".4"/>
+      <path d="M32 30 L32 310 Q32 360 248 390 Q464 360 464 310 L464 30 Z"
+            fill="rgba(0,0,0,.2)" stroke="#5a3a14" stroke-width="2"/>
+      <path d="M52 50 L52 300 Q52 340 248 368 Q444 340 444 300 L444 50 Z"
+            fill="rgba(0,0,0,.1)" stroke="#4a3010" stroke-width="1.2"/>
+      <path d="M90 60 Q248 20 406 60 L406 280 Q406 320 248 345 Q90 320 90 280 Z"
+            fill="rgba(0,0,0,.12)" stroke="#5a3a14" stroke-width="1" opacity=".7"/>
+      <circle cx="248" cy="195" r="45" fill="none" stroke="#6a4820" stroke-width="2" opacity=".75"/>
+      <circle cx="248" cy="195" r="36" fill="none" stroke="#5a3c18" stroke-width="1.2" opacity=".6"/>
+      <circle cx="248" cy="195" r="22" fill="none" stroke="#4a3010" stroke-width="1" opacity=".5"/>
+      <circle cx="248" cy="195" r="10" fill="#281808" stroke="#6a4820" stroke-width="1.5" opacity=".8"/>
+      <g stroke="#5a3a14" stroke-width="1.2" opacity=".65">
+        <line x1="248" y1="150" x2="248" y2="162"/>
+        <line x1="248" y1="228" x2="248" y2="240"/>
+        <line x1="203" y1="195" x2="215" y2="195"/>
+        <line x1="281" y1="195" x2="293" y2="195"/>
+        <line x1="216" y1="163" x2="224" y2="171"/>
+        <line x1="272" y1="219" x2="280" y2="227"/>
+        <line x1="280" y1="163" x2="272" y2="171"/>
+        <line x1="224" y1="219" x2="216" y2="227"/>
+      </g>
+      <circle cx="248" cy="152" r="2.5" fill="#6a4820" opacity=".7"/>
+      <circle cx="248" cy="238" r="2.5" fill="#6a4820" opacity=".7"/>
+      <circle cx="204" cy="195" r="2.5" fill="#6a4820" opacity=".7"/>
+      <circle cx="292" cy="195" r="2.5" fill="#6a4820" opacity=".7"/>
+      <rect x="26" y="400" width="444" height="8" fill="rgba(0,0,0,.25)" rx="2"/>
+      <rect x="26" y="404" width="444" height="1" fill="rgba(255,220,150,.08)"/>
+      <rect x="32"  y="418" width="205" height="195" fill="rgba(0,0,0,.18)" stroke="#5a3a14" stroke-width="1.8" rx="2"/>
+      <rect x="42"  y="428" width="185" height="175" fill="rgba(0,0,0,.1)"  stroke="#4a3010" stroke-width="1"   rx="1"/>
+      <line x1="134" y1="432" x2="134" y2="608" stroke="#4a3010" stroke-width="1" opacity=".5"/>
+      <line x1="38"  y1="516" x2="230" y2="516" stroke="#4a3010" stroke-width="1" opacity=".5"/>
+      <rect x="257" y="418" width="205" height="195" fill="rgba(0,0,0,.18)" stroke="#5a3a14" stroke-width="1.8" rx="2"/>
+      <rect x="267" y="428" width="185" height="175" fill="rgba(0,0,0,.1)"  stroke="#4a3010" stroke-width="1"   rx="1"/>
+      <line x1="360" y1="432" x2="360" y2="608" stroke="#4a3010" stroke-width="1" opacity=".5"/>
+      <line x1="263" y1="516" x2="456" y2="516" stroke="#4a3010" stroke-width="1" opacity=".5"/>
+      <rect x="32"  y="628" width="205" height="175" fill="rgba(0,0,0,.15)" stroke="#5a3a14" stroke-width="1.8" rx="2"/>
+      <rect x="42"  y="638" width="185" height="155" fill="rgba(0,0,0,.08)" stroke="#4a3010" stroke-width="1"   rx="1"/>
+      <rect x="257" y="628" width="205" height="175" fill="rgba(0,0,0,.15)" stroke="#5a3a14" stroke-width="1.8" rx="2"/>
+      <rect x="267" y="638" width="185" height="155" fill="rgba(0,0,0,.08)" stroke="#4a3010" stroke-width="1"   rx="1"/>
+      <rect x="26" y="818" width="450" height="120" fill="rgba(0,0,0,.2)"  stroke="#5a3a14" stroke-width="2" rx="1"/>
+      <rect x="34" y="826" width="434" height="104" fill="rgba(0,0,0,.1)"  stroke="#4a3010" stroke-width="1" rx="1"/>
+      <rect x="50" y="840" width="200" height="76"  fill="rgba(0,0,0,.08)" stroke="#3a2808" stroke-width="1" rx="1"/>
+      <rect x="260" y="840" width="200" height="76" fill="rgba(0,0,0,.08)" stroke="#3a2808" stroke-width="1" rx="1"/>
+      <rect x="416" y="480" width="52" height="90" fill="url(#gR)" rx="4" opacity=".92"/>
+      <rect x="420" y="484" width="44" height="82" fill="none" stroke="rgba(255,255,200,.14)" stroke-width="1.5" rx="3"/>
+      <circle cx="432" cy="494" r="4.5" fill="#9a6e18" stroke="rgba(255,255,200,.2)" stroke-width="1"/>
+      <circle cx="456" cy="494" r="4.5" fill="#9a6e18" stroke="rgba(255,255,200,.2)" stroke-width="1"/>
+      <circle cx="432" cy="560" r="4.5" fill="#9a6e18" stroke="rgba(255,255,200,.2)" stroke-width="1"/>
+      <circle cx="456" cy="560" r="4.5" fill="#9a6e18" stroke="rgba(255,255,200,.2)" stroke-width="1"/>
+      <path d="M428 512 Q442 496 456 512 L456 542 Q442 555 428 542 Z"
+            fill="none" stroke="#d4a030" stroke-width="6" stroke-linecap="round"/>
+      <path d="M428 512 Q442 496 456 512 L456 542 Q442 555 428 542 Z"
+            fill="none" stroke="rgba(255,255,200,.18)" stroke-width="2" stroke-linecap="round"/>
+      <rect x="0" y="140" width="26" height="72" fill="url(#gR)" rx="3" opacity=".85"/>
+      <line x1="13" y1="140" x2="13" y2="212" stroke="rgba(255,255,200,.15)" stroke-width="1"/>
+      <rect x="0" y="480" width="26" height="72" fill="url(#gR)" rx="3" opacity=".85"/>
+      <line x1="13" y1="480" x2="13" y2="552" stroke="rgba(255,255,200,.15)" stroke-width="1"/>
+      <rect x="0" y="800" width="26" height="72" fill="url(#gR)" rx="3" opacity=".85"/>
+      <line x1="13" y1="800" x2="13" y2="872" stroke="rgba(255,255,200,.15)" stroke-width="1"/>
+      <rect width="500" height="1000" fill="url(#lightR)"/>
+      <rect width="500" height="1000" fill="url(#shadowR)"/>
+    </svg>
+  </div>
+
+  <div class="door-shadow"></div>
+
+  <div class="door-text">
+    <h2>Bienvenido a nuestra boda</h2>
+    <span>Toca para abrir</span>
+  </div>
+
+</div>
+<!-- ═══ FIN PORTADA ═══ -->
 
 <canvas id="confetti-canvas"></canvas>
 <canvas id="hearts-canvas"></canvas>
@@ -837,8 +570,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
         <div class="event-name">Iglesia de los Remedios</div>
         <div class="event-address">Antequera, Málaga</div>
         <a href="https://maps.google.com/?q=Iglesia+Nuestra+Señora+de+los+Remedios+Antequera+Malaga" target="_blank" rel="noopener" class="event-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Ver en el mapa
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ver en el mapa
         </a>
       </div>
       <div class="event-card reveal-right delay-3">
@@ -847,8 +579,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
         <div class="event-name">Hacienda La Capilla</div>
         <div class="event-address">Mollina, Málaga</div>
         <a href="https://maps.google.com/?q=Hacienda+La+Capilla+Mollina+Malaga" target="_blank" rel="noopener" class="event-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Ver en el mapa
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>Ver en el mapa
         </a>
       </div>
     </div>
@@ -897,7 +628,6 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
     <h2 class="section-title reveal-up delay-1">¿Contamos contigo?</h2>
     <p class="body-text reveal-up delay-2">Por favor, confirma tu asistencia antes del <strong>17 de enero de 2027</strong>. Necesitamos toda la información para organizarlo todo con cariño.</p>
 
-    <iframe name="hidden-gf" style="display:none" aria-hidden="true"></iframe>
     <form class="rsvp-form" id="rsvp-form"
       data-action="https://docs.google.com/forms/d/e/1FAIpQLSfxZw5qcPexXDJhIBCANJr5sFP1sW906LIVl4F6Z3TKpDr1cg/formResponse"
       onsubmit="handleRsvpSubmit(event)">
@@ -911,12 +641,10 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
         <label>¿Asistirás a la boda?</label>
         <div class="radio-group">
           <div class="radio-option">
-            <!-- ✅ Valor exacto del Google Form -->
             <input type="radio" name="entry.957980292" id="a-si" value="Sí, asistiré 🎉" required onchange="onAsistenciaChange(this)">
             <label for="a-si">Sí, asistiré 🎉</label>
           </div>
           <div class="radio-option">
-            <!-- ✅ Valor exacto del Google Form -->
             <input type="radio" name="entry.957980292" id="a-no" value="No podré asistir 😢" onchange="onAsistenciaChange(this)">
             <label for="a-no">No podré asistir 😢</label>
           </div>
@@ -925,15 +653,8 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
       <div class="form-group reveal-up delay-3">
         <label>¿Traes a un acompañante?</label>
         <div class="radio-group">
-          <div class="radio-option">
-            <!-- ✅ CORREGIDO: era "Sí", el form espera "Si" (sin tilde) -->
-            <input type="radio" name="entry.133463304" id="ac-si" value="Si">
-            <label for="ac-si">Sí 💑</label>
-          </div>
-          <div class="radio-option">
-            <input type="radio" name="entry.133463304" id="ac-no" value="No">
-            <label for="ac-no">No</label>
-          </div>
+          <div class="radio-option"><input type="radio" name="entry.133463304" id="ac-si" value="Si"><label for="ac-si">Sí 💑</label></div>
+          <div class="radio-option"><input type="radio" name="entry.133463304" id="ac-no" value="No"><label for="ac-no">No</label></div>
         </div>
       </div>
 
@@ -941,7 +662,6 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
       <div class="form-group reveal-up delay-1">
         <label>¿Necesitas servicio de transporte?</label>
         <div class="radio-group">
-          <!-- ✅ CORREGIDO: era "Sí", el form espera "Sí, necesito" -->
           <div class="radio-option"><input type="radio" name="entry.912439665" id="t-si" value="Sí, necesito"><label for="t-si">Sí, necesito</label></div>
           <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="No, me apaño"><label for="t-no">No, me apaño</label></div>
         </div>
@@ -949,7 +669,6 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
       <div class="form-group reveal-up delay-2">
         <label>¿Necesitas alojamiento / hotel?</label>
         <div class="radio-group">
-          <!-- ✅ CORREGIDO: era "Sí", el form espera "Sí, necesito" -->
           <div class="radio-option"><input type="radio" name="entry.153138595" id="h-si" value="Sí, necesito"><label for="h-si">Sí, necesito</label></div>
           <div class="radio-option"><input type="radio" name="entry.153138595" id="h-no" value="Ya tengo"><label for="h-no">Ya tengo</label></div>
         </div>
@@ -957,7 +676,6 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
       <div class="form-group reveal-up delay-3">
         <label>¿Vendrás acompañado de niños?</label>
         <div class="radio-group">
-          <!-- ✅ CORREGIDO: era "Sí", el form espera "SI" (mayúsculas) -->
           <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-si" value="SI" onchange="toggleNinos(this)"><label for="n-si">Sí</label></div>
           <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-no" value="No" onchange="toggleNinos(this)"><label for="n-no">No</label></div>
         </div>
@@ -1017,98 +735,91 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
 </footer>
 
 <script>
+/* ── Portada puertas ── */
+document.body.style.overflow = 'hidden';
+
+function openDoors(){
+  const cover = document.getElementById('church-cover');
+  if(cover.classList.contains('opening')) return;
+  cover.classList.add('opening');
+  setTimeout(() => cover.classList.add('done'), 1200);
+  setTimeout(() => {
+    cover.style.display = 'none';
+    document.body.style.overflow = '';
+  }, 1950);
+}
+
 /* ── Countdown ── */
 function updateCountdown(){
-  const diff=new Date('2027-07-17T18:30:00')-new Date();
-  if(diff<=0)return;
-  document.getElementById('cd-days').textContent=String(Math.floor(diff/86400000)).padStart(3,'0');
-  document.getElementById('cd-hours').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-  document.getElementById('cd-mins').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-  document.getElementById('cd-secs').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
+  const diff = new Date('2027-07-17T18:30:00') - new Date();
+  if(diff <= 0) return;
+  document.getElementById('cd-days').textContent  = String(Math.floor(diff/86400000)).padStart(3,'0');
+  document.getElementById('cd-hours').textContent = String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
+  document.getElementById('cd-mins').textContent  = String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
+  document.getElementById('cd-secs').textContent  = String(Math.floor((diff%60000)/1000)).padStart(2,'0');
 }
-document.body.style.overflow='hidden';
 updateCountdown();
-setInterval(updateCountdown,1000);
+setInterval(updateCountdown, 1000);
 
 /* ── Reveal on scroll ── */
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-  });
-},{threshold:.12});
-document.querySelectorAll('[class*="reveal-"],.timeline-item').forEach(el=>io.observe(el));
+const io = new IntersectionObserver(entries => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, {threshold: .12});
+document.querySelectorAll('[class*="reveal-"], .timeline-item').forEach(el => io.observe(el));
 
 /* ── Form helpers ── */
-function toggleNinos(el){ document.getElementById('ninos-row').style.display=el.value==='SI'?'block':'none'; }
-function toggleAlergias(el){ document.getElementById('alergias-row').style.display=el.value==='Sí'?'block':'none'; }
+function toggleNinos(el)   { document.getElementById('ninos-row').style.display   = el.value==='SI'  ? 'block' : 'none'; }
+function toggleAlergias(el){ document.getElementById('alergias-row').style.display = el.value==='Sí'  ? 'block' : 'none'; }
 
 /* ── Confetti ── */
-const confCanvas=document.getElementById('confetti-canvas');
-const confCtx=confCanvas.getContext('2d');
-let pieces=[],confAnimId=null;
-const CONF_COLORS=['#c4896a','#e8c4b4','#d4a593','#8a9e84','#c9a96e','#fdf8f2','#9b7b76','#5c7056'];
-
+const confCanvas = document.getElementById('confetti-canvas');
+const confCtx = confCanvas.getContext('2d');
+let pieces = [], confAnimId = null;
+const CONF_COLORS = ['#c4896a','#e8c4b4','#d4a593','#8a9e84','#c9a96e','#fdf8f2','#9b7b76','#5c7056'];
 function launchConfetti(){
-  confCanvas.width=window.innerWidth; confCanvas.height=window.innerHeight;
-  confCanvas.style.display='block'; pieces=[];
-  for(let i=0;i<180;i++){
-    pieces.push({x:Math.random()*confCanvas.width,y:-20-Math.random()*confCanvas.height*.3,w:8+Math.random()*8,h:4+Math.random()*5,color:CONF_COLORS[Math.floor(Math.random()*CONF_COLORS.length)],rot:Math.random()*Math.PI*2,rotV:(Math.random()-.5)*.2,vx:(Math.random()-.5)*4,vy:2+Math.random()*4,opacity:1,shape:Math.random()>.5?'rect':'circle'});
-  }
-  if(confAnimId)cancelAnimationFrame(confAnimId);
+  confCanvas.width = window.innerWidth; confCanvas.height = window.innerHeight;
+  confCanvas.style.display = 'block'; pieces = [];
+  for(let i=0;i<180;i++) pieces.push({x:Math.random()*confCanvas.width,y:-20-Math.random()*confCanvas.height*.3,w:8+Math.random()*8,h:4+Math.random()*5,color:CONF_COLORS[Math.floor(Math.random()*CONF_COLORS.length)],rot:Math.random()*Math.PI*2,rotV:(Math.random()-.5)*.2,vx:(Math.random()-.5)*4,vy:2+Math.random()*4,opacity:1,shape:Math.random()>.5?'rect':'circle'});
+  if(confAnimId) cancelAnimationFrame(confAnimId);
   animateConfetti();
-  setTimeout(()=>{ cancelAnimationFrame(confAnimId); confCanvas.style.display='none'; pieces=[]; },4500);
+  setTimeout(()=>{ cancelAnimationFrame(confAnimId); confCanvas.style.display='none'; pieces=[]; }, 4500);
 }
 function animateConfetti(){
   confCtx.clearRect(0,0,confCanvas.width,confCanvas.height);
-  let alive=false;
+  let alive = false;
   pieces.forEach(p=>{
     p.x+=p.vx; p.y+=p.vy; p.vy+=.07; p.rot+=p.rotV;
     if(p.y>confCanvas.height*.85) p.opacity=Math.max(0,p.opacity-.04);
     if(p.opacity>0) alive=true;
     confCtx.save(); confCtx.globalAlpha=p.opacity; confCtx.translate(p.x,p.y); confCtx.rotate(p.rot); confCtx.fillStyle=p.color;
-    if(p.shape==='circle'){ confCtx.beginPath(); confCtx.arc(0,0,p.w/2,0,Math.PI*2); confCtx.fill(); }
-    else { confCtx.fillRect(-p.w/2,-p.h/2,p.w,p.h); }
+    if(p.shape==='circle'){confCtx.beginPath();confCtx.arc(0,0,p.w/2,0,Math.PI*2);confCtx.fill();}
+    else{confCtx.fillRect(-p.w/2,-p.h/2,p.w,p.h);}
     confCtx.restore();
   });
-  if(alive) confAnimId=requestAnimationFrame(animateConfetti);
+  if(alive) confAnimId = requestAnimationFrame(animateConfetti);
   else { confCanvas.style.display='none'; pieces=[]; }
 }
 
 /* ── Hearts ── */
-const hCanvas=document.getElementById('hearts-canvas');
-const hCtx=hCanvas.getContext('2d');
-let hearts=[],hAnimId=null,heartsFired=false;
-const H_COLORS=['#e8192c','#ff4d6d','#ff69b4','#c9184a','#ffb3c1','#ff85a1'];
-
+const hCanvas = document.getElementById('hearts-canvas');
+const hCtx = hCanvas.getContext('2d');
+let hearts = [], hAnimId = null, heartsFired = false;
+const H_COLORS = ['#e8192c','#ff4d6d','#ff69b4','#c9184a','#ffb3c1','#ff85a1'];
 function drawHeart(c,x,y,size){
   const r=size*0.52;
   c.beginPath();
-  c.arc(x-r*0.5, y, r, Math.PI, 0);
-  c.arc(x+r*0.5, y, r, Math.PI, 0);
-  c.bezierCurveTo(x+r*1.5, y+r*0.9, x, y+r*2.2, x, y+r*2.2);
-  c.bezierCurveTo(x, y+r*2.2, x-r*1.5, y+r*0.9, x-r*1.5, y);
-  c.closePath();
-  c.fill();
+  c.arc(x-r*.5,y,r,Math.PI,0); c.arc(x+r*.5,y,r,Math.PI,0);
+  c.bezierCurveTo(x+r*1.5,y+r*.9,x,y+r*2.2,x,y+r*2.2);
+  c.bezierCurveTo(x,y+r*2.2,x-r*1.5,y+r*.9,x-r*1.5,y);
+  c.closePath(); c.fill();
 }
 function launchHearts(){
   hCanvas.width=window.innerWidth; hCanvas.height=window.innerHeight;
   hCanvas.style.display='block'; hearts=[];
-  for(let i=0;i<55;i++){
-    hearts.push({
-      x:Math.random()*hCanvas.width,
-      y:hCanvas.height+20,
-      size:7+Math.random()*14,
-      color:H_COLORS[Math.floor(Math.random()*H_COLORS.length)],
-      vx:(Math.random()-.5)*2.5,
-      vy:-(3.5+Math.random()*5),
-      opacity:1,
-      wobble:Math.random()*Math.PI*2,
-      wobbleSpeed:.05+Math.random()*.03
-    });
-  }
+  for(let i=0;i<55;i++) hearts.push({x:Math.random()*hCanvas.width,y:hCanvas.height+20,size:7+Math.random()*14,color:H_COLORS[Math.floor(Math.random()*H_COLORS.length)],vx:(Math.random()-.5)*2.5,vy:-(3.5+Math.random()*5),opacity:1,wobble:Math.random()*Math.PI*2,wobbleSpeed:.05+Math.random()*.03});
   if(hAnimId) cancelAnimationFrame(hAnimId);
   animateHearts();
-  setTimeout(()=>{ cancelAnimationFrame(hAnimId); hCanvas.style.display='none'; hearts=[]; },2000);
+  setTimeout(()=>{ cancelAnimationFrame(hAnimId); hCanvas.style.display='none'; hearts=[]; }, 2000);
 }
 function animateHearts(){
   hCtx.clearRect(0,0,hCanvas.width,hCanvas.height);
@@ -1123,74 +834,44 @@ function animateHearts(){
   if(alive) hAnimId=requestAnimationFrame(animateHearts);
   else { hCanvas.style.display='none'; hearts=[]; }
 }
-document.addEventListener('change',function(e){
-  if(e.target.id==='ac-si'&&!heartsFired){ heartsFired=true; launchHearts(); }
+document.addEventListener('change', e => {
+  if(e.target.id==='ac-si' && !heartsFired){ heartsFired=true; launchHearts(); }
 });
 
-/* ── Asistencia change ── */
-let confettiFired=false;
-function onAsistenciaChange(el){
-  const form=document.getElementById('rsvp-form');
-  const btn=form.querySelector('.btn-submit span');
+/* ── Google Forms ── */
+async function sendToGoogleForms(form){
+  try { await fetch(form.dataset.action, {method:'POST', mode:'no-cors', body: new URLSearchParams(new FormData(form))}); } catch(e){}
+}
 
-  if(el.value==='Sí, asistiré 🎉'){
+/* ── Asistencia ── */
+let confettiFired = false;
+function onAsistenciaChange(el){
+  const form = document.getElementById('rsvp-form');
+  const btn  = form.querySelector('.btn-submit span');
+  if(el.value === 'Sí, asistiré 🎉'){
     form.classList.remove('is-declined');
-    btn.textContent='Confirmar asistencia';
+    btn.textContent = 'Confirmar asistencia';
     if(!confettiFired){ confettiFired=true; launchConfetti(); }
     return;
   }
-
-  if(el.value==='No podré asistir 😢'){
+  if(el.value === 'No podré asistir 😢'){
     form.classList.add('is-declined');
-    btn.textContent='Enviar respuesta';
+    btn.textContent = 'Enviar respuesta';
   }
 }
 
-/* ── Envío a Google Forms via fetch no-cors ── */
-async function sendToGoogleForms(form){
-  const url = form.dataset.action;
-  const body = new URLSearchParams(new FormData(form));
-  try {
-    await fetch(url, { method:'POST', mode:'no-cors', body });
-  } catch(e) {}
-}
-
-/* ── RSVP submit ── */
+/* ── Submit ── */
 async function handleRsvpSubmit(e){
   e.preventDefault();
-  const form=document.getElementById('rsvp-form');
-  const declined=document.querySelector('input[name="entry.957980292"]:checked')?.value==='No podré asistir 😢';
+  const form    = document.getElementById('rsvp-form');
+  const checked = document.querySelector('input[name="entry.957980292"]:checked');
+  const declined = checked?.value === 'No podré asistir 😢';
   await sendToGoogleForms(form);
-  form.style.display='none';
-  const s=document.getElementById(declined?'rsvp-declined':'rsvp-success');
+  form.style.display = 'none';
+  const s = document.getElementById(declined ? 'rsvp-declined' : 'rsvp-success');
   s.classList.add('show');
-  s.scrollIntoView({behavior:'smooth',block:'center'});
+  s.scrollIntoView({behavior:'smooth', block:'center'});
 }
-
-, 2800);
-}
-
-
-/* ── Apertura del sobre ── */
-function openEnvelope(){
-  const scene = document.getElementById('env-scene');
-  const cover = document.getElementById('envelope-cover');
-  const hint  = cover.querySelector('.seal-hint');
-  if(hint) hint.style.display = 'none';
-
-  scene.classList.add('opening');
-
-  setTimeout(() => {
-    cover.classList.add('fade-out');
-  }, 1400);
-
-  setTimeout(() => {
-    cover.style.display = 'none';
-    document.body.style.overflow = '';
-  }, 2400);
-}
-
 </script>
-
 </body>
 </html>
