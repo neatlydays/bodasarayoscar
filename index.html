@@ -462,10 +462,21 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
         </div>
       </div>
       <div class="form-group reveal-up delay-3">
-        <label>¿Traes a un acompañante?</label>
+        <label>¿Vienes con esa persona especial que quizás no conocemos aún?</label>
         <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.133463304" id="ac-si" value="Si"><label for="ac-si">Sí 💑</label></div>
-          <div class="radio-option"><input type="radio" name="entry.133463304" id="ac-no" value="No"><label for="ac-no">No</label></div>
+          <div class="radio-option"><input type="radio" name="entry.133463304" id="ac-si" value="Si" onchange="toggleAcompanante(this)"><label for="ac-si">Sí 💑</label></div>
+          <div class="radio-option"><input type="radio" name="entry.133463304" id="ac-no" value="No" onchange="toggleAcompanante(this)"><label for="ac-no">No</label></div>
+        </div>
+      </div>
+      <div class="form-group" id="acompanante-nombre-row" style="display:none">
+        <label>¿Cuál es el nombre de tu acompañante?</label>
+        <input type="text" name="entry.749003247" placeholder="Nombre y apellido">
+      </div>
+      <div class="form-group" id="acompanante-plato-row" style="display:none">
+        <label>¿Qué desea de plato principal tu acompañante?</label>
+        <div class="radio-group">
+          <div class="radio-option"><input type="radio" name="entry.403023312" id="ap-carne" value="🥩 Carne"><label for="ap-carne">🥩 Carne</label></div>
+          <div class="radio-option"><input type="radio" name="entry.403023312" id="ap-pescado" value="🐟 Pescado"><label for="ap-pescado">🐟 Pescado</label></div>
         </div>
       </div>
 
@@ -580,6 +591,11 @@ document.querySelectorAll('[class*="reveal-"], .timeline-item').forEach(el => io
 /* ── Form helpers ── */
 function toggleNinos(el)   { document.getElementById('ninos-row').style.display   = el.value==='SI'  ? 'block' : 'none'; }
 function toggleAlergias(el){ document.getElementById('alergias-row').style.display = el.value==='Sí'  ? 'block' : 'none'; }
+function toggleAcompanante(el){
+  const show = el.value === 'Si';
+  document.getElementById('acompanante-nombre-row').style.display = show ? 'block' : 'none';
+  document.getElementById('acompanante-plato-row').style.display  = show ? 'block' : 'none';
+}
 
 /* ── Confetti ── */
 const confCanvas = document.getElementById('confetti-canvas');
