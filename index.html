@@ -334,11 +334,14 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
     <h2 class="section-title reveal-up delay-1">¿Contamos contigo?</h2>
     <p class="body-text reveal-up delay-2">Por favor, confirma tu asistencia antes del <strong>17 de enero de 2027</strong>. Necesitamos toda la información para organizarlo todo con cariño.</p>
 
-    <iframe name="gforms-iframe" style="display:none;" title="Google Forms submit"></iframe>
+    <!-- Iframe OCULTO para capturar la respuesta sin cambiar de página -->
+    <iframe name="gforms-iframe" style="display:none;"></iframe>
 
     <form class="rsvp-form" id="rsvp-form"
       action="https://docs.google.com/forms/d/e/1FAIpQLSfxZw5qcPexXDJhIBCANJr5sFP1sW906LIVl4F6Z3TKpDr1cg/formResponse"
-      method="POST" target="gforms-iframe" onsubmit="handleRsvpSubmit(event)">
+      method="POST" 
+      target="gforms-iframe" 
+      onsubmit="handleRsvpSubmit(event)">
 
       <p class="form-section-title">Datos personales</p>
       <div class="form-group reveal-up delay-1">
@@ -349,7 +352,8 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
         <label>¿Asistirás a la boda?</label>
         <div class="radio-group">
           <div class="radio-option">
-          <input type="radio" name="entry.957980292" id="a-si" value="Sí, asistiré 🎉" required onchange="onAsistenciaChange(this)">            <label for="a-si">Sí, asistiré 🎉</label>
+            <input type="radio" name="entry.957980292" id="a-si" value="Sí, asistiré 🎉" required onchange="onAsistenciaChange(this)">            
+            <label for="a-si">Sí, asistiré 🎉</label>
           </div>
           <div class="radio-option">
             <input type="radio" name="entry.957980292" id="a-no" value="No puedo asistir" onchange="onAsistenciaChange(this)">
@@ -357,19 +361,20 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
           </div>
         </div>
       </div>
-<div class="form-group reveal-up delay-3">
-  <label>¿Traes a un acompañante?</label>
-  <div class="radio-group">
-    <div class="radio-option">
-      <input type="radio" name="entry.133463304" id="ac-si" value="Sí">
-      <label for="ac-si">Sí 💑</label>
-    </div>
-    <div class="radio-option">
-      <input type="radio" name="entry.133463304" id="ac-no" value="No">
-      <label for="ac-no">No</label>
-    </div>
-  </div>
-</div>
+      <div class="form-group reveal-up delay-3">
+        <label>¿Traes a un acompañante?</label>
+        <div class="radio-group">
+          <div class="radio-option">
+            <input type="radio" name="entry.133463304" id="ac-si" value="Sí">
+            <label for="ac-si">Sí 💑</label>
+          </div>
+          <div class="radio-option">
+            <input type="radio" name="entry.133463304" id="ac-no" value="No">
+            <label for="ac-no">No</label>
+          </div>
+        </div>
+      </div>
+
       <p class="form-section-title reveal-up">Logística</p>
       <div class="form-group reveal-up delay-1">
         <label>¿Necesitas servicio de transporte?</label>
@@ -395,10 +400,11 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
       <div class="form-group" id="ninos-row">
         <label>¿Cuántos niños vendrán?</label>
         <select name="entry.1924814829">
-         <option value="1 niño/a">1 niño/a</option>
-         <option value="2 niños/as">2 niños/as</option>
-         <option value="3 niños/as">3 niños/as</option>
-         <option value="4 o más">4 o más 🙀</option>
+          <option value="">Selecciona...</option>
+          <option value="1 niño/a">1 niño/a</option>
+          <option value="2 niños/as">2 niños/as</option>
+          <option value="3 niños/as">3 niños/as</option>
+          <option value="4 o más">4 o más 🙀</option>
         </select>
       </div>
 
@@ -407,7 +413,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
         <label>Plato principal</label>
         <div class="radio-group">
           <div class="radio-option"><input type="radio" name="entry.1907484985" id="m-carne" value="🥩 Carne"><label for="m-carne">🥩 Carne</label></div>
-          <div class="radio-option"><input type="radio" name="entry.1907484985" id="m-pescado" value="Pescado"><label for="m-pescado">🐟 Pescado</label></div>
+          <div class="radio-option"><input type="radio" name="entry.1907484985" id="m-pescado" value="🐟 Pescado"><label for="m-pescado">🐟 Pescado</label></div>
         </div>
       </div>
       <div class="form-group reveal-up delay-2">
@@ -430,6 +436,11 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
       <h3>¡Gracias!</h3>
       <p>Hemos recibido tu confirmación. Nos vemos el 17 de julio de 2027 🥂</p>
     </div>
+    <div class="rsvp-success" id="rsvp-declined">
+  <div class="check">🤍</div>
+  <h3>Lo entendemos</h3>
+  <p>Lamentamos mucho no poder contar contigo. Un abrazo de nuestra parte.</p>
+</div>
   </div>
 </section>
 
@@ -545,24 +556,17 @@ function onAsistenciaChange(el){
 
   // ❌ NO asiste → ocultar + enviar automático
   if(el.value === 'No puedo asistir'){
+  form.classList.add('is-declined');
 
-    // ocultar preguntas
-    form.classList.add('is-declined');
-
-    // enviar automáticamente
+  setTimeout(() => {
+    form.submit();
     setTimeout(() => {
-      form.submit();
-
-      // mostrar gracias
-      setTimeout(()=>{
-        form.style.display='none';
-        const s=document.getElementById('rsvp-success');
-        s.classList.add('show');
-        s.scrollIntoView({behavior:'smooth',block:'center'});
-      },400);
-
-    }, 300);
-  }
+      form.style.display = 'none';
+      const s = document.getElementById('rsvp-declined'); // ← apunta al nuevo div
+      s.classList.add('show');
+      s.scrollIntoView({ behavior: 'smooth', block: 'center' });
+    }, 400);
+  }, 300);
 }
 
 /* ── RSVP submit ── */
