@@ -294,10 +294,12 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
         <label>¿Asistirás a la boda?</label>
         <div class="radio-group">
           <div class="radio-option">
+            <!-- ✅ Valor exacto del Google Form -->
             <input type="radio" name="entry.957980292" id="a-si" value="Sí, asistiré 🎉" required onchange="onAsistenciaChange(this)">
             <label for="a-si">Sí, asistiré 🎉</label>
           </div>
           <div class="radio-option">
+            <!-- ✅ Valor exacto del Google Form -->
             <input type="radio" name="entry.957980292" id="a-no" value="No puedo asistir" onchange="onAsistenciaChange(this)">
             <label for="a-no">No podré asistir 😢</label>
           </div>
@@ -307,7 +309,8 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
         <label>¿Traes a un acompañante?</label>
         <div class="radio-group">
           <div class="radio-option">
-            <input type="radio" name="entry.133463304" id="ac-si" value="Sí">
+            <!-- ✅ CORREGIDO: era "Sí", el form espera "Si" (sin tilde) -->
+            <input type="radio" name="entry.133463304" id="ac-si" value="Si">
             <label for="ac-si">Sí 💑</label>
           </div>
           <div class="radio-option">
@@ -321,21 +324,24 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
       <div class="form-group reveal-up delay-1">
         <label>¿Necesitas servicio de transporte?</label>
         <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-si" value="Sí"><label for="t-si">Sí, necesito</label></div>
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="No"><label for="t-no">No, me apaño</label></div>
+          <!-- ✅ CORREGIDO: era "Sí", el form espera "Sí, necesito" -->
+          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-si" value="Sí, necesito"><label for="t-si">Sí, necesito</label></div>
+          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="No, me apaño"><label for="t-no">No, me apaño</label></div>
         </div>
       </div>
       <div class="form-group reveal-up delay-2">
         <label>¿Necesitas alojamiento / hotel?</label>
         <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.153138595" id="h-si" value="Sí"><label for="h-si">Sí, necesito</label></div>
-          <div class="radio-option"><input type="radio" name="entry.153138595" id="h-no" value="No"><label for="h-no">Ya tengo</label></div>
+          <!-- ✅ CORREGIDO: era "Sí", el form espera "Sí, necesito" -->
+          <div class="radio-option"><input type="radio" name="entry.153138595" id="h-si" value="Sí, necesito"><label for="h-si">Sí, necesito</label></div>
+          <div class="radio-option"><input type="radio" name="entry.153138595" id="h-no" value="Ya tengo"><label for="h-no">Ya tengo</label></div>
         </div>
       </div>
       <div class="form-group reveal-up delay-3">
         <label>¿Vendrás acompañado de niños?</label>
         <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-si" value="Sí" onchange="toggleNinos(this)"><label for="n-si">Sí</label></div>
+          <!-- ✅ CORREGIDO: era "Sí", el form espera "SI" (mayúsculas) -->
+          <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-si" value="SI" onchange="toggleNinos(this)"><label for="n-si">Sí</label></div>
           <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-no" value="No" onchange="toggleNinos(this)"><label for="n-no">No</label></div>
         </div>
       </div>
@@ -415,7 +421,7 @@ const io=new IntersectionObserver(entries=>{
 document.querySelectorAll('[class*="reveal-"],.timeline-item').forEach(el=>io.observe(el));
 
 /* ── Form helpers ── */
-function toggleNinos(el){ document.getElementById('ninos-row').style.display=el.value==='Sí'?'block':'none'; }
+function toggleNinos(el){ document.getElementById('ninos-row').style.display=el.value==='SI'?'block':'none'; }
 function toggleAlergias(el){ document.getElementById('alergias-row').style.display=el.value==='Sí'?'block':'none'; }
 
 /* ── Confetti ── */
@@ -454,15 +460,13 @@ function animateConfetti(){
 const hCanvas=document.getElementById('hearts-canvas');
 const hCtx=hCanvas.getContext('2d');
 let hearts=[],hAnimId=null,heartsFired=false;
-/* Rojos y rosas */
 const H_COLORS=['#e8192c','#ff4d6d','#ff69b4','#c9184a','#ffb3c1','#ff85a1'];
 
-/* Corazón redondeado: dos arcos arriba + curvas suaves abajo */
 function drawHeart(c,x,y,size){
   const r=size*0.52;
   c.beginPath();
-  c.arc(x-r*0.5, y, r, Math.PI, 0);          /* bump izquierdo */
-  c.arc(x+r*0.5, y, r, Math.PI, 0);          /* bump derecho */
+  c.arc(x-r*0.5, y, r, Math.PI, 0);
+  c.arc(x+r*0.5, y, r, Math.PI, 0);
   c.bezierCurveTo(x+r*1.5, y+r*0.9, x, y+r*2.2, x, y+r*2.2);
   c.bezierCurveTo(x, y+r*2.2, x-r*1.5, y+r*0.9, x-r*1.5, y);
   c.closePath();
@@ -486,14 +490,14 @@ function launchHearts(){
   }
   if(hAnimId) cancelAnimationFrame(hAnimId);
   animateHearts();
-  setTimeout(()=>{ cancelAnimationFrame(hAnimId); hCanvas.style.display='none'; hearts=[]; },2000); /* duración reducida */
+  setTimeout(()=>{ cancelAnimationFrame(hAnimId); hCanvas.style.display='none'; hearts=[]; },2000);
 }
 function animateHearts(){
   hCtx.clearRect(0,0,hCanvas.width,hCanvas.height);
   let alive=false;
   hearts.forEach(h=>{
     h.wobble+=h.wobbleSpeed; h.x+=h.vx+Math.sin(h.wobble)*.7; h.y+=h.vy; h.vy+=.06;
-    if(h.y<hCanvas.height*.35) h.opacity=Math.max(0,h.opacity-.03); /* fade más rápido */
+    if(h.y<hCanvas.height*.35) h.opacity=Math.max(0,h.opacity-.03);
     if(h.opacity>0) alive=true;
     hCtx.save(); hCtx.globalAlpha=h.opacity; hCtx.fillStyle=h.color;
     drawHeart(hCtx,h.x,h.y,h.size); hCtx.restore();
@@ -505,7 +509,7 @@ document.addEventListener('change',function(e){
   if(e.target.id==='ac-si'&&!heartsFired){ heartsFired=true; launchHearts(); }
 });
 
-/* ── Envío a Google Forms via fetch no-cors (único método fiable) ── */
+/* ── Envío a Google Forms via fetch no-cors ── */
 async function sendToGoogleForms(form){
   const url = form.dataset.action;
   const body = new URLSearchParams(new FormData(form));
