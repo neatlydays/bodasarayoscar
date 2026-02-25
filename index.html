@@ -303,7 +303,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
           </div>
           <div class="radio-option">
             <!-- ✅ Valor exacto del Google Form -->
-            <input type="radio" name="entry.957980292" id="a-no" value="No puedo asistir" onchange="onAsistenciaChange(this)">
+            <input type="radio" name="entry.957980292" id="a-no" value="No podré asistir 😢" onchange="onAsistenciaChange(this)">
             <label for="a-no">No podré asistir 😢</label>
           </div>
         </div>
@@ -525,7 +525,7 @@ function onAsistenciaChange(el){
     return;
   }
 
-  if(el.value==='No puedo asistir'){
+  if(el.value==='No podré asistir 😢'){
     form.classList.add('is-declined');
     btn.textContent='Enviar respuesta';
   }
@@ -544,7 +544,7 @@ async function sendToGoogleForms(form){
 async function handleRsvpSubmit(e){
   e.preventDefault();
   const form=document.getElementById('rsvp-form');
-  const declined=document.querySelector('input[name="entry.957980292"]:checked')?.value==='No puedo asistir';
+  const declined=document.querySelector('input[name="entry.957980292"]:checked')?.value==='No podré asistir 😢';
   await sendToGoogleForms(form);
   form.style.display='none';
   const s=document.getElementById(declined?'rsvp-declined':'rsvp-success');
