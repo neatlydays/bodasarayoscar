@@ -9,10 +9,16 @@
 <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
 <style>
 :root {
-  --cream:#fdf8f2;--blush:#e8c4b4;--rose:#c4896a;
-  --dusty-rose:#d4a593;--dark-sage:#5c7056;--mauve:#9b7b76;
-  --text-dark:#3a2e2b;--text-mid:#6b534e;--text-light:#9b8480;
-  --dark:#2a2018;
+  --cream: #f5f7ee;        /* crema con toque verdoso */
+  --blush: #c8d4a8;        /* oliva claro */
+  --rose: #8a9e5a;         /* oliva medio */
+  --dusty-rose: #b0bf88;   /* oliva polvoriento */
+  --dark-sage: #4a6640;    /* sage oscuro (ya era verde, intensificado) */
+  --mauve: #7a8c5e;        /* oliva grisáceo */
+  --text-dark: #2b3320;    /* casi negro verdoso */
+  --text-mid: #4d5c35;     /* oliva texto medio */
+  --text-light: #7a8b62;   /* oliva texto suave */
+  --dark: #1c2412;         /* negro oliva profundo */;
 }
 .rsvp-form.is-declined .form-section-title{ display:none !important; }
 .rsvp-form.is-declined .form-group{ display:none !important; }
@@ -38,13 +44,13 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .reveal-scale{opacity:0;transform:scale(.88);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
 [class*="reveal-"].visible{opacity:1;transform:none}
 .delay-1{transition-delay:.1s}.delay-2{transition-delay:.22s}.delay-3{transition-delay:.36s}
-#hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;background:var(--cream);position:relative;overflow:hidden;}
+hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;background:var(--cream);position:relative;overflow:hidden;}
 .hero-video-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(2px) brightness(0.90) saturate(0.92);transform:scale(1.08);z-index:0;pointer-events:none;opacity:0.72;}
 .hero-video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(253,248,242,0.45) 0%,rgba(253,248,242,0.25) 40%,rgba(253,248,242,0.42) 100%);z-index:1;pointer-events:none;}
 .hero-content{position:relative;text-align:center;z-index:2;width:100%}
-#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 12% 18%,rgba(232,196,180,.4) 0%,transparent 60%),radial-gradient(ellipse 55% 45% at 90% 78%,rgba(196,137,106,.22) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 55% 8%,rgba(138,158,132,.2) 0%,transparent 50%);pointer-events:none;}
+hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 12% 18%,rgba(232,196,180,.4) 0%,transparent 60%),radial-gradient(ellipse 55% 45% at 90% 78%,rgba(196,137,106,.22) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 55% 8%,rgba(138,158,132,.2) 0%,transparent 50%);pointer-events:none;}
 .hero-content{position:relative;text-align:center;z-index:1;width:100%}
-.hero-pre{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:#3a2218;margin-bottom:1.8rem;text-shadow:0 1px 0 rgba(255,255,255,.5),0 2px 12px rgba(255,255,255,.7);animation:fadeUp 1.2s .2s ease both;opacity:0}
+.hero-pre{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:3a2218;margin-bottom:1.8rem;text-shadow:0 1px 0 rgba(255,255,255,.5),0 2px 12px rgba(255,255,255,.7);animation:fadeUp 1.2s .2s ease both;opacity:0}
 .hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(4.8rem,15vw,11rem);font-weight:300;line-height:.92;color:#2a1810;letter-spacing:-.02em;text-shadow:0 2px 18px rgba(255,255,255,.6),0 4px 40px rgba(255,255,255,.4);animation:fadeUp 1.4s .35s ease both;opacity:0}
 .hero-names .ampersand{display:block;font-family:'DM Sans',sans-serif;font-style:normal;font-weight:300;font-size:.55em;color:#111;line-height:1.15;text-shadow:0 2px 16px rgba(255,255,255,.55)}
 .hero-date{font-family:'Cormorant Garamond',serif;font-size:clamp(1.4rem,4vw,2.4rem);font-weight:300;letter-spacing:.2em;color:#2a1810;margin-top:2rem;text-shadow:0 1px 0 rgba(255,255,255,.5),0 2px 14px rgba(255,255,255,.65);animation:fadeUp 1.2s .6s ease both;opacity:0}
@@ -733,3 +739,4 @@ async function handleRsvpSubmit(e){
 </script>
 </body>
 </html>
+
