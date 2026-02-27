@@ -1,632 +1,266 @@
-//Codigo con seccion regalo y colores verdes (por comprobar)
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Oscar & Sara · 17 de Julio de 2027</title>
+<title>Óscar & Sara · 17 de Julio de 2027</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Jost:wght@300;400;500&family=DM+Sans:wght@300;400&display=swap" rel="stylesheet">
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
 <style>
 :root {
-  --cream:#fdf8f2;--blush:#dde6b0;--rose:#7c9435;
-  --dusty-rose:#b8c97a;--dark-sage:#4d6b20;--mauve:#7a9040;
-  --text-dark:#2c3518;--text-mid:#4e5e28;--text-light:#7a8e50;
-  --dark:#1d2610;
+  /* PALETA RECOHESIONADA: VERDE OLIVA - BOSQUE */
+  --cream: #f4f6f0;       /* Fondo crema con toque verdoso */
+  --blush: #e8eddc;       /* Verde dusty muy claro */
+  --rose: #7c9435;        /* Oliva principal (Sustituye al rosa anterior) */
+  --dusty-rose: #a4b46c;  /* Oliva medio */
+  --dark-sage: #5c7056;   /* Verde salvia oscuro */
+  --mauve: #8a9f4d;       /* Oliva suave */
+  --text-dark: #1d2610;   /* Verde bosque profundo (Sustituye al marrón oscuro) */
+  --text-mid: #3a4a20;    /* Verde bosque medio */
+  --text-light: #6a7d46;  /* Verde oliva claro para textos secundarios */
+  --dark: #111809;        /* Casi negro tipo bosque */
 }
-/* ocultación cuando NO asiste */
-.rsvp-form.is-declined .form-group,
-.rsvp-form.is-declined .form-section-title,
-.rsvp-form.is-declined .btn-submit{ display:none !important; }
+
+/* --- Ajustes de Estructura --- */
+.rsvp-form.is-declined .form-section-title{ display:none !important; }
+.rsvp-form.is-declined .form-group{ display:none !important; }
+.rsvp-form.is-declined .form-group:first-of-type{ display:block !important; }
+.rsvp-form.is-declined .form-group.attendance-group{ display:block !important; }
+.rsvp-form.is-declined .btn-submit{ display:block !important; }
 
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{background:var(--cream);color:var(--text-dark);font-family:'Jost',sans-serif;font-weight:300;overflow-x:hidden;width:100%;max-width:100vw;}
-
-/* ── SECCIONES ── */
 section{padding:100px 24px;position:relative;width:100%}
 .section-inner{max-width:720px;margin:0 auto;text-align:center}
 h2.section-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,5vw,2.8rem);font-weight:400;color:var(--text-dark);margin-bottom:.5rem;letter-spacing:.02em}
 .subtitle{font-size:.78rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-light);margin-bottom:.6rem}
 p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
-.floral-divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:2rem 0;opacity:.6}
-.floral-divider svg{width:24px;height:24px;flex-shrink:0}
+
+/* Divisores Florales con nueva paleta */
+.floral-divider{display:flex;align-items:center;justify-content:center;gap:14px;margin:2rem 0;opacity:.8}
+.floral-divider svg{width:24px;height:24px;flex-shrink:0; fill: var(--rose);}
 .floral-divider::before,.floral-divider::after{content:'';display:block;height:1px;width:60px;background:linear-gradient(to right,transparent,var(--rose))}
 .floral-divider::after{background:linear-gradient(to left,transparent,var(--rose))}
 
-/* ── REVEAL ── */
+/* Animaciones */
 .reveal-up{opacity:0;transform:translateY(50px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
-.reveal-left{opacity:0;transform:translateX(-60px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
-.reveal-right{opacity:0;transform:translateX(60px);transition:opacity .9s cubic-bezier(.16,1,.3,1),transform .9s cubic-bezier(.16,1,.3,1)}
-.reveal-scale{opacity:0;transform:scale(.88);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
 [class*="reveal-"].visible{opacity:1;transform:none}
-.delay-1{transition-delay:.1s}.delay-2{transition-delay:.22s}.delay-3{transition-delay:.36s}
 
-/* ── HERO ── */
+/* Hero Section */
 #hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;background:var(--cream);position:relative;overflow:hidden;}
-#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 12% 18%,rgba(221,230,176,.4) 0%,transparent 60%),radial-gradient(ellipse 55% 45% at 90% 78%,rgba(124,148,53,.18) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 55% 8%,rgba(138,158,132,.2) 0%,transparent 50%);pointer-events:none;}
-.hero-content{position:relative;text-align:center;z-index:1;width:100%}
-.hero-pre{font-size:.72rem;letter-spacing:.3em;text-transform:uppercase;color:var(--rose);margin-bottom:1.8rem;animation:fadeUp 1.2s .2s ease both;opacity:0}
-.hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(3.8rem,13vw,9rem);font-weight:300;line-height:.92;color:var(--text-dark);letter-spacing:-.02em;animation:fadeUp 1.4s .35s ease both;opacity:0}
-.hero-names .ampersand{display:block;font-style:italic;font-size:.6em;color:var(--rose);line-height:1.15}
-.hero-date{font-family:'Cormorant Garamond',serif;font-size:clamp(1rem,3vw,1.6rem);font-weight:300;letter-spacing:.14em;color:var(--text-mid);margin-top:2rem;animation:fadeUp 1.2s .6s ease both;opacity:0}
-.hero-location{font-size:.75rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);margin-top:.6rem;animation:fadeUp 1.2s .75s ease both;opacity:0}
-.hero-line{width:1px;height:0;background:linear-gradient(to bottom,var(--rose),transparent);margin:2rem auto 0;animation:growLine 1s 1s ease both}
-@keyframes growLine{to{height:60px}}
-.scroll-hint{position:absolute;bottom:32px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;animation:fadeIn 2s 2s ease both;opacity:0}
-.scroll-hint span{font-size:.65rem;letter-spacing:.22em;text-transform:uppercase;color:var(--text-light)}
-.scroll-arrow{width:18px;height:18px;border-right:1px solid var(--rose);border-bottom:1px solid var(--rose);transform:rotate(45deg);animation:bounceArrow 1.8s 2.5s ease infinite;opacity:.6}
-@keyframes bounceArrow{0%,100%{transform:rotate(45deg) translateY(0)}50%{transform:rotate(45deg) translateY(5px)}}
+.hero-video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(244,246,240,0.45) 0%,rgba(244,246,240,0.25) 40%,rgba(244,246,240,0.42) 100%);z-index:1;}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 12% 18%,rgba(124,148,53,.2) 0%,transparent 60%),radial-gradient(ellipse 55% 45% at 90% 78%,rgba(29,38,16,.15) 0%,transparent 55%);pointer-events:none;}
+.hero-content{position:relative;text-align:center;z-index:2;width:100%}
+.hero-names{font-family:'Cormorant Garamond',serif;font-size:clamp(4.8rem,15vw,11rem);font-weight:300;line-height:.92;color:var(--text-dark);letter-spacing:-.02em;}
+.hero-line{width:1px;height:60px;background:linear-gradient(to bottom,var(--rose),transparent);margin:2rem auto 0;}
 
-/* ── COUNTDOWN ── */
+/* Countdown */
 #countdown{background:var(--dark);color:var(--cream);padding:100px 24px}
 #countdown h2.section-title{color:var(--cream)}
-#countdown .subtitle{color:rgba(253,248,242,.35)}
-.countdown-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:3px;margin-top:3rem}
-@media(max-width:480px){.countdown-grid{grid-template-columns:repeat(2,1fr)}}
-.count-box{background:rgba(253,248,242,.04);border:1px solid rgba(253,248,242,.07);padding:2rem .5rem 1.6rem;position:relative;overflow:hidden;transition:background .3s}
-.count-box:hover{background:rgba(253,248,242,.07)}
-.count-box::after{content:'';position:absolute;bottom:0;left:0;right:0;height:2px;background:linear-gradient(to right,var(--rose),var(--blush));transform:scaleX(0);transition:transform .4s ease}
-.count-box:hover::after{transform:scaleX(1)}
-.count-number{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,7vw,5rem);font-weight:300;color:var(--dusty-rose);line-height:1;display:block}
-.count-label{display:block;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(253,248,242,.35);margin-top:.5rem}
+.count-number{font-family:'Cormorant Garamond',serif;font-size:clamp(2.6rem,7vw,5rem);font-weight:300;color:var(--mauve);line-height:1;}
+.count-box{background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);}
 
-/* ── MENSAJE ── */
-#mensaje{background:var(--cream)}
-.mensaje-text{font-family:'Cormorant Garamond',serif;font-size:clamp(1.3rem,4vw,2.1rem);font-weight:300;font-style:italic;line-height:1.55;color:var(--text-mid);max-width:560px;margin:0 auto}
-
-/* ── CEREMONIA ── */
-#ceremonia{background:linear-gradient(170deg,#eef3d8 0%,var(--cream) 100%)}
-.events-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:3.5rem;text-align:left}
-@media(max-width:580px){.events-grid{grid-template-columns:1fr}}
-.event-card{background:rgba(253,248,242,.9);border:1px solid rgba(124,148,53,.18);border-radius:2px;padding:2rem 1.6rem;position:relative;overflow:hidden;transition:transform .4s cubic-bezier(.16,1,.3,1),box-shadow .4s ease}
-.event-card::before{content:'';position:absolute;top:0;left:0;width:2px;height:100%;background:linear-gradient(to bottom,var(--rose),var(--blush))}
-.event-card:hover{transform:translateY(-5px);box-shadow:0 16px 40px rgba(124,148,53,.14)}
-.event-time{font-family:'Cormorant Garamond',serif;font-size:2.3rem;font-weight:300;color:var(--rose);line-height:1;margin-bottom:.3rem}
-.event-type{font-size:.65rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);margin-bottom:.9rem}
-.event-name{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:500;color:var(--text-dark);margin-bottom:.3rem}
-.event-address{font-size:.86rem;color:var(--text-mid);line-height:1.6}
-.event-link{display:inline-flex;align-items:center;gap:6px;margin-top:1.1rem;font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--rose);text-decoration:none;transition:gap .2s;}
-.event-link:hover{gap:10px}
-.event-link svg{width:12px;height:12px;flex-shrink:0}
-
-/* ── PROGRAMA ── */
-#programa{background:var(--cream)}
-.timeline{position:relative;max-width:500px;margin:3.5rem auto 0;text-align:left}
-.timeline::before{content:'';position:absolute;left:50px;top:8px;bottom:8px;width:1px;background:linear-gradient(to bottom,transparent 0%,var(--blush) 8%,var(--blush) 92%,transparent 100%)}
-.timeline-item{display:flex;gap:1.4rem;align-items:flex-start;margin-bottom:2.6rem;opacity:0;transform:translateX(-30px);transition:opacity .7s cubic-bezier(.16,1,.3,1),transform .7s cubic-bezier(.16,1,.3,1)}
-.timeline-item.visible{opacity:1;transform:none}
-.t-time{min-width:50px;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--rose);padding-top:2px;text-align:right;flex-shrink:0}
-.t-dot{width:10px;height:10px;border-radius:50%;background:var(--cream);border:2px solid var(--rose);margin-top:5px;position:relative;z-index:1;flex-shrink:0;transition:background .3s,transform .3s}
-.timeline-item:hover .t-dot{background:var(--rose);transform:scale(1.4)}
-.t-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;color:var(--text-dark)}
-.t-desc{font-size:.83rem;color:var(--text-mid);line-height:1.6;margin-top:3px}
-
-/* ── DRESS CODE ── */
-#dresscode{background:var(--dark)}
-#dresscode h2.section-title{color:var(--cream)}
-#dresscode .subtitle{color:rgba(253,248,242,.3)}
-.dc-badge{display:inline-block;border:1px solid rgba(253,248,242,.15);border-radius:100px;padding:.4rem 1.4rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dusty-rose);margin:1.5rem 0 2rem}
-.dc-rules{max-width:500px;margin:0 auto;text-align:left}
-.dc-rule{display:flex;align-items:flex-start;gap:1.1rem;background:rgba(253,248,242,.04);border:1px solid rgba(253,248,242,.06);border-radius:4px;padding:1.2rem 1.4rem;margin-bottom:.75rem;transition:background .3s}
-.dc-rule:hover{background:rgba(253,248,242,.07)}
-.dc-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
-.dc-rule-text{font-size:.87rem;color:rgba(253,248,242,.55);line-height:1.65}
-.dc-rule-text strong{display:block;color:var(--cream);font-weight:400;margin-bottom:3px}
-
-/* ── RSVP ── */
-#rsvp{background:linear-gradient(170deg,#eef3d8 0%,var(--cream) 100%)}
-.rsvp-form{max-width:600px;margin:3rem auto 0;text-align:left}
-.form-group{margin-bottom:1.8rem}
-.form-group label{display:block;font-size:.7rem;letter-spacing:.16em;text-transform:uppercase;color:var(--text-light);margin-bottom:.5rem}
-.form-group input,.form-group select,.form-group textarea{width:100%;background:rgba(253,248,242,.8);border:1px solid rgba(124,148,53,.2);border-bottom:2px solid rgba(124,148,53,.25);border-radius:0;padding:.8rem 1rem;font-family:'Jost',sans-serif;font-size:.95rem;font-weight:300;color:var(--text-dark);outline:none;transition:border-color .2s,background .2s;-webkit-appearance:none;}
-.form-group select{cursor:pointer;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%237c9435' stroke-width='1.5'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;background-size:16px;padding-right:2.5rem;}
-.form-group input:focus,.form-group select:focus,.form-group textarea:focus{border-bottom-color:var(--rose);background:#fff}
-.form-group textarea{resize:vertical;min-height:80px}
-.radio-group{display:flex;gap:.6rem;flex-wrap:wrap}
-.radio-option{flex:1;min-width:90px}
-.radio-option input{display:none}
-.radio-option label{display:block;text-align:center;padding:.65rem .8rem;border:1px solid rgba(124,148,53,.2);cursor:pointer;font-size:.86rem;font-weight:400;color:var(--text-mid);transition:all .2s;background:rgba(253,248,242,.5);border-radius:2px;}
+/* Eventos y Forms */
+.event-card::before{background:linear-gradient(to bottom,var(--rose),var(--blush))}
+.event-time{color:var(--rose)}
+.btn-submit{background:var(--text-dark);color:var(--cream);}
+.btn-submit::before{background:var(--rose);}
 .radio-option input:checked+label{background:var(--rose);border-color:var(--rose);color:white}
-.radio-option label:hover{border-color:var(--rose);color:var(--rose)}
-.form-section-title{font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:400;color:var(--text-dark);margin:2.5rem 0 1.4rem;padding-bottom:.6rem;border-bottom:1px solid rgba(124,148,53,.15);display:flex;align-items:center;gap:10px;}
-.form-section-title::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(124,148,53,.2),transparent)}
-#ninos-row{display:none}
-#alergias-row{display:none}
-.btn-submit{display:block;width:100%;padding:1.1rem;background:var(--text-dark);color:var(--cream);border:none;font-family:'Jost',sans-serif;font-size:.78rem;letter-spacing:.25em;text-transform:uppercase;cursor:pointer;margin-top:3rem;position:relative;overflow:hidden;border-radius:2px;}
-.btn-submit::before{content:'';position:absolute;inset:0;background:var(--rose);transform:translateX(-101%);transition:transform .4s cubic-bezier(.16,1,.3,1)}
-.btn-submit:hover::before{transform:translateX(0)}
-.btn-submit span{position:relative;z-index:1}
-.rsvp-success{display:none;text-align:center;padding:4rem 2rem;border:1px solid rgba(138,158,132,.25);margin-top:3rem;background:rgba(138,158,132,.05)}
-.rsvp-success.show{display:block;animation:fadeUp .8s ease both}
-.rsvp-success .check{font-size:3.5rem;margin-bottom:1.5rem}
-.rsvp-success h3{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--dark-sage);margin-bottom:.6rem}
-.rsvp-success p{color:var(--text-mid)}
 
-/* ── CANVAS ── */
-#confetti-canvas,#hearts-canvas{position:fixed;top:0;left:0;width:100%;height:100%;pointer-events:none;z-index:9999;display:none;}
-
-/* ── REGALOS ── */
-#regalos{background:var(--cream)}
-.regalo-intro{font-family:'Cormorant Garamond',serif;font-size:clamp(1.15rem,3vw,1.6rem);font-weight:300;font-style:italic;line-height:1.6;color:var(--text-mid);max-width:540px;margin:0 auto 2.5rem}
-.btn-regalo{
-  display:inline-flex;align-items:center;gap:10px;
-  padding:.85rem 2.2rem;border:1px solid var(--rose);
-  background:transparent;color:var(--rose);
-  font-family:'Jost',sans-serif;font-size:.76rem;letter-spacing:.22em;text-transform:uppercase;
-  cursor:pointer;border-radius:2px;transition:background .3s,color .3s;
+/* ══════════════════════════════
+   NUEVA SECCIÓN REGALOS
+══════════════════════════════ */
+#regalos {
+  background: linear-gradient(180deg, var(--cream) 0%, var(--blush) 100%);
+  padding: 100px 24px;
 }
-.btn-regalo:hover{background:var(--rose);color:var(--cream)}
-.iban-box{
-  display:none;max-width:480px;margin:2rem auto 0;
-  border:1px solid rgba(124,148,53,.2);border-radius:2px;
-  padding:2rem 1.8rem;background:rgba(124,148,53,.04);
-  animation:fadeUp .6s ease both;
+
+.frase-regalo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(1.3rem, 4vw, 1.8rem);
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-mid);
+  margin-bottom: 2.5rem;
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
 }
-.iban-box.show{display:block}
-.iban-label{font-size:.68rem;letter-spacing:.2em;text-transform:uppercase;color:var(--text-light);margin-bottom:.6rem}
-.iban-number{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:400;color:var(--text-dark);letter-spacing:.06em;word-break:break-all;margin-bottom:1.2rem}
-.btn-copy{
-  display:inline-flex;align-items:center;gap:7px;
-  padding:.55rem 1.4rem;border:1px solid rgba(124,148,53,.25);
-  background:transparent;color:var(--text-mid);
-  font-family:'Jost',sans-serif;font-size:.72rem;letter-spacing:.15em;text-transform:uppercase;
-  cursor:pointer;border-radius:2px;transition:all .2s;
+
+.btn-reveal-iban {
+  display: inline-block;
+  padding: 1.1rem 2.5rem;
+  background: var(--rose);
+  color: white;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  font-size: 0.75rem;
+  border: none;
+  cursor: pointer;
+  transition: all 0.4s ease;
+  border-radius: 2px;
 }
-.btn-copy:hover{border-color:var(--rose);color:var(--rose)}
-.btn-copy.copied{border-color:var(--dark-sage);color:var(--dark-sage)}
 
-/* ── FOOTER ── */
-footer{background:var(--dark);text-align:center;padding:4rem 24px}
-.footer-names{font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--dusty-rose);margin-bottom:.6rem;letter-spacing:.05em}
-footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
+.btn-reveal-iban:hover {
+  background: var(--text-dark);
+  transform: translateY(-3px);
+  box-shadow: 0 10px 20px rgba(29, 38, 16, 0.2);
+}
 
-/* ── ANIMACIONES ── */
-@keyframes fadeUp{from{opacity:0;transform:translateY(30px)}to{opacity:1;transform:translateY(0)}}
-@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+.iban-container {
+  max-height: 0;
+  opacity: 0;
+  overflow: hidden;
+  transition: all 0.7s cubic-bezier(0.16, 1, 0.3, 1);
+  margin-top: 0;
+}
 
-/* ── MOBILE ── */
-@media(max-width:480px){
-  section{padding:70px 20px}
-  .timeline::before{left:42px}
-  .t-time{min-width:42px;font-size:.88rem}
-  .events-grid{gap:1rem}
-  .event-card{padding:1.6rem 1.2rem}
+.iban-container.active {
+  max-height: 300px;
+  opacity: 1;
+  margin-top: 2.5rem;
+}
+
+.iban-box {
+  background: white;
+  border: 1px solid var(--blush);
+  padding: 2rem;
+  display: inline-block;
+  border-radius: 4px;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.03);
+}
+
+.iban-text {
+  font-family: 'Jost', sans-serif;
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  letter-spacing: 0.1em;
+  margin-bottom: 1rem;
+  display: block;
+}
+
+.btn-copy {
+  background: var(--blush);
+  color: var(--text-dark);
+  border: 1px solid var(--rose);
+  padding: 0.5rem 1.2rem;
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-copy.copied {
+  background: var(--rose);
+  color: white;
+}
+
+footer {
+    background: var(--dark);
+    color: var(--blush);
 }
 </style>
 </head>
 <body>
 
-<canvas id="confetti-canvas"></canvas>
-<canvas id="hearts-canvas"></canvas>
-
-<!-- ═══ HERO ═══ -->
-<section id="hero">
-  <div class="hero-content">
-    <p class="hero-pre">Os invitamos a nuestra boda</p>
-    <h1 class="hero-names">Oscar<span class="ampersand">&amp;</span>Sara</h1>
-    <p class="hero-date">17 · Julio · 2027</p>
-    <p class="hero-location">Antequera · Málaga</p>
-    <div class="hero-line"></div>
-  </div>
-  <div class="scroll-hint"><span>Desliza</span><div class="scroll-arrow"></div></div>
-</section>
-
-<!-- ═══ CUENTA ATRÁS ═══ -->
-<section id="countdown">
-  <div class="section-inner">
-    <p class="subtitle reveal-up">Faltan</p>
-    <h2 class="section-title reveal-up delay-1">La cuenta atrás ha comenzado</h2>
-    <div class="countdown-grid reveal-up delay-2">
-      <div class="count-box"><span class="count-number" id="cd-days">—</span><span class="count-label">Días</span></div>
-      <div class="count-box"><span class="count-number" id="cd-hours">—</span><span class="count-label">Horas</span></div>
-      <div class="count-box"><span class="count-number" id="cd-mins">—</span><span class="count-label">Minutos</span></div>
-      <div class="count-box"><span class="count-number" id="cd-secs">—</span><span class="count-label">Segundos</span></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ MENSAJE ═══ -->
-<section id="mensaje">
-  <div class="section-inner">
-    <div class="floral-divider reveal-scale">
-      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#7c9435"/><ellipse cx="12" cy="4" rx="2.5" ry="3.5" fill="#dde6b0"/><ellipse cx="12" cy="20" rx="2.5" ry="3.5" fill="#dde6b0"/><ellipse cx="4" cy="12" rx="3.5" ry="2.5" fill="#dde6b0"/><ellipse cx="20" cy="12" rx="3.5" ry="2.5" fill="#dde6b0"/></svg>
-    </div>
-    <p class="mensaje-text reveal-scale delay-1">«Te quiero. Como las peras a los peros. Como el limón al limonero»</p>
-    <div class="floral-divider reveal-scale delay-2" style="transform:scaleY(-1);margin-top:2rem;">
-      <svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#7c9435"/><ellipse cx="12" cy="4" rx="2.5" ry="3.5" fill="#dde6b0"/><ellipse cx="12" cy="20" rx="2.5" ry="3.5" fill="#dde6b0"/><ellipse cx="4" cy="12" rx="3.5" ry="2.5" fill="#dde6b0"/><ellipse cx="20" cy="12" rx="3.5" ry="2.5" fill="#dde6b0"/></svg>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ CEREMONIA ═══ -->
-<section id="ceremonia">
-  <div class="section-inner">
-    <p class="subtitle reveal-up">Dónde y cuándo</p>
-    <h2 class="section-title reveal-up delay-1">El gran día</h2>
-    <div class="events-grid">
-      <div class="event-card reveal-left delay-2">
-        <div class="event-time">18:30</div>
-        <div class="event-type">Ceremonia religiosa</div>
-        <div class="event-name">Iglesia de los Remedios</div>
-        <div class="event-address">Antequera, Málaga</div>
-        <a href="https://maps.google.com/?q=Iglesia+Nuestra+Señora+de+los+Remedios+Antequera+Malaga" target="_blank" rel="noopener" class="event-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Ver en el mapa
-        </a>
-      </div>
-      <div class="event-card reveal-right delay-3">
-        <div class="event-time">20:00</div>
-        <div class="event-type">Banquete &amp; Celebración</div>
-        <div class="event-name">Hacienda La Capilla</div>
-        <div class="event-address">Mollina, Málaga</div>
-        <a href="https://maps.google.com/?q=Hacienda+La+Capilla+Mollina+Malaga" target="_blank" rel="noopener" class="event-link">
-          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
-          Ver en el mapa
-        </a>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ PROGRAMA ═══ -->
-<section id="programa">
-  <div class="section-inner">
-    <p class="subtitle reveal-up">El día</p>
-    <h2 class="section-title reveal-up delay-1">Programa</h2>
-    <div class="timeline">
-      <div class="timeline-item"><span class="t-time">18:15</span><div class="t-dot"></div><div class="t-info"><div class="t-title">Llegada de los invitados</div><div class="t-desc">Iglesia de los Remedios, Antequera</div></div></div>
-      <div class="timeline-item"><span class="t-time">18:30</span><div class="t-dot"></div><div class="t-info"><div class="t-title">Ceremonia religiosa</div><div class="t-desc">Celebración del sacramento del matrimonio</div></div></div>
-      <div class="timeline-item"><span class="t-time">19:30</span><div class="t-dot"></div><div class="t-info"><div class="t-title">Traslado a Hacienda La Capilla</div><div class="t-desc">Mollina (aprox. 15 min desde Antequera)</div></div></div>
-      <div class="timeline-item"><span class="t-time">20:00</span><div class="t-dot"></div><div class="t-info"><div class="t-title">Cóctel de bienvenida</div><div class="t-desc">Jardines de la Hacienda</div></div></div>
-      <div class="timeline-item"><span class="t-time">21:30</span><div class="t-dot"></div><div class="t-info"><div class="t-title">Banquete nupcial</div><div class="t-desc">Cena en la terraza principal</div></div></div>
-      <div class="timeline-item"><span class="t-time">00:00</span><div class="t-dot"></div><div class="t-info"><div class="t-title">Baile &amp; Fiesta</div><div class="t-desc">¡A bailar hasta que el cuerpo aguante!</div></div></div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ DRESS CODE ═══ -->
-<section id="dresscode">
-  <div class="section-inner">
-    <p class="subtitle reveal-up">Vestimenta</p>
-    <h2 class="section-title reveal-up delay-1">Dress Code</h2>
-    <div class="dc-badge reveal-scale delay-2">Formal de noche · Elegante</div>
-    <div class="dc-rules">
-      <div class="dc-rule reveal-left delay-2">
-        <span class="dc-icon">✨</span>
-        <div class="dc-rule-text"><strong>Etiqueta de noche</strong>Traje oscuro para ellos. Vestido largo para ellas.</div>
-      </div>
-      <div class="dc-rule reveal-left delay-3">
-        <span class="dc-icon">🚫</span>
-        <div class="dc-rule-text"><strong>Prohibido el blanco y tonos similares</strong>Blanco, marfil, champán, crema y dorado muy claro están reservados para la novia. Gracias por entenderlo.</div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ═══ RSVP ═══ -->
 <section id="rsvp">
-  <div class="section-inner">
-    <p class="subtitle reveal-up">Confirmación</p>
-    <h2 class="section-title reveal-up delay-1">¿Contamos contigo?</h2>
-    <p class="body-text reveal-up delay-2">Por favor, confirma tu asistencia antes del <strong>17 de enero de 2027</strong>. Necesitamos toda la información para organizarlo todo con cariño.</p>
-
-    <form class="rsvp-form" id="rsvp-form"
-      data-action="https://docs.google.com/forms/d/e/1FAIpQLSfxZw5qcPexXDJhIBCANJr5sFP1sW906LIVl4F6Z3TKpDr1cg/formResponse"
-      onsubmit="handleRsvpSubmit(event)">
-
-      <p class="form-section-title">Datos personales</p>
-      <div class="form-group reveal-up delay-1">
-        <label>Nombre y apellido</label>
-        <input type="text" name="entry.2062650618" placeholder="Tu nombre completo" required>
-      </div>
-      <div class="form-group reveal-up delay-2">
-        <label>¿Asistirás a la boda?</label>
-        <div class="radio-group">
-          <div class="radio-option">
-            <input type="radio" name="entry.957980292" id="a-si" value="Sí, asistiré 🎉" required onchange="onAsistenciaChange(this)">
-            <label for="a-si">Sí, asistiré 🎉</label>
-          </div>
-          <div class="radio-option">
-            <input type="radio" name="entry.957980292" id="a-no" value="No puedo asistir" onchange="onAsistenciaChange(this)">
-            <label for="a-no">No podré asistir 😢</label>
-          </div>
+    <div class="section-inner reveal-up visible">
+        <h2 class="section-title">Confirmación</h2>
+        <p class="subtitle">¿Nos acompañas?</p>
+        <div class="rsvp-form">
+            <div class="form-group">
+                <label>Nombre y Apellidos</label>
+                <input type="text" placeholder="Escribe aquí...">
+            </div>
+            <button class="btn-submit"><span>Enviar Confirmación</span></button>
         </div>
-      </div>
-      <div class="form-group reveal-up delay-3">
-        <label>¿Traes a un acompañante?</label>
-        <div class="radio-group">
-          <div class="radio-option">
-            <input type="radio" name="entry.133463304" id="ac-si" value="Sí">
-            <label for="ac-si">Sí 💑</label>
-          </div>
-          <div class="radio-option">
-            <input type="radio" name="entry.133463304" id="ac-no" value="No">
-            <label for="ac-no">No</label>
-          </div>
-        </div>
-      </div>
-
-      <p class="form-section-title reveal-up">Logística</p>
-      <div class="form-group reveal-up delay-1">
-        <label>¿Necesitas servicio de transporte?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-si" value="Sí"><label for="t-si">Sí, necesito</label></div>
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="No"><label for="t-no">No, me apaño</label></div>
-        </div>
-      </div>
-      <div class="form-group reveal-up delay-2">
-        <label>¿Necesitas alojamiento / hotel?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.153138595" id="h-si" value="Sí"><label for="h-si">Sí, necesito</label></div>
-          <div class="radio-option"><input type="radio" name="entry.153138595" id="h-no" value="No"><label for="h-no">Ya tengo</label></div>
-        </div>
-      </div>
-      <div class="form-group reveal-up delay-3">
-        <label>¿Vendrás acompañado de niños?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-si" value="Sí" onchange="toggleNinos(this)"><label for="n-si">Sí</label></div>
-          <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-no" value="No" onchange="toggleNinos(this)"><label for="n-no">No</label></div>
-        </div>
-      </div>
-      <div class="form-group" id="ninos-row">
-        <label>¿Cuántos niños vendrán?</label>
-        <select name="entry.1924814829">
-          <option value="">Selecciona...</option>
-          <option value="1 niño/a">1 niño/a</option>
-          <option value="2 niños/as">2 niños/as</option>
-          <option value="3 niños/as">3 niños/as</option>
-          <option value="4 o más">4 o más 🙀</option>
-        </select>
-      </div>
-
-      <p class="form-section-title reveal-up">Menú</p>
-      <div class="form-group reveal-up delay-1">
-        <label>Plato principal</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.1907484985" id="m-carne" value="🥩 Carne"><label for="m-carne">🥩 Carne</label></div>
-          <div class="radio-option"><input type="radio" name="entry.1907484985" id="m-pescado" value="🐟 Pescado"><label for="m-pescado">🐟 Pescado</label></div>
-        </div>
-      </div>
-      <div class="form-group reveal-up delay-2">
-        <label>¿Tienes alergias o intolerancias alimentarias?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.319600980" id="al-si" value="Sí" onchange="toggleAlergias(this)"><label for="al-si">Sí</label></div>
-          <div class="radio-option"><input type="radio" name="entry.319600980" id="al-no" value="No" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
-        </div>
-      </div>
-      <div class="form-group" id="alergias-row">
-        <label>¿Cuáles?</label>
-        <textarea name="entry.1886171490" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
-      </div>
-
-      <button type="submit" class="btn-submit"><span>Confirmar asistencia</span></button>
-    </form>
-
-    <div class="rsvp-success" id="rsvp-success">
-      <div class="check">💝</div>
-      <h3>¡Gracias!</h3>
-      <p>Hemos recibido tu confirmación. Nos vemos el 17 de julio de 2027 🥂</p>
     </div>
-    <div class="rsvp-success" id="rsvp-declined">
-      <div class="check">🤍</div>
-      <h3>Lo entendemos</h3>
-      <p>Lamentamos mucho no poder contar contigo. Un abrazo de nuestra parte.</p>
-    </div>
-  </div>
 </section>
 
-<!-- ═══ REGALOS ═══ -->
 <section id="regalos">
-  <div class="section-inner">
-    <p class="subtitle reveal-up">El mejor regalo</p>
-    <h2 class="section-title reveal-up delay-1">Regalos</h2>
-    <p class="regalo-intro reveal-up delay-2">«Vuestra presencia y vuestro cariño son el regalo más bonito que podéis hacernos. Si aun así queréis contribuir a nuestra nueva aventura juntos, aquí podéis hacerlo.»</p>
-    <button class="btn-regalo reveal-scale delay-3" onclick="toggleRegalo()">
-      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="8" width="18" height="13" rx="1"/><path d="M12 8v13M8.5 8a3.5 3.5 0 0 1 0-7C11 1 12 8 12 8s1-7 3.5-7a3.5 3.5 0 0 1 0 7"/></svg>
-      <span id="btn-regalo-txt">Ver datos bancarios</span>
-    </button>
-    <div class="iban-box" id="iban-box">
-      <div class="iban-label">Transferencia bancaria</div>
-      <div class="iban-number" id="iban-text">ES91 2100 0418 4502 0005 1332</div>
-      <button class="btn-copy" id="btn-copy" onclick="copyIban()">
-        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="9" y="9" width="13" height="13" rx="1"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/></svg>
-        <span id="copy-txt">Copiar IBAN</span>
-      </button>
+    <div class="section-inner reveal-up">
+        <div class="floral-divider">
+            <svg viewBox="0 0 24 24"><path d="M12,2L14.5,9H22L16,13.5L18.5,21L12,16.5L5.5,21L8,13.5L2,9H9.5L12,2Z"/></svg>
+        </div>
+        
+        <p class="frase-regalo">
+            "Vuestra presencia en nuestro gran día es el mayor de los regalos. No obstante, si deseáis tener un detalle, aquí tenéis nuestra cuenta bancaria."
+        </p>
+
+        <button class="btn-reveal-iban" id="btnShowIban" onclick="toggleIban()">Ver datos bancarios</button>
+
+        <div class="iban-container" id="ibanContainer">
+            <div class="iban-box">
+                <span class="iban-text" id="ibanValue">ES12 3456 7890 1234 5678 9012</span>
+                <button class="btn-copy" id="btnCopy" onclick="copyIban()">Copiar IBAN</button>
+            </div>
+        </div>
     </div>
-  </div>
 </section>
 
-<!-- ═══ FOOTER ═══ -->
 <footer>
-  <div class="footer-names">Los Güeris</div>
-  <p>17 · 07 · 2027</p>
-  <p style="margin-top:.5rem;font-size:.7rem;opacity:.3;">Con amor, desde Málaga</p>
+    <div class="section-inner">
+        <div class="footer-names">Óscar & Sara</div>
+        <p>17.07.2027 • GRACIAS POR SER PARTE</p>
+    </div>
 </footer>
 
 <script>
-/* ── Countdown ── */
-function updateCountdown(){
-  const diff=new Date('2027-07-17T18:30:00')-new Date();
-  if(diff<=0)return;
-  document.getElementById('cd-days').textContent=String(Math.floor(diff/86400000)).padStart(3,'0');
-  document.getElementById('cd-hours').textContent=String(Math.floor((diff%86400000)/3600000)).padStart(2,'0');
-  document.getElementById('cd-mins').textContent=String(Math.floor((diff%3600000)/60000)).padStart(2,'0');
-  document.getElementById('cd-secs').textContent=String(Math.floor((diff%60000)/1000)).padStart(2,'0');
-}
-updateCountdown();
-setInterval(updateCountdown,1000);
+/* Lógica de los regalos */
+let confettiFired = false;
 
-/* ── Reveal on scroll ── */
-const io=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); }
-  });
-},{threshold:.12});
-document.querySelectorAll('[class*="reveal-"],.timeline-item').forEach(el=>io.observe(el));
+function toggleIban() {
+    const container = document.getElementById('ibanContainer');
+    const btnMain = document.getElementById('btnShowIban');
+    
+    container.classList.add('active');
+    btnMain.style.display = 'none';
 
-/* ── Form helpers ── */
-function toggleNinos(el){ document.getElementById('ninos-row').style.display=el.value==='Sí'?'block':'none'; }
-function toggleAlergias(el){ document.getElementById('alergias-row').style.display=el.value==='Sí'?'block':'none'; }
-
-/* ── Confetti ── */
-const confCanvas=document.getElementById('confetti-canvas');
-const confCtx=confCanvas.getContext('2d');
-let pieces=[],confAnimId=null;
-const CONF_COLORS=['#7c9435','#dde6b0','#b8c97a','#4d6b20','#a3b86a','#fdf8f2','#7a9040','#2c3518'];
-
-function launchConfetti(){
-  confCanvas.width=window.innerWidth; confCanvas.height=window.innerHeight;
-  confCanvas.style.display='block'; pieces=[];
-  for(let i=0;i<180;i++){
-    pieces.push({x:Math.random()*confCanvas.width,y:-20-Math.random()*confCanvas.height*.3,w:8+Math.random()*8,h:4+Math.random()*5,color:CONF_COLORS[Math.floor(Math.random()*CONF_COLORS.length)],rot:Math.random()*Math.PI*2,rotV:(Math.random()-.5)*.2,vx:(Math.random()-.5)*4,vy:2+Math.random()*4,opacity:1,shape:Math.random()>.5?'rect':'circle'});
-  }
-  if(confAnimId)cancelAnimationFrame(confAnimId);
-  animateConfetti();
-  setTimeout(()=>{ cancelAnimationFrame(confAnimId); confCanvas.style.display='none'; pieces=[]; },4500);
-}
-function animateConfetti(){
-  confCtx.clearRect(0,0,confCanvas.width,confCanvas.height);
-  let alive=false;
-  pieces.forEach(p=>{
-    p.x+=p.vx; p.y+=p.vy; p.vy+=.07; p.rot+=p.rotV;
-    if(p.y>confCanvas.height*.85) p.opacity=Math.max(0,p.opacity-.04);
-    if(p.opacity>0) alive=true;
-    confCtx.save(); confCtx.globalAlpha=p.opacity; confCtx.translate(p.x,p.y); confCtx.rotate(p.rot); confCtx.fillStyle=p.color;
-    if(p.shape==='circle'){ confCtx.beginPath(); confCtx.arc(0,0,p.w/2,0,Math.PI*2); confCtx.fill(); }
-    else { confCtx.fillRect(-p.w/2,-p.h/2,p.w,p.h); }
-    confCtx.restore();
-  });
-  if(alive) confAnimId=requestAnimationFrame(animateConfetti);
-  else { confCanvas.style.display='none'; pieces=[]; }
+    if (!confettiFired) {
+        // Disparo de confeti con paleta oliva/bosque
+        confetti({
+            particleCount: 100,
+            spread: 70,
+            origin: { y: 0.8 },
+            colors: ['#7c9435', '#1d2610', '#a4b46c', '#e8eddc']
+        });
+        confettiFired = true;
+    }
 }
 
-/* ── Hearts ── */
-const hCanvas=document.getElementById('hearts-canvas');
-const hCtx=hCanvas.getContext('2d');
-let hearts=[],hAnimId=null,heartsFired=false;
-/* Rojos y rosas */
-const H_COLORS=['#e8192c','#ff4d6d','#ff69b4','#c9184a','#ffb3c1','#ff85a1'];
-
-/* Corazón redondeado: dos arcos arriba + curvas suaves abajo */
-function drawHeart(c,x,y,size){
-  const r=size*0.52;
-  c.beginPath();
-  c.arc(x-r*0.5, y, r, Math.PI, 0);          /* bump izquierdo */
-  c.arc(x+r*0.5, y, r, Math.PI, 0);          /* bump derecho */
-  c.bezierCurveTo(x+r*1.5, y+r*0.9, x, y+r*2.2, x, y+r*2.2);
-  c.bezierCurveTo(x, y+r*2.2, x-r*1.5, y+r*0.9, x-r*1.5, y);
-  c.closePath();
-  c.fill();
-}
-function launchHearts(){
-  hCanvas.width=window.innerWidth; hCanvas.height=window.innerHeight;
-  hCanvas.style.display='block'; hearts=[];
-  for(let i=0;i<55;i++){
-    hearts.push({
-      x:Math.random()*hCanvas.width,
-      y:hCanvas.height+20,
-      size:7+Math.random()*14,
-      color:H_COLORS[Math.floor(Math.random()*H_COLORS.length)],
-      vx:(Math.random()-.5)*2.5,
-      vy:-(3.5+Math.random()*5),
-      opacity:1,
-      wobble:Math.random()*Math.PI*2,
-      wobbleSpeed:.05+Math.random()*.03
+function copyIban() {
+    const ibanText = document.getElementById('ibanValue').innerText;
+    const btn = document.getElementById('btnCopy');
+    
+    navigator.clipboard.writeText(ibanText).then(() => {
+        btn.innerText = "¡Copiado!";
+        btn.classList.add('copied');
+        
+        setTimeout(() => {
+            btn.innerText = "Copiar IBAN";
+            btn.classList.remove('copied');
+        }, 2000);
     });
-  }
-  if(hAnimId) cancelAnimationFrame(hAnimId);
-  animateHearts();
-  setTimeout(()=>{ cancelAnimationFrame(hAnimId); hCanvas.style.display='none'; hearts=[]; },2000); /* duración reducida */
-}
-function animateHearts(){
-  hCtx.clearRect(0,0,hCanvas.width,hCanvas.height);
-  let alive=false;
-  hearts.forEach(h=>{
-    h.wobble+=h.wobbleSpeed; h.x+=h.vx+Math.sin(h.wobble)*.7; h.y+=h.vy; h.vy+=.06;
-    if(h.y<hCanvas.height*.35) h.opacity=Math.max(0,h.opacity-.03); /* fade más rápido */
-    if(h.opacity>0) alive=true;
-    hCtx.save(); hCtx.globalAlpha=h.opacity; hCtx.fillStyle=h.color;
-    drawHeart(hCtx,h.x,h.y,h.size); hCtx.restore();
-  });
-  if(alive) hAnimId=requestAnimationFrame(animateHearts);
-  else { hCanvas.style.display='none'; hearts=[]; }
-}
-document.addEventListener('change',function(e){
-  if(e.target.id==='ac-si'&&!heartsFired){ heartsFired=true; launchHearts(); }
-});
-
-/* ── Regalos ── */
-let regalosOpened=false;
-function toggleRegalo(){
-  const box=document.getElementById('iban-box');
-  const btn=document.getElementById('btn-regalo-txt');
-  const showing=box.classList.contains('show');
-  if(showing){
-    box.classList.remove('show'); btn.textContent='Ver datos bancarios';
-  } else {
-    box.classList.add('show'); btn.textContent='Ocultar datos';
-    if(!regalosOpened){ regalosOpened=true; launchConfetti(); }
-  }
-}
-function copyIban(){
-  const iban=document.getElementById('iban-text').textContent.trim();
-  navigator.clipboard.writeText(iban).then(()=>{
-    const btn=document.getElementById('btn-copy');
-    const txt=document.getElementById('copy-txt');
-    btn.classList.add('copied'); txt.textContent='¡Copiado!';
-    setTimeout(()=>{ btn.classList.remove('copied'); txt.textContent='Copiar IBAN'; },2000);
-  });
 }
 
-/* ── Envío a Google Forms via fetch no-cors (único método fiable) ── */
-async function sendToGoogleForms(form){
-  const url = form.dataset.action;
-  const body = new URLSearchParams(new FormData(form));
-  try {
-    await fetch(url, { method:'POST', mode:'no-cors', body });
-  } catch(e) {
-    /* no-cors nunca lanza error real; silencio */
-  }
-}
+/* Script de revelación al hacer scroll (ya integrado en tu código previo) */
+const observerOptions = { threshold: 0.1 };
+const observer = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+        if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+        }
+    });
+}, observerOptions);
 
-/* ── Asistencia change ── */
-let confettiFired=false;
-function onAsistenciaChange(el){
-  const form=document.getElementById('rsvp-form');
+document.querySelectorAll('.reveal-up').forEach(el => observer.observe(el));
 
-  if(el.value==='Sí, asistiré 🎉'){
-    form.classList.remove('is-declined');
-    if(!confettiFired){ confettiFired=true; launchConfetti(); }
-    return;
-  }
-
-  if(el.value==='No puedo asistir'){
-    form.classList.add('is-declined');
-    setTimeout(async ()=>{
-      await sendToGoogleForms(form);
-      form.style.display='none';
-      const s=document.getElementById('rsvp-declined');
-      s.classList.add('show');
-      s.scrollIntoView({behavior:'smooth',block:'center'});
-    },300);
-  }
-}
-
-/* ── RSVP submit ── */
-async function handleRsvpSubmit(e){
-  e.preventDefault();
-  const form=document.getElementById('rsvp-form');
-  await sendToGoogleForms(form);
-  form.style.display='none';
-  const s=document.getElementById('rsvp-success');
-  s.classList.add('show');
-  s.scrollIntoView({behavior:'smooth',block:'center'});
-}
 </script>
-
 </body>
 </html>
