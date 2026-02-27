@@ -147,7 +147,91 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
   .events-grid{gap:1rem}
   .event-card{padding:1.6rem 1.2rem}
 }
+/* ── Regalos ── */
+.regalo-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2rem;
+}
 
+.btn-regalo {
+  background: var(--dark-sage);
+  color: var(--cream);
+  border: none;
+  padding: .9rem 2.4rem;
+  border-radius: 50px;
+  font-size: 1rem;
+  letter-spacing: .04em;
+  cursor: pointer;
+  transition: transform .2s, box-shadow .2s;
+  box-shadow: 0 4px 18px rgba(92,112,86,.35);
+}
+.btn-regalo:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(92,112,86,.45); }
+.btn-regalo:active { transform: scale(.97); }
+
+.iban-box {
+  display: none;
+  background: var(--cream);
+  border: 1.5px solid var(--blush);
+  border-radius: 16px;
+  padding: 1.6rem 2rem;
+  text-align: center;
+  max-width: 480px;
+  width: 100%;
+  animation: fadeSlideUp .5s ease both;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.iban-label {
+  font-size: .75rem;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  color: var(--text-light);
+  margin-bottom: .8rem;
+}
+.iban-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: .8rem;
+  flex-wrap: wrap;
+}
+.iban-number {
+  font-size: 1.15rem;
+  font-weight: 600;
+  letter-spacing: .08em;
+  color: var(--text-dark);
+  font-family: 'Courier New', monospace;
+}
+.btn-copy {
+  background: var(--blush);
+  border: none;
+  padding: .4rem 1rem;
+  border-radius: 20px;
+  font-size: .85rem;
+  cursor: pointer;
+  transition: background .2s, transform .15s;
+  color: var(--text-dark);
+}
+.btn-copy:hover { background: var(--dusty-rose); transform: scale(1.04); }
+
+.iban-titular {
+  margin-top: 1rem;
+  font-size: .85rem;
+  color: var(--text-mid);
+}
+.iban-nota {
+  font-size: .78rem;
+  color: var(--text-light);
+  margin-top: .3rem;
+}
+  
 /* ══════════════════════════════
    PORTADA — IMAGEN IGLESIA
 ══════════════════════════════ */
@@ -460,7 +544,7 @@ to   { transform: rotate(16deg); }
     <div class="dc-rules">
       <div class="dc-rule reveal-left delay-2">
         <span class="dc-icon">✨</span>
-        <div class="dc-rule-text"><strong>Etiqueta de noche</strong>Traje oscuro para ellos. Vestido de cóctel o largo para ellas.</div>
+        <div class="dc-rule-text"><strong>Etiqueta de noche</strong>Traje oscuro para ellos. Vestido largo para ellas.</div>
       </div>
       <div class="dc-rule reveal-left delay-3">
         <span class="dc-icon">🚫</span>
@@ -586,12 +670,43 @@ to   { transform: rotate(16deg); }
     </div>
   </div>
 </section>
+  
+<!-- ═══ REGALOS ═══ -->
+<section id="regalos">
+  <div class="section-inner">
+    <p class="subtitle reveal-up">Regalos</p>
+    <h2 class="section-title reveal-up delay-1">El mejor regalo es tu presencia</h2>
+    <p class="body-text reveal-up delay-2">
+      Vuestra compañía en este día es todo lo que necesitamos. Sin embargo, si queréis tener un detalle con nosotros, 
+      la mejor forma de contribuir a nuestra nueva vida juntos es a través de una aportación a nuestra luna de miel. 
+      Os lo agradecemos de corazón. 💛
+    </p>
 
+    <div class="regalo-box reveal-up delay-3">
+      <button class="btn-regalo" id="btn-regalo" onclick="mostrarIBAN()">
+        <span>🎁 Hacer un regalo</span>
+      </button>
+
+      <div class="iban-box" id="iban-box">
+        <p class="iban-label">Transferencia bancaria</p>
+        <div class="iban-row">
+          <span class="iban-number" id="iban-text">ES12 3456 7890 1234 5678 9012</span>
+          <button class="btn-copy" id="btn-copy" onclick="copiarIBAN()">
+            <span id="copy-label">📋 Copiar</span>
+          </button>
+        </div>
+        <p class="iban-titular">Titular: Óscar García &amp; Sara Martínez</p>
+        <p class="iban-nota">Concepto: Tu nombre · Boda O&amp;S 2027</p>
+      </div>
+    </div>
+  </div>
+</section>
+  
 <!-- ═══ FOOTER ═══ -->
 <footer>
   <div class="footer-names">Los Güeris</div>
   <p>17 · 07 · 2027</p>
-  <p style="margin-top:.5rem;font-size:.7rem;opacity:.3;">Con amor, desde Málaga</p>
+  <p style="margin-top:.5rem;font-size:1rem;opacity:.10;">Con amor, desde Málaga</p>
 </footer>
 
 <script>
@@ -736,7 +851,32 @@ async function handleRsvpSubmit(e){
   s.classList.add('show');
   s.scrollIntoView({behavior:'smooth', block:'center'});
 }
+  /* ── Regalos ── */
+let regaloFired = false;
+
+function mostrarIBAN() {
+  const ibanBox = document.getElementById('iban-box');
+  const btn     = document.getElementById('btn-regalo');
+
+  ibanBox.style.display = 'block';
+  btn.style.display = 'none';
+
+  if (!regaloFired) {
+    regaloFired = true;
+    launchConfetti(); // reutiliza el confeti ya existente
+  }
+}
+
+function copiarIBAN() {
+  const iban  = document.getElementById('iban-text').textContent.trim();
+  const label = document.getElementById('copy-label');
+  navigator.clipboard.writeText(iban).then(() => {
+    label.textContent = '✅ Copiado';
+    setTimeout(() => label.textContent = '📋 Copiar', 2500);
+  });
+}
 </script>
 </body>
 </html>
+
 
