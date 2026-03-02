@@ -600,15 +600,28 @@ to   { transform: rotate(16deg); }
           <div class="radio-option"><input type="radio" name="entry.403023312" id="ap-carne" value="🥩 Carne"><label for="ap-carne">🥩 Carne</label></div>
           <div class="radio-option"><input type="radio" name="entry.403023312" id="ap-pescado" value="🐟 Pescado"><label for="ap-pescado">🐟 Pescado</label></div>
         </div>
+        <div class="form-group reveal-up delay-2">
+        <label>¿Tiene alergias o intolerancias alimentarias?</label>
+        <div class="radio-group">
+          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-si" value="Sí" onchange="toggleAlergias(this)"><label for="al-si">Sí</label></div>
+          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-no" value="No" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
+        </div>
+      </div>
+      <div class="form-group" id="alergias-row">
+        <label>¿Cuáles?</label>
+        <textarea name="entry.1856380992" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
+      </div>
       </div>
 
       <p class="form-section-title reveal-up">Logística</p>
       <div class="form-group reveal-up delay-1">
         <label>¿Necesitas servicio de transporte?</label>
         <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-si" value="Sí, necesito"><label for="t-si">Sí, necesito</label></div>
+          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-si" value="Ruta completa desde MÁLAGA: (Málaga > Antequera > Banquete > Regreso a Málaga)."><label for="t-si">Ruta completa desde MÁLAGA: (Málaga > Antequera > Banquete > Regreso a Málaga).</label></div>
+          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="Ruta completa desde ANTEQUERA: (Antequera > Banquete > Regreso a Antequera). "><label for="t-no">Ruta completa desde ANTEQUERA: (Antequera > Banquete > Regreso a Antequera). </label></div>
           <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="No, me apaño"><label for="t-no">No, me apaño</label></div>
         </div>
+        
       </div>
       <div class="form-group reveal-up delay-2">
         <label>¿Necesitas alojamiento / hotel?</label>
@@ -634,7 +647,17 @@ to   { transform: rotate(16deg); }
           <option value="4 o más">4 o más 🙀</option>
         </select>
       </div>
-
+ <div class="form-group reveal-up delay-2">
+        <label>¿Tiene alergias o intolerancias alimentarias?</label>
+        <div class="radio-group">
+          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-si" value="Sí" onchange="toggleAlergias(this)"><label for="al-si">Sí</label></div>
+          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-no" value="No" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
+        </div>
+      </div>
+      <div class="form-group" id="alergias-row">
+        <label>¿Cuáles?</label>
+        <textarea name="entry.1856380992" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
+      </div>
       <p class="form-section-title reveal-up">Menú</p>
       <div class="form-group reveal-up delay-1">
         <label>Plato principal</label>
@@ -878,6 +901,7 @@ function copiarIBAN() {
 </script>
 </body>
 </html>
+
 
 
 
