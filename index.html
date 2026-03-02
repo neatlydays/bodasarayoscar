@@ -616,11 +616,23 @@ to   { transform: rotate(16deg); }
       <p class="form-section-title reveal-up">Logística</p>
       <div class="form-group reveal-up delay-1">
         <label>¿Necesitas servicio de transporte?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-si" value="Ruta completa desde MÁLAGA: (Málaga > Antequera > Banquete > Regreso a Málaga)."><label for="t-si">Ruta completa desde MÁLAGA: (Málaga > Antequera > Banquete > Regreso a Málaga).</label></div>
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="Ruta completa desde ANTEQUERA: (Antequera > Banquete > Regreso a Antequera). "><label for="t-no">Ruta completa desde ANTEQUERA: (Antequera > Banquete > Regreso a Antequera). </label></div>
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="No, me apaño"><label for="t-no">No, me apaño</label></div>
-        </div>
+        <div class="select-wrapper">
+    <select name="entry.912439665" id="transporte" class="custom-select" required>
+      <option value="" disabled selected>Selecciona una opción...</option>
+      
+      <option value="Ruta completa desde MÁLAGA: (Málaga > Antequera > Banquete > Regreso a Málaga).">
+        Málaga (Málaga > Antequera > Banquete > Vuelta)
+      </option>
+      
+      <option value="Ruta completa desde ANTEQUERA: (Antequera > Banquete > Regreso a Antequera). ">
+        Antequera (Antequera > Banquete > Vuelta)
+      </option>
+      
+      <option value="No, me apaño">
+        No, me apaño.
+      </option>
+    </select>
+  </div>
         
       </div>
       <div class="form-group reveal-up delay-2">
@@ -901,6 +913,7 @@ function copiarIBAN() {
 </script>
 </body>
 </html>
+
 
 
 
