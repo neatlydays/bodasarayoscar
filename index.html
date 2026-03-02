@@ -603,11 +603,11 @@ to   { transform: rotate(16deg); }
         <div class="form-group reveal-up delay-2">
         <label>¿Tiene alergias o intolerancias alimentarias?</label>
         <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-si" value="Sí" onchange="toggleAlergias(this)"><label for="al-si">Sí</label></div>
-          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-no" value="No" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
+          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-si-acompañante" value="Sí" onchange="toggleAlergias(this)"><label for="al-si">Sí</label></div>
+          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-no-acompañante" value="No" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
         </div>
       </div>
-      <div class="form-group" id="alergias-row">
+      <div class="form-group" id="alergias-row-acompañante">
         <label>¿Cuáles?</label>
         <textarea name="entry.1856380992" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
       </div>
@@ -662,11 +662,11 @@ to   { transform: rotate(16deg); }
  <div class="form-group reveal-up delay-2">
         <label>¿Tiene alergias o intolerancias alimentarias?</label>
         <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-si" value="Sí" onchange="toggleAlergias(this)"><label for="al-si">Sí</label></div>
-          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-no" value="No" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
+          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-si-niño" value="Sí" onchange="toggleAlergias(this)"><label for="al-si">Sí</label></div>
+          <div class="radio-option"><input type="radio" name="entry.741634672" id="al-no-niño" value="No" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
         </div>
       </div>
-      <div class="form-group" id="alergias-row">
+      <div class="form-group" id="alergias-row-niño">
         <label>¿Cuáles?</label>
         <textarea name="entry.1856380992" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
       </div>
@@ -681,11 +681,11 @@ to   { transform: rotate(16deg); }
       <div class="form-group reveal-up delay-2">
         <label>¿Tienes alergias o intolerancias alimentarias?</label>
         <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.319600980" id="al-si" value="Sí" onchange="toggleAlergias(this)"><label for="al-si">Sí</label></div>
-          <div class="radio-option"><input type="radio" name="entry.319600980" id="al-no" value="No" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
+          <div class="radio-option"><input type="radio" name="entry.319600980" id="al-si-invitado" value="Sí" onchange="toggleAlergias(this)"><label for="al-si">Sí</label></div>
+          <div class="radio-option"><input type="radio" name="entry.319600980" id="al-no-invitado" value="No" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
         </div>
       </div>
-      <div class="form-group" id="alergias-row">
+      <div class="form-group" id="alergias-row-invitado">
         <label>¿Cuáles?</label>
         <textarea name="entry.1886171490" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
       </div>
@@ -913,6 +913,7 @@ function copiarIBAN() {
 </script>
 </body>
 </html>
+
 
 
 
