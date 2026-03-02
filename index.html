@@ -600,6 +600,7 @@ to   { transform: rotate(16deg); }
           <div class="radio-option"><input type="radio" name="entry.403023312" id="ap-carne" value="🥩 Carne"><label for="ap-carne">🥩 Carne</label></div>
           <div class="radio-option"><input type="radio" name="entry.403023312" id="ap-pescado" value="🐟 Pescado"><label for="ap-pescado">🐟 Pescado</label></div>
         </div>
+         </div>
         <div class="form-group reveal-up delay-2">
         <label>¿Tiene alergias o intolerancias alimentarias?</label>
         <div class="radio-group">
@@ -611,13 +612,12 @@ to   { transform: rotate(16deg); }
         <label>¿Cuáles?</label>
         <textarea name="entry.1856380992" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
       </div>
-      </div>
 
       <p class="form-section-title reveal-up">Logística</p>
       <div class="form-group reveal-up delay-1">
         <label>¿Necesitas servicio de transporte?</label>
         <div class="select-wrapper">
-    <select name="entry.912439665" id="transporte" class="custom-select" required>
+    <select name="entry.1117253169" id="transporte" class="custom-select" required>
       <option value="" disabled selected>Selecciona una opción...</option>
       
       <option value="Ruta completa desde MÁLAGA: (Málaga > Antequera > Banquete > Regreso a Málaga).">
@@ -649,6 +649,7 @@ to   { transform: rotate(16deg); }
           <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-no" value="No" onchange="toggleNinos(this)"><label for="n-no">No</label></div>
         </div>
       </div>
+      
       <div class="form-group" id="ninos-row">
         <label>¿Cuántos niños vendrán?</label>
         <select name="entry.1924814829">
@@ -666,10 +667,11 @@ to   { transform: rotate(16deg); }
           <div class="radio-option"><input type="radio" name="entry.741634672" id="al-no-niño" value="No" onchange="toggleAlergias(this)"><label for="al-no-niño">No</label></div>
         </div>
       </div>
-      <div class="form-group" id="alergias-row-niño"">
+      <div class="form-group" id="alergias-row-niño">
         <label>¿Cuáles?</label>
-        <textarea name="entry.1856380992" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
+        <textarea name="entry.1110252632" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
       </div>
+
       <p class="form-section-title reveal-up">Menú</p>
       <div class="form-group reveal-up delay-1">
         <label>Plato principal</label>
@@ -725,7 +727,7 @@ to   { transform: rotate(16deg); }
       <div class="iban-box" id="iban-box">
         <p class="iban-label">Transferencia bancaria</p>
         <div class="iban-row">
-          <span class="iban-number" id="iban-text">ES12 1234 5678 9123 1345 6789</span>
+          <span class="iban-number" id="iban-text">ES1212345678912313456789</span>
           <button class="btn-copy" id="btn-copy" onclick="copiarIBAN()">
             <span id="copy-label">📋 Copiar</span>
           </button>
@@ -913,6 +915,7 @@ function copiarIBAN() {
 </script>
 </body>
 </html>
+
 
 
 
