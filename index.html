@@ -583,6 +583,7 @@ to   { transform: rotate(16deg); }
           </div>
         </div>
       </div>
+      <div id="rsvp-body" style="display:none">
       <div class="form-group reveal-up delay-3">
         <label>¿Vienes con esa persona especial que quizás no conocemos aún?</label>
         <div class="radio-group">
@@ -596,7 +597,7 @@ to   { transform: rotate(16deg); }
       </div>
 
       <p class="form-section-title reveal-up">Logística</p>
-     <!-- TRANSPORTE: desplegable con rutas -->
+      <!-- TRANSPORTE: desplegable con rutas -->
       <div class="form-group reveal-up delay-1">
         <label>¿Necesitas servicio de transporte?</label>
         <select name="entry.912439665">
@@ -689,6 +690,8 @@ to   { transform: rotate(16deg); }
           <textarea name="entry.ninos_alergia_detalle" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
         </div>
       </div>
+
+      </div><!-- /rsvp-body -->
 
       <button type="submit" class="btn-submit"><span>Confirmar asistencia</span></button>
     </form>
@@ -798,6 +801,40 @@ function launchConfetti(){
   animateConfetti();
   setTimeout(()=>{ cancelAnimationFrame(confAnimId); confCanvas.style.display='none'; pieces=[]; }, 4500);
 }
+  function onAsistenciaChange(radio) {
+    const asiste = radio.value.startsWith('Sí');
+    document.getElementById('rsvp-body').style.display = asiste ? 'block' : 'none';
+  }
+
+  function toggleAcompanante(radio) {
+    const mostrar = radio.value === 'Si';
+    document.getElementById('acompanante-nombre-row').style.display = mostrar ? 'block' : 'none';
+    document.getElementById('menu-acompanante-section').style.display = mostrar ? 'block' : 'none';
+    if (!mostrar) {
+      document.getElementById('alergias-acomp-row').style.display = 'none';
+    }
+  }
+
+  function toggleNinos(radio) {
+    const mostrar = radio.value === 'SI';
+    document.getElementById('ninos-row').style.display = mostrar ? 'block' : 'none';
+    document.getElementById('menu-ninos-section').style.display = mostrar ? 'block' : 'none';
+    if (!mostrar) {
+      document.getElementById('alergias-ninos-row').style.display = 'none';
+    }
+  }
+
+  function toggleAlergias(radio) {
+    document.getElementById('alergias-row').style.display = radio.value === 'Sí' ? 'block' : 'none';
+  }
+
+  function toggleAlergiasAcomp(radio) {
+    document.getElementById('alergias-acomp-row').style.display = radio.value === 'Sí' ? 'block' : 'none';
+  }
+
+  function toggleAlergiasNinos(radio) {
+    document.getElementById('alergias-ninos-row').style.display = radio.value === 'Sí' ? 'block' : 'none';
+  }
 function animateConfetti(){
   confCtx.clearRect(0,0,confCanvas.width,confCanvas.height);
   let alive = false;
@@ -910,42 +947,9 @@ function copiarIBAN() {
     setTimeout(() => label.textContent = '📋 Copiar', 2500);
   });
 }
-  !-- ═══ SCRIPTS DE TOGGLE ACTUALIZADOS ═══ -->
-  function toggleAcompanante(radio) {
-    const mostrar = radio.value === 'Si';
-    document.getElementById('acompanante-nombre-row').style.display = mostrar ? 'block' : 'none';
-    document.getElementById('menu-acompanante-section').style.display = mostrar ? 'block' : 'none';
-    if (!mostrar) {
-      document.getElementById('alergias-acomp-row').style.display = 'none';
-    }
-  }
-
-  function toggleNinos(radio) {
-    const mostrar = radio.value === 'SI';
-    document.getElementById('ninos-row').style.display = mostrar ? 'block' : 'none';
-    document.getElementById('menu-ninos-section').style.display = mostrar ? 'block' : 'none';
-    if (!mostrar) {
-      document.getElementById('alergias-ninos-row').style.display = 'none';
-    }
-  }
-
-  function toggleAlergias(radio) {
-    document.getElementById('alergias-row').style.display = radio.value === 'Sí' ? 'block' : 'none';
-  }
-
-  function toggleAlergiasAcomp(radio) {
-    document.getElementById('alergias-acomp-row').style.display = radio.value === 'Sí' ? 'block' : 'none';
-  }
-
-  function toggleAlergiasNinos(radio) {
-    document.getElementById('alergias-ninos-row').style.display = radio.value === 'Sí' ? 'block' : 'none';
-  }
-</script>
 </script>
 </body>
 </html>
-
-
 
 
 
