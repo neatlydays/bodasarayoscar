@@ -594,21 +594,17 @@ to   { transform: rotate(16deg); }
         <label>¿Cuál es el nombre de tu acompañante?</label>
         <input type="text" name="entry.749003247" placeholder="Nombre y apellido">
       </div>
-      <div class="form-group" id="acompanante-plato-row" style="display:none">
-        <label>¿Qué desea de plato principal tu acompañante?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.403023312" id="ap-carne" value="🥩 Carne"><label for="ap-carne">🥩 Carne</label></div>
-          <div class="radio-option"><input type="radio" name="entry.403023312" id="ap-pescado" value="🐟 Pescado"><label for="ap-pescado">🐟 Pescado</label></div>
-        </div>
-      </div>
 
       <p class="form-section-title reveal-up">Logística</p>
+     <!-- TRANSPORTE: desplegable con rutas -->
       <div class="form-group reveal-up delay-1">
         <label>¿Necesitas servicio de transporte?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-si" value="Sí, necesito"><label for="t-si">Sí, necesito</label></div>
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="No, me apaño"><label for="t-no">No, me apaño</label></div>
-        </div>
+        <select name="entry.912439665">
+          <option value="">Selecciona una opción...</option>
+          <option value="Ruta Málaga (Málaga → Antequera → Banquete → Málaga)">🚌 Ruta Málaga (Málaga → Antequera → Banquete → Málaga)</option>
+          <option value="Ruta Antequera (Antequera → Banquete → Antequera)">🚌 Ruta Antequera (Antequera → Banquete → Antequera)</option>
+          <option value="No, me apaño">🚗 No, me apaño</option>
+        </select>
       </div>
       <div class="form-group reveal-up delay-2">
         <label>¿Necesitas alojamiento / hotel?</label>
@@ -624,7 +620,7 @@ to   { transform: rotate(16deg); }
           <div class="radio-option"><input type="radio" name="entry.1468727656" id="n-no" value="No" onchange="toggleNinos(this)"><label for="n-no">No</label></div>
         </div>
       </div>
-      <div class="form-group" id="ninos-row">
+      <div class="form-group" id="ninos-row" style="display:none">
         <label>¿Cuántos niños vendrán?</label>
         <select name="entry.1924814829">
           <option value="">Selecciona...</option>
@@ -636,13 +632,15 @@ to   { transform: rotate(16deg); }
       </div>
 
       <p class="form-section-title reveal-up">Menú</p>
+      <!-- Plato principal del invitado -->
       <div class="form-group reveal-up delay-1">
-        <label>Plato principal</label>
+        <label>Tu plato principal</label>
         <div class="radio-group">
           <div class="radio-option"><input type="radio" name="entry.1907484985" id="m-carne" value="🥩 Carne"><label for="m-carne">🥩 Carne</label></div>
           <div class="radio-option"><input type="radio" name="entry.1907484985" id="m-pescado" value="🐟 Pescado"><label for="m-pescado">🐟 Pescado</label></div>
         </div>
       </div>
+      <!-- Alergias del invitado -->
       <div class="form-group reveal-up delay-2">
         <label>¿Tienes alergias o intolerancias alimentarias?</label>
         <div class="radio-group">
@@ -650,9 +648,46 @@ to   { transform: rotate(16deg); }
           <div class="radio-option"><input type="radio" name="entry.319600980" id="al-no" value="No" onchange="toggleAlergias(this)"><label for="al-no">No</label></div>
         </div>
       </div>
-      <div class="form-group" id="alergias-row">
+      <div class="form-group" id="alergias-row" style="display:none">
         <label>¿Cuáles?</label>
         <textarea name="entry.1886171490" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
+      </div>
+
+      <!-- Menú del acompañante (visible solo si eligió acompañante) -->
+      <div id="menu-acompanante-section" style="display:none">
+        <div class="form-group reveal-up delay-3">
+          <label>Plato principal de tu acompañante</label>
+          <div class="radio-group">
+            <div class="radio-option"><input type="radio" name="entry.403023312" id="ap-carne" value="🥩 Carne"><label for="ap-carne">🥩 Carne</label></div>
+            <div class="radio-option"><input type="radio" name="entry.403023312" id="ap-pescado" value="🐟 Pescado"><label for="ap-pescado">🐟 Pescado</label></div>
+          </div>
+        </div>
+        <div class="form-group reveal-up delay-3">
+          <label>¿Tu acompañante tiene alergias o intolerancias alimentarias?</label>
+          <div class="radio-group">
+            <div class="radio-option"><input type="radio" name="entry.acomp_alergia" id="al-ac-si" value="Sí" onchange="toggleAlergiasAcomp(this)"><label for="al-ac-si">Sí</label></div>
+            <div class="radio-option"><input type="radio" name="entry.acomp_alergia" id="al-ac-no" value="No" onchange="toggleAlergiasAcomp(this)"><label for="al-ac-no">No</label></div>
+          </div>
+        </div>
+        <div class="form-group" id="alergias-acomp-row" style="display:none">
+          <label>¿Cuáles?</label>
+          <textarea name="entry.acomp_alergia_detalle" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
+        </div>
+      </div>
+
+      <!-- Alergias de los niños (visible solo si eligió niños) -->
+      <div id="menu-ninos-section" style="display:none">
+        <div class="form-group">
+          <label>¿Alguno de los niños tiene alergias o intolerancias alimentarias?</label>
+          <div class="radio-group">
+            <div class="radio-option"><input type="radio" name="entry.ninos_alergia" id="al-n-si" value="Sí" onchange="toggleAlergiasNinos(this)"><label for="al-n-si">Sí</label></div>
+            <div class="radio-option"><input type="radio" name="entry.ninos_alergia" id="al-n-no" value="No" onchange="toggleAlergiasNinos(this)"><label for="al-n-no">No</label></div>
+          </div>
+        </div>
+        <div class="form-group" id="alergias-ninos-row" style="display:none">
+          <label>¿Cuáles?</label>
+          <textarea name="entry.ninos_alergia_detalle" placeholder="Ej: gluten, lactosa, frutos secos..."></textarea>
+        </div>
       </div>
 
       <button type="submit" class="btn-submit"><span>Confirmar asistencia</span></button>
@@ -875,9 +910,41 @@ function copiarIBAN() {
     setTimeout(() => label.textContent = '📋 Copiar', 2500);
   });
 }
+  !-- ═══ SCRIPTS DE TOGGLE ACTUALIZADOS ═══ -->
+  function toggleAcompanante(radio) {
+    const mostrar = radio.value === 'Si';
+    document.getElementById('acompanante-nombre-row').style.display = mostrar ? 'block' : 'none';
+    document.getElementById('menu-acompanante-section').style.display = mostrar ? 'block' : 'none';
+    if (!mostrar) {
+      document.getElementById('alergias-acomp-row').style.display = 'none';
+    }
+  }
+
+  function toggleNinos(radio) {
+    const mostrar = radio.value === 'SI';
+    document.getElementById('ninos-row').style.display = mostrar ? 'block' : 'none';
+    document.getElementById('menu-ninos-section').style.display = mostrar ? 'block' : 'none';
+    if (!mostrar) {
+      document.getElementById('alergias-ninos-row').style.display = 'none';
+    }
+  }
+
+  function toggleAlergias(radio) {
+    document.getElementById('alergias-row').style.display = radio.value === 'Sí' ? 'block' : 'none';
+  }
+
+  function toggleAlergiasAcomp(radio) {
+    document.getElementById('alergias-acomp-row').style.display = radio.value === 'Sí' ? 'block' : 'none';
+  }
+
+  function toggleAlergiasNinos(radio) {
+    document.getElementById('alergias-ninos-row').style.display = radio.value === 'Sí' ? 'block' : 'none';
+  }
+</script>
 </script>
 </body>
 </html>
+
 
 
 
