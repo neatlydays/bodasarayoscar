@@ -604,12 +604,15 @@ to   { transform: rotate(16deg); }
 
       <p class="form-section-title reveal-up">Logística</p>
       <div class="form-group reveal-up delay-1">
-        <label>¿Necesitas servicio de transporte?</label>
-        <div class="radio-group">
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-si" value="Sí, necesito"><label for="t-si">Sí, necesito</label></div>
-          <div class="radio-option"><input type="radio" name="entry.912439665" id="t-no" value="No, me apaño"><label for="t-no">No, me apaño</label></div>
-        </div>
+  <label for="entry.1313758413">¿Necesitas servicio de transporte?</label>
+  <select name="entry.1313758413" id="entry.1313758413">
+    <option value="">-- Selecciona una opción --</option>
+    <option value="Ruta Malaga (Malaga>Antequera>Banquete>Malaga)">Ruta Málaga (Málaga › Antequera › Banquete › Málaga)</option>
+    <option value="Ruta Antequera (Antequera>Banquete>Antequera)">Ruta Antequera (Antequera › Banquete › Antequera)</option>
+    <option value="No, me apaño">No, me apaño</option>
+  </select>
       </div>
+  
       <div class="form-group reveal-up delay-2">
         <label>¿Necesitas alojamiento / hotel?</label>
         <div class="radio-group">
@@ -878,4 +881,6 @@ function copiarIBAN() {
 </script>
 </body>
 </html>
+
+
 
