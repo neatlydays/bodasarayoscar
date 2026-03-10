@@ -10,7 +10,7 @@
 <style>
 :root {
   --cream: #f5f7ee;        /* crema con toque verdoso */
-  --blush: a8c286;        /* oliva claro */
+  --blush: #c8d4a8;        /* oliva claro */
   --rose: #8a9e5a;         /* oliva medio */
   --dusty-rose: #b0bf88;   /* oliva polvoriento */
   --dark-sage: #4a6640;    /* sage oscuro (ya era verde, intensificado) */
@@ -95,56 +95,18 @@ hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ell
 .t-time{min-width:50px;font-family:'Cormorant Garamond',serif;font-size:1rem;color:var(--rose);padding-top:2px;text-align:right;flex-shrink:0}
 .t-dot{width:10px;height:10px;border-radius:50%;background:var(--cream);border:2px solid var(--rose);margin-top:5px;position:relative;z-index:1;flex-shrink:0;transition:background .3s,transform .3s}
 .timeline-item:hover .t-dot{background:var(--rose);transform:scale(1.4)}
-.t-title{font-family:'Cormorant Garamond',serif;font-size:1.3rem;font-weight:500;color:var(--text-dark)}
+.t-title{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:500;color:var(--text-dark)}
 .t-desc{font-size:.83rem;color:var(--text-mid);line-height:1.6;margin-top:3px}
-#dresscode { background: var(--blush); }
-
-#dresscode h2.section-title { color: #1c2412; }
-
-#dresscode .subtitle { color: #3a4e22; }
-
-.dc-badge {
-  display: inline-block;
-  border: 1px solid #8aab62;
-  border-radius: 100px;
-  padding: .4rem 1.4rem;
-  font-size: .7rem;
-  letter-spacing: .2em;
-  text-transform: uppercase;
-  color: #1c2412;
-  margin: 1.5rem 0 2rem;
-}
-
-.dc-rules { max-width: 500px; margin: 0 auto; text-align: left; }
-
-.dc-rule {
-  display: flex;
-  align-items: flex-start;
-  gap: 1.1rem;
-  background: rgba(255,255,255,0.35);
-  border: 1px solid rgba(30, 45, 18, 0.2);
-  border-radius: 4px;
-  padding: 1.2rem 1.4rem;
-  margin-bottom: .75rem;
-  transition: background .3s;
-}
-
-.dc-rule:hover { background: rgba(255,255,255,0.5); }
-
-.dc-icon { font-size: 1.3rem; flex-shrink: 0; margin-top: 2px; }
-
-.dc-rule-text {
-  font-size: .87rem;
-  color: #46632f !important;
-  line-height: 1.65;
-}
-
-.dc-rule-text strong {
-  display: block;
-  color: #46632f !important;
-  font-weight: 400;
-  margin-bottom: 3px;
-}
+#dresscode{background:var(--dark)}
+#dresscode h2.section-title{color:var(--cream)}
+#dresscode .subtitle{color:rgba(253,248,242,.3)}
+.dc-badge{display:inline-block;border:1px solid rgba(253,248,242,.15);border-radius:100px;padding:.4rem 1.4rem;font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--dusty-rose);margin:1.5rem 0 2rem}
+.dc-rules{max-width:500px;margin:0 auto;text-align:left}
+.dc-rule{display:flex;align-items:flex-start;gap:1.1rem;background:rgba(253,248,242,.04);border:1px solid rgba(253,248,242,.06);border-radius:4px;padding:1.2rem 1.4rem;margin-bottom:.75rem;transition:background .3s}
+.dc-rule:hover{background:rgba(253,248,242,.07)}
+.dc-icon{font-size:1.3rem;flex-shrink:0;margin-top:2px}
+.dc-rule-text{font-size:.87rem;color:rgba(253,248,242,.55);line-height:1.65}
+.dc-rule-text strong{display:block;color:var(--cream);font-weight:400;margin-bottom:3px}
 #rsvp{background:linear-gradient(170deg,#f7ede3 0%,var(--cream) 100%)}
 .rsvp-form{max-width:600px;margin:3rem auto 0;text-align:left}
 .form-group{margin-bottom:1.8rem}
@@ -919,13 +881,6 @@ function copiarIBAN() {
 </script>
 </body>
 </html>
-
-
-
-
-
-
-
 
 
 
