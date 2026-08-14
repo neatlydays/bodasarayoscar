@@ -44,9 +44,22 @@ p.body-text{font-size:1rem;line-height:1.85;color:var(--text-mid)}
 .reveal-scale{opacity:0;transform:scale(.88);transition:opacity 1s cubic-bezier(.16,1,.3,1),transform 1s cubic-bezier(.16,1,.3,1)}
 [class*="reveal-"].visible{opacity:1;transform:none}
 .delay-1{transition-delay:.1s}.delay-2{transition-delay:.22s}.delay-3{transition-delay:.36s}
-hero{min-height:100vh;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:80px 24px;background:var(--cream);position:relative;overflow:hidden;}
-.hero-video-bg{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:blur(0.7px) brightness(0.90) saturate(0.92);transform:scale(1.08);z-index:0;pointer-events:none;opacity:0.72;}
-.hero-video-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(253,248,242,0.45) 0%,rgba(253,248,242,0.25) 40%,rgba(253,248,242,0.42) 100%);z-index:1;pointer-events:none;}
+#hero{
+  min-height:0 !important;
+  height:auto;
+  padding:0;
+}
+.hero-video-bg{
+  position:relative;
+  width:100%;
+  height:auto;
+  object-fit:contain;
+  transform:none;
+  filter:none;
+  opacity:1;
+}
+.hero-video-overlay{ display:none; }
+
 .hero-content{position:relative;text-align:center;z-index:2;width:100%}
 hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse 70% 55% at 12% 18%,rgba(232,196,180,.4) 0%,transparent 60%),radial-gradient(ellipse 55% 45% at 90% 78%,rgba(196,137,106,.22) 0%,transparent 55%),radial-gradient(ellipse 50% 40% at 55% 8%,rgba(138,158,132,.2) 0%,transparent 50%);pointer-events:none;}
 .hero-content{position:relative;text-align:center;z-index:1;width:100%}
@@ -294,7 +307,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
   justify-content: center;
   gap: 14px;
   margin-bottom: 1.4rem;
-  opacity: 0.7;
+  opacity: 0.4;
 }
 .cover-ornament::before,
 .cover-ornament::after {
@@ -312,7 +325,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
   display: block;
   font-family: 'Jost', sans-serif;
   font-size: clamp(0.72rem, 1.8vw, 0.96rem);
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: 0.35em;
   text-transform: uppercase;
   color: rgba(255, 240, 220, 1);
@@ -334,7 +347,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
 
 .cover-names {
   font-family: 'Cormorant Garamond', serif;
-  font-size: clamp(1.2rem, 3.5vw, 2rem);
+  font-size: clamp(1.8rem, 5.5vw, 3.2rem);
   font-weight: 400;
   letter-spacing: 0.28em;
   color: rgba(255, 214, 165, 1);
@@ -353,7 +366,7 @@ footer p{font-size:.78rem;letter-spacing:.15em;color:rgba(253,248,242,.3)}
 
 .cover-cta span {
   font-family: 'Jost', sans-serif;
-  font-size: clamp(0.55rem, 1.2vw, 0.68rem);
+  font-size: clamp(0.75rem, 1.8vw, 0.95rem);
   font-weight: 400;
   letter-spacing: 0.28em;
   text-transform: uppercase;
@@ -437,7 +450,7 @@ to   { transform: rotate(16deg); }
     <div class="cover-ornament">
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="4" fill="#c4896a" opacity="0.8"/><ellipse cx="12" cy="4" rx="2" ry="3" fill="#e8c4b4" opacity="0.6"/><ellipse cx="12" cy="20" rx="2" ry="3" fill="#e8c4b4" opacity="0.6"/><ellipse cx="4" cy="12" rx="3" ry="2" fill="#e8c4b4" opacity="0.6"/><ellipse cx="20" cy="12" rx="3" ry="2" fill="#e8c4b4" opacity="0.6"/></svg>
     </div>
-    <span class="cover-pre">17 · Julio · 2027</span>
+  
     <h2 class="cover-title">Bienvenido a nuestra boda</h2>
     <p class="cover-names">Sara &amp; Óscar</p>
     <div class="cover-cta">
@@ -454,11 +467,9 @@ to   { transform: rotate(16deg); }
 <!-- ═══ HERO ═══ -->
 <section id="hero">
   <img class="hero-video-bg" src="PMARTINS 35.jpg" alt="">
-  <div class="hero-content">
-    <div class="hero-line"></div>
-  </div>
-  <div class="scroll-hint"><span>Desliza</span><div class="scroll-arrow"></div></div>
+  
 </section>
+
 
 <!-- ═══ CUENTA ATRÁS ═══ -->
 <section id="countdown">
